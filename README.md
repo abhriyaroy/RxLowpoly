@@ -1,7 +1,8 @@
 # LowpolyRxJava Android
 
 An android library to convert your dull normal images into awesome ones with a crystallized lowpoly effect.
-This is feature of WallR android app - https://play.google.com/store/apps/details?id=zebrostudio.wallr100&hl=en
+<br>
+This is a feature of the WallR android app. Check it out at - https://play.google.com/store/apps/details?id=zebrostudio.wallr100&hl=en
 
 ## Samples
 
@@ -51,5 +52,5 @@ Add it in your root build.gradle at the end of repositories:
 
 That's it!!
 
-If you do like my work, don't forget to hit the star button.
+If you do like my work, please hit the star button.
 If you have any ideas to improve upon my work feel free to raise a PR and let's learn together. :)
