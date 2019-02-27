@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 import java.io.IOException
 import java.util.ArrayList
 
@@ -13,12 +14,9 @@ object LowPoly {
   @Throws(IOException::class)
   fun generate(bitmap: Bitmap): Single<Bitmap> {
     return generate(bitmap, 50, 1f, true, false)
+      .subscribeOn(Schedulers.computation())
   }
 
-  /**
-   * @throws IOException
-   * @throws NullPointerException
-   */
   @Throws(IOException::class)
   fun generate(
     inputBitmap: Bitmap?,

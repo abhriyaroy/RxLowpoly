@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
 
   private fun generateLowpoly(bitmap: Bitmap): Single<Bitmap> {
     return LowPoly.generate(bitmap)
+      // Observe on thread according to your need
+      .observeOn(AndroidSchedulers.mainThread())
   }
 
   private fun getOriginalBitmapFromDrawable(): Single<Bitmap> {

@@ -4,11 +4,9 @@ import android.graphics.Bitmap
 
 object Sobel {
 
-  private val kernelX = arrayOf(intArrayOf(-1, 0, 1), intArrayOf(-2, 0, 2), intArrayOf(-1, 0, 1))
-
-  private val kernelY = arrayOf(intArrayOf(-1, -2, -1), intArrayOf(0, 0, 0), intArrayOf(1, 2, 1))
-
   fun sobel(image: Bitmap, callback: SobelCallback) {
+    val kernelX = arrayOf(intArrayOf(-1, 0, 1), intArrayOf(-2, 0, 2), intArrayOf(-1, 0, 1))
+    val kernelY = arrayOf(intArrayOf(-1, -2, -1), intArrayOf(0, 0, 0), intArrayOf(1, 2, 1))
     val width = image.width
     val height = image.height
 
