@@ -54,3 +54,6 @@ That's it!!
 
 If you do like my work, please hit the star button.
 If you have any ideas to improve upon my work feel free to raise a PR and let's learn together. :)
+
+# Inspiration 
+https://github.com/zzhoujay/LowPolyAndroid 
