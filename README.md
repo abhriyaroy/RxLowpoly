@@ -52,6 +52,25 @@ Add it in your root build.gradle at the end of repositories:
 
 That's it!!
 
+
+# Example
+
+###### Kotlin way - <br>
+
+	private fun generateLowpoly(originalBitmap: Bitmap): Single<Bitmap> {
+		return LowPoly.generate(originalBitmap)
+	}
+	
+###### Java way - <br>
+  
+	private Single<Bitmap> generateLowpoly(Bitmap originalBitmap){
+	    return LowPoly.generate(originalBitmap)
+	}
+	
+<br>
+
+###### A full implementation is in the app module of this repo.
+
 If you do like my work, please hit the star button.
 If you have any ideas to improve upon my work feel free to raise a PR and let's learn together. :)
 
