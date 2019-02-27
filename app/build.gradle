@@ -28,10 +28,10 @@ dependencies {
   implementation "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
   // Rx java
   implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
-  // Material Dialog
-  implementation "com.afollestad.material-dialogs:core:$MATERIAL_DIALOG_VERSION"
   // Rx android
   implementation "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
+  // Material Dialog
+  implementation "com.afollestad.material-dialogs:core:$MATERIAL_DIALOG_VERSION"
   // Autodispose
   implementation "com.uber.autodispose:autodispose-ktx:$AUTODISPOSE_VERSION"
   implementation "com.uber.autodispose:autodispose-android-ktx:$AUTODISPOSE_VERSION"
