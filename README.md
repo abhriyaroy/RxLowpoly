@@ -59,17 +59,25 @@ That's it!!
 
 	private fun generateLowpoly(originalBitmap: Bitmap): Single<Bitmap> {
 		return LowPoly.generate(originalBitmap)
+		 // Observe on thread according to your need
+      		.observeOn(AndroidSchedulers.mainThread())
 	}
 	
 ###### Java way - <br>
   
 	private Single<Bitmap> generateLowpoly(Bitmap originalBitmap){
-	    return LowPoly.generate(originalBitmap)
+	   	 return LowPoly.generate(originalBitmap)
+	    	 // Observe on thread according to your need
+      		.observeOn(AndroidSchedulers.mainThread())
 	}
 	
 <br>
 
 ###### A full implementation is in the app module of this repo.
+
+### Please feel free to download the debug apk and try it out yourself!
+
+Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project.
 
 If you do like my work, please hit the star button.
 If you have any ideas to improve upon my work feel free to raise a PR and let's learn together. :)
