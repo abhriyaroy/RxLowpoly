@@ -7,7 +7,7 @@ internal object DelaunayTriangularize {
 
   private val EPSILON = 1.0f / 1048576.0f
 
-  private fun supertriangle(vertices: List<IntArray>): Array<IntArray> {
+  private fun superTriangle(vertices: List<IntArray>): Array<IntArray> {
     var xmin = Integer.MAX_VALUE
     var ymin = Integer.MAX_VALUE
     var xmax = Integer.MIN_VALUE
@@ -149,7 +149,7 @@ internal object DelaunayTriangularize {
         indices
     ) { lhs, rhs -> vertices[rhs!!][0] - vertices[lhs!!][0] }
 
-    val st = supertriangle(vertices)
+    val st = superTriangle(vertices)
 
     vertices.add(st[0])
     vertices.add(st[1])

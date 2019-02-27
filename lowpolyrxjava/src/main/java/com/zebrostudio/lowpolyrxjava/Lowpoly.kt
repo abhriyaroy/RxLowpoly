@@ -32,7 +32,7 @@ object LowPoly {
       if (inputBitmap == null) {
         it.onError(NullPointerException("Input bitmap cannot be null"))
       }
-      val image = Bitmap.createScaledBitmap(inputBitmap, resultWidth, resultHeight, false)
+      val image = Bitmap.createScaledBitmap(inputBitmap!!, resultWidth, resultHeight, false)
 
       val width = image.width
       val height = image.height
@@ -75,8 +75,10 @@ object LowPoly {
       var cx: Float
       var cy: Float
 
-      val outputBitmap = Bitmap.createBitmap((width * scale).toInt(), (height * scale).toInt(),
-          Bitmap.Config.ARGB_8888)
+      val outputBitmap = Bitmap.createBitmap(
+        (width * scale).toInt(), (height * scale).toInt(),
+        Bitmap.Config.ARGB_8888
+      )
 
       val canvas = Canvas(outputBitmap)
       val paint = Paint()
