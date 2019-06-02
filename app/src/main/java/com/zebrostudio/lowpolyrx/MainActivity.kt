@@ -1,15 +1,14 @@
 package com.zebrostudio.lowpolyrx
 
-import android.app.WallpaperManager
 import android.arch.lifecycle.Lifecycle
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
+import com.bumptech.glide.Glide
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
+import com.zebrostudio.lowpolyrxjava.LowPolyRx
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -24,60 +23,39 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     lowpolyWaitLoader = MaterialDialog.Builder(this)
-      .widgetColor(colorRes(R.color.colorAccent))
-      .contentColor(colorRes(R.color.colorBlack))
-      .content(getString(R.string.lowpoly_wait_loader_message))
-      .backgroundColor(colorRes(R.color.colorPrimary))
-      .progress(true, initialLoaderProgress)
-      .progressIndeterminateStyle(false)
-      .cancelable(false)
-      .build()
+        .widgetColor(colorRes(R.color.colorWhite))
+        .contentColor(colorRes(R.color.colorWhite))
+        .content(getString(R.string.lowpoly_wait_loader_message))
+        .backgroundColor(colorRes(R.color.colorPrimary))
+        .progress(true, initialLoaderProgress)
+        .progressIndeterminateStyle(false)
+        .cancelable(false)
+        .build()
 
-    getOriginalBitmapFromDrawable()
-      .subscribeOn(Schedulers.computation())
-      .flatMap {
-        generateLowpoly(it)
-      }
-      .observeOn(AndroidSchedulers.mainThread())
-      .doOnSubscribe {
-        imageView.setImageDrawable(drawableRes(R.drawable.sample3))
-        lowpolyWaitLoader?.show()
-      }
-      .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
-      .subscribe({
-        WallpaperManager.getInstance(this).setBitmap(it)
-        imageView.setImageBitmap(it)
-        lowpolyWaitLoader?.dismiss()
-      }, {
-        Toast.makeText(
-          this,
-          getString(R.string.lowpoly_generation_error_message),
-          Toast.LENGTH_LONG
-        ).show()
-        lowpolyWaitLoader?.dismiss()
-      })
+    generateLowpoly()
+        .subscribeOn(Schedulers.computation())
+        .flatMap {
+          generateLowpoly()
+        }
+        .observeOn(AndroidSchedulers.mainThread())
+        .doOnSubscribe {
+          Glide.with(this)
+              .load(R.drawable.sample_large)
+              .into(imageView)
+          lowpolyWaitLoader?.show()
+        }
+        .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
+        .subscribe({
+          imageView.setImageBitmap(it)
+          lowpolyWaitLoader?.dismiss()
+        }, {
+          lowpolyWaitLoader?.dismiss()
+        })
 
   }
 
-  private fun generateLowpoly(bitmap: Bitmap): Single<Bitmap> {
-    return Single.create {
-      it.onSuccess(io.github.xyzxqs.xlowpoly.LowPoly.lowPoly(bitmap, 10000F, true))
-    }
-  }
-
-  private fun getOriginalBitmapFromDrawable(): Single<Bitmap> {
-    return Single.create {
-      val bmp = BitmapFactory.decodeResource(
-        resources,
-        R.drawable.sample5
-      )
-      it.onSuccess(
-        Bitmap.createScaledBitmap(
-          bmp, (bmp.width * 0.3).toInt(),
-          (bmp.height * 0.3).toInt(), false
-        )
-      )
-    }
+  private fun generateLowpoly(): Single<Bitmap> {
+    return LowPolyRx().getLowPolyImage(this, R.drawable.sample_large)
   }
 
 }

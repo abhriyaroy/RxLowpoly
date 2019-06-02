@@ -25,7 +25,6 @@
 #include "delaunay.h"
 #include "dilution.h"
 #include "dedup.h"
-#include "_log.h"
 #include "point.h"
 
 
@@ -52,7 +51,7 @@ int threshold = 40;
  * alpha : in percent 过滤百分比或点数(0.0, 1) or [1, max)
  */
 void get_triangles(const int *pixels, int size, int w, int h, int thre, float alpha,
-                   int *result, int *size_result, unsigned char lowpoly) {
+                   int *result, int *size_result) {
     threshold = thre;
 
     Point *collectors = (Point *) malloc((size / 2 + 1) * sizeof(Point));
@@ -70,33 +69,24 @@ void get_triangles(const int *pixels, int size, int w, int h, int thre, float al
     if (alpha > 1.0f) {
         dedup(vertices, &size_vertices);
     }
-    if (lowpoly) {
-        PNode *triangles = (PNode *) malloc(sizeof(PNode));
-        triangles->index = -1;
-        triangles->next = NULL;
+    PNode *triangles = (PNode *) malloc(sizeof(PNode));
+    triangles->index = -1;
+    triangles->next = NULL;
 
-        triangulate(vertices, size_vertices, w, h, triangles);
+    triangulate(vertices, size_vertices, w, h, triangles);
 
-        *size_result = 0;
-        for (PNode *p = triangles->next; p != NULL;) {
-            Point *pi = &(vertices[p->index]);
-            result[(*size_result)++] = pi->x;
-            result[(*size_result)++] = pi->y;
-            p = p->next;
-        }
-        free(vertices);
-
-        pnode_free(triangles);
-        free(triangles);
-        triangles = NULL;
+    *size_result = 0;
+    for (PNode *p = triangles->next; p != NULL;) {
+        Point *pi = &(vertices[p->index]);
+        result[(*size_result)++] = pi->x;
+        result[(*size_result)++] = pi->y;
+        p = p->next;
     }
-    else {
-        for (int i = 0; i < size_vertices; i++) {
-            Point *pi = &(vertices[i]);
-            result[(*size_result)++] = pi->x;
-            result[(*size_result)++] = pi->y;
-        }
-    }
+    free(vertices);
+
+    pnode_free(triangles);
+    free(triangles);
+    triangles = NULL;
 }
 
 bool call(int magnitude, int x, int y) {

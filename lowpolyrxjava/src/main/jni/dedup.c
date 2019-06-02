@@ -27,7 +27,7 @@ int qsorter(const void *lft, const void *rft);
 
 void dedup(Point *points, int *size) {
     Point *pl, *pr;
-    qsort(points, (size_t)(*size), sizeof(Point), qsorter);
+    qsort(points, (size_t) (*size), sizeof(Point), qsorter);
     for (int i = 0; i + 1 < (*size); ++i) {
         pl = &(points[i]);
         for (int j = i + 1; j + 1 < (*size); ++j) {
