@@ -39,6 +39,7 @@ dependencies {
   implementation "com.uber.autodispose:autodispose-android-archcomponents-test-ktx:$AUTODISPOSE_VERSION"
   // Constraint layout
   implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
+  // Glide
   implementation "com.github.bumptech.glide:glide:$GLIDE_VERSION"
   // Module dependencies
   implementation project(":lowpolyrxjava")
