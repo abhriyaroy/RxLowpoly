@@ -11,12 +11,24 @@ android {
     targetSdkVersion TARGET_SDK_VERSION
     versionCode LOWPOLY_RX_VERSION_CODE
     versionName LOWPOLY_RX_VERSION_NAME
+
+    externalNativeBuild {
+      cmake {
+        cppFlags "-std=c++11 -frtti -fexceptions"
+      }
+    }
   }
 
   buildTypes {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  externalNativeBuild {
+    cmake {
+      path "CMakeLists.txt"
     }
   }
 }
@@ -33,6 +45,7 @@ dependencies {
   testImplementation "org.assertj:assertj-core:$ASSERTJ_VERSION"
   testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_VERSION"
 }
+
 repositories {
   mavenCentral()
 }

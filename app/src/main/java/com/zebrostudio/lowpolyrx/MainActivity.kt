@@ -1,5 +1,6 @@
 package com.zebrostudio.lowpolyrx
 
+import android.app.WallpaperManager
 import android.arch.lifecycle.Lifecycle
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -9,7 +10,6 @@ import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import com.uber.autodispose.autoDisposable
-import com.zebrostudio.lowpolyrxjava.LowPoly
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
       }
       .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
       .subscribe({
+        WallpaperManager.getInstance(this).setBitmap(it)
         imageView.setImageBitmap(it)
         lowpolyWaitLoader?.dismiss()
       }, {
@@ -59,17 +60,21 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun generateLowpoly(bitmap: Bitmap): Single<Bitmap> {
-    return LowPoly.generate(bitmap)
-      // Observe on thread according to your need
-      .observeOn(AndroidSchedulers.mainThread())
+    return Single.create {
+      it.onSuccess(io.github.xyzxqs.xlowpoly.LowPoly.lowPoly(bitmap, 10000F, true))
+    }
   }
 
   private fun getOriginalBitmapFromDrawable(): Single<Bitmap> {
     return Single.create {
+      val bmp = BitmapFactory.decodeResource(
+        resources,
+        R.drawable.sample5
+      )
       it.onSuccess(
-        BitmapFactory.decodeResource(
-          resources,
-          R.drawable.sample3
+        Bitmap.createScaledBitmap(
+          bmp, (bmp.width * 0.3).toInt(),
+          (bmp.height * 0.3).toInt(), false
         )
       )
     }
