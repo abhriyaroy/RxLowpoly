@@ -1,1 +1,1 @@
-include ':app', ':lowpolyrxjava'
+include ':app', ':lowpolyrxjava', ':imagecomparisonview'

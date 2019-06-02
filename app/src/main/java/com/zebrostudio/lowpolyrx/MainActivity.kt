@@ -12,7 +12,6 @@ import com.zebrostudio.lowpolyrxjava.LowPolyRx
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.imageView
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,12 +40,14 @@ class MainActivity : AppCompatActivity() {
         .doOnSubscribe {
           Glide.with(this)
               .load(R.drawable.sample_large)
-              .into(imageView)
+              .into(beforeImageView)
           lowpolyWaitLoader?.show()
         }
         .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
         .subscribe({
-          imageView.setImageBitmap(it)
+          Glide.with(this)
+              .load(it)
+              .into(afterImageView)
           lowpolyWaitLoader?.dismiss()
         }, {
           lowpolyWaitLoader?.dismiss()
