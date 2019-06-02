@@ -60,7 +60,7 @@ class LowPolyRx {
 
   private fun generateLowpolyFromScaledDownBitmap(
     inputBitmap: Bitmap,
-    alphaOrPointCount: Float
+    pointCount: Float
   ): Single<Bitmap> {
     return Single.create { emitter ->
       Bitmap.createScaledBitmap(
@@ -68,7 +68,7 @@ class LowPolyRx {
           (inputBitmap.height * 0.3).toInt(), false
       )
           .run {
-            generate(this, 50, alphaOrPointCount, true).let {
+            generate(this, pointCount, true).let {
               emitter.onSuccess(it)
             }
           }
@@ -77,9 +77,9 @@ class LowPolyRx {
 
   private fun generate(
     input: Bitmap,
-    threshold: Int,
     pointCount: Float,
-    fill: Boolean
+    fill: Boolean,
+    threshold: Int = 50
   ): Bitmap {
     val width = input.width
     val height = input.height
