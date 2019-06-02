@@ -15,10 +15,6 @@ private const val POINT_COUNT = 1000F
 
 class LowPolyRx {
 
-  init {
-    System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
-  }
-
   fun getLowPolyImage(
     context: Context,
     @DrawableRes drawableResId: Int,
@@ -72,7 +68,7 @@ class LowPolyRx {
           (inputBitmap.height * 0.3).toInt(), false
       )
           .run {
-            generate(inputBitmap, 50, alphaOrPointCount, true).let {
+            generate(this, 50, alphaOrPointCount, true).let {
               emitter.onSuccess(it)
             }
           }
@@ -130,7 +126,15 @@ class LowPolyRx {
     width: Int,
     height: Int,
     threshold: Int,
-    alpha_count: Float
+    point_count: Float
   ): IntArray
+
+  companion object {
+
+    init {
+      System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
+    }
+
+  }
 
 }

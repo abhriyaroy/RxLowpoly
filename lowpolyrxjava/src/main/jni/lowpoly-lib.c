@@ -3,9 +3,9 @@
 #include "lowpoly.h"
 
 JNIEXPORT jintArray JNICALL
-Java_io_github_xyzxqs_xlowpoly_LowPoly_getTriangles(JNIEnv *env, jclass type, jintArray pixels_,
+Java_com_zebrostudio_lowpolyrxjava_LowPolyRx_getTriangles(JNIEnv *env, jclass type, jintArray pixels_,
                                                     jint width, jint height, jint threshold,
-                                                    jfloat alpha_count) {
+                                                    jfloat point_count) {
     jint *pixels = (*env)->GetIntArrayElements(env, pixels_, NULL);
     jint size = (*env)->GetArrayLength(env, pixels_);
 
@@ -14,7 +14,7 @@ Java_io_github_xyzxqs_xlowpoly_LowPoly_getTriangles(JNIEnv *env, jclass type, ji
 
     int tmpSize = 0;
 
-    get_triangles(pixels, size, width, height, threshold, alpha_count, tmpArray, &tmpSize);
+    get_triangles(pixels, size, width, height, threshold, point_count, tmpArray, &tmpSize);
 
     (*env)->ReleaseIntArrayElements(env, pixels_, pixels, 0);
 

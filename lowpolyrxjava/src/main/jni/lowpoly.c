@@ -50,7 +50,7 @@ int threshold = 40;
  * thre : threshold 阈值
  * alpha : in percent 过滤百分比或点数(0.0, 1) or [1, max)
  */
-void get_triangles(const int *pixels, int size, int w, int h, int thre, float alpha,
+void get_triangles(const int *pixels, int size, int w, int h, int thre, float points,
                    int *result, int *size_result) {
     threshold = thre;
 
@@ -62,11 +62,11 @@ void get_triangles(const int *pixels, int size, int w, int h, int thre, float al
     Point *vertices = (Point *) malloc((size_collectors + 4) * sizeof(Point));
     int size_vertices = 0;
 
-    dilution(collectors, size_collectors, w, h, alpha, vertices, &size_vertices);
+    dilution(collectors, size_collectors, w, h, points, vertices, &size_vertices);
 
     free(collectors);
 
-    if (alpha > 1.0f) {
+    if (points > 1.0f) {
         dedup(vertices, &size_vertices);
     }
     PNode *triangles = (PNode *) malloc(sizeof(PNode));
