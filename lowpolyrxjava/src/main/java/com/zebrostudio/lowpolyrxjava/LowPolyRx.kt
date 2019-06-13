@@ -1,11 +1,7 @@
 package com.zebrostudio.lowpolyrxjava
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.support.annotation.DrawableRes
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
@@ -64,8 +60,8 @@ class LowPolyRx {
   ): Single<Bitmap> {
     return Single.create { emitter ->
       Bitmap.createScaledBitmap(
-          inputBitmap, (inputBitmap.width * 0.3).toInt(),
-          (inputBitmap.height * 0.3).toInt(), false
+          inputBitmap, (inputBitmap.width),
+          (inputBitmap.height), false
       )
           .run {
             generate(this, pointCount, true).let {
