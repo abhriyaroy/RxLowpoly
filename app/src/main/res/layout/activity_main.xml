@@ -7,7 +7,7 @@
         tools:context=".MainActivity">
 
     <com.zebrostudio.imagecomparisonview.ImageComparisonView
-            android:id="@+id/imageView"
+            android:id="@+id/imageComparisonView"
             android:layout_width="400dp"
             android:layout_height="400dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
