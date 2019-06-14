@@ -7,27 +7,27 @@ This is a feature of the WallR android app. Check it out at - https://play.googl
 ## Samples
 
 <div>
-  <img src="app/src/main/res/drawable/sample1.jpeg" alt="Original" width=400 height=300>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample1.jpeg" alt="Original" width=400 height=300>
   <img src="Outputs/output1.jpeg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
-  <img src="app/src/main/res/drawable/sample2.jpeg" alt="Original" width=400 height=300>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample2.jpeg" alt="Original" width=400 height=300>
   <img src="Outputs/output2.jpeg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
-  <img src="app/src/main/res/drawable/sample3.jpeg" alt="Original" width=400 height=300>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample3.jpeg" alt="Original" width=400 height=300>
   <img src="Outputs/output3.jpeg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
-  <img src="app/src/main/res/drawable/sample4.jpeg" alt="Original" width=400 height=300>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
   <img src="Outputs/output4.jpeg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
-  <img src="app/src/main/res/drawable/sample5.jpeg" alt="Original" width=400 height=300>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample5.jpeg" alt="Original" width=400 height=300>
   <img src="Outputs/output5.jpeg" alt="Lowpoly" width=400 height=300>
 </div>
 
