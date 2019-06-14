@@ -1,4 +1,6 @@
-# LowpolyRxJava Android
+<p align="center"><img src="https://i.imgur.com/0q5xcQ0.jpg" width=750 height=450></p>
+
+# LowpolyRx
 
 An android library to convert your dull normal images into awesome ones with a crystallized lowpoly effect.
 <br>
@@ -8,48 +10,61 @@ An android library to convert your dull normal images into awesome ones with a c
 - [Samples](#samples)
 - [Insights](#insights)
 - [Installation](#installation)
-- [Usage Example](#usage-example)
+- [Usage Examples](#usage-examples)
 - [How to Contribute](#how-to-contribute)
 
 ## Introduction
-This library serves as an improvement over this <a href="https://github.com/xyzxqs/XLowPoly">repository</a> by 
- - providing better qualityresults
- - wider choice of input sources like file path, bitmap or drawable resource.
- - natively using Rx java for background processing thereby reducing boilerplate code on the developer's end.
+LowpolyRxJava serves as an improvement over this [repository]https://github.com/xyzxqs/XLowPoly) by 
+ - providing better quality results.
+ - provides wider choice of input sources like file path, bitmap or drawable resource.
+ - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Samples
 
-<div>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample1.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output1.jpeg" alt="Lowpoly" width=400 height=300>
-</div>
-<br>
-<div>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample2.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output2.jpeg" alt="Lowpoly" width=400 height=300>
-</div>
-<br>
-<div>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample3.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output3.jpeg" alt="Lowpoly" width=400 height=300>
-</div>
-<br>
-<div>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output4.jpeg" alt="Lowpoly" width=400 height=300>
-</div>
-<br>
-<div>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample5.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output5.jpeg" alt="Lowpoly" width=400 height=300>
-</div>
-
+Original Image | Lowpoly Image
+-------------- | -------------
+<img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
+<img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=250>
+<img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
+<img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
+							  
 ## Insights
 
+ - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
+ - Use of [JNI](#jni) enables much faster execution than other similar libraries.
+ - Use of [Sobel Operator](#sobel-operator) for edge deteaction.
+ - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized lowpoly effect on the image. 
+ 
+ ### JNI
+ 
+Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
+LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
+ 
+ 
+ ### Sobel Operator
+ 
+Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels) to process and maintains the "structural" aspect of the image. The Sobel edge detector is one such gradient based method. It works with first order derivatives. It calculates the first derivatives of the image separately for the X and Y axes. The derivatives are only approximations (because the images are not continuous). To approximate them, the following kernels are used for convolution: <br>
 
+<p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
+ 
+ For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+ 
+ ### Delaunay Triangulation
+ 
+ The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
+ We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
+ 
+ <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
+ 
+ Which leads to the resultant crystallized image as :- <br>
+ 
+ <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
+ <p align="center">Credits: <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Wikipedia</a></p>
+ 
+ 
 ## Installation
 
-Step 1. Add the JitPack repository to your build file
+Step 1. Add the JitPack repository to your project :
 
 Add it in your root build.gradle at the end of repositories:
 
@@ -60,15 +75,16 @@ Add it in your root build.gradle at the end of repositories:
 		}
 	}
   
-  Step 2. Add the dependency
+  Step 2. Add the dependency in your app module's build.gradle file
 
 	dependencies {
+		...
 	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
 	}
 
-That's it!! <br>
+That's it! <br>
 
-Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but incase, you don't have these dependencies, please add the following dependencies to your `app/build.gradle` file :-
+Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but incase, you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
 	
 	dependencies{
 		...
@@ -78,31 +94,102 @@ Please note that using this library, it is assumed that RxJava and RxAndroid are
   		implementation "io.reactivex.rxjava2:rxandroid:$LATEST_RX_ANDROID_VERSION"
 	}
 
-## Usage Example
+## Usage Examples
 
-##### Kotlin way - <br>
+### Kotlin way - <br>
 
-	private fun generateLowpoly(originalBitmap: Bitmap): Single<Bitmap> {
-		return LowPoly.generate(originalBitmap)
+	LowPolyRx().getLowPolyImage(originalBitmap)
 		 // Observe on thread according to your need
       		.observeOn(AndroidSchedulers.mainThread())
-	}
+		.subscribe({bitmap ->
+			// Do something with the result bitmap
+		},{
+			// Show some error message
+		})
+		
+Or
+
+	LowPolyRx().getLowPolyImage(this, R.drawable.image)
+        	// Observe on thread according to your need
+        	.observeOn(AndroidSchedulers.mainThread())
+        	.subscribe({bitmap ->
+         		 // Do something with the result bitmap
+        	},{
+          		// Show some error message
+        	})
+		
+Or
+
+	LowPolyRx().getLowPolyImage(filePath)
+        	// Observe on thread according to your need
+        	.observeOn(AndroidSchedulers.mainThread())
+        	.subscribe({bitmap ->
+          		// Do something with the result bitmap
+        	},{
+         		 // Show some error message
+        	})
+
 	
-##### Java way - <br>
+### Java way - <br>
   
-	private Single<Bitmap> generateLowpoly(Bitmap originalBitmap){
-	   	 return LowPoly.generate(originalBitmap)
+  	 new LowPolyRx().getLowPolyImage(originalBitmap)
 	    	 // Observe on thread according to your need
-      		.observeOn(AndroidSchedulers.mainThread())
-	}
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
+				
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+					
+          		}
+        	});
+			
+Or
+
+	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
+	    	// Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
+			
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
+		
+Or
+
+	new LowPolyRx().getLowPolyImage(filePath)
+	    	// Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
+					
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
 	
 <br>
 
-###### A full implementation is in the app module of this repo.
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100`<br>
+
+A full implementation can be found in the app module of this repository.
 
 ## How to Contribute
 
-Please feel free to raise an issue incase you come across a bug or even if you have any minor suggestion. Also please raise a Pull Request if you've made any improvements which you feel should be incorporated into this library.
+Please feel free to raise an issue incase you come across a bug or even if you have any minor suggestion. Also, please raise a Pull Request if you've made any improvements which you feel should be incorporated into this library.
 
 ## About the Author
 ### Abhriya Roy
