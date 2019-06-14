@@ -1,3 +1,6 @@
+<p align="center"><img src="https://i.imgur.com/5qDAlse.jpg" width=750 height=450></p>
+
+
 # LowpolyRxJava Android
 
 An android library to convert your dull normal images into awesome ones with a crystallized lowpoly effect.
