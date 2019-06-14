@@ -12,10 +12,10 @@ An android library to convert your dull normal images into awesome ones with a c
 - [How to Contribute](#how-to-contribute)
 
 ## Introduction
-This library serves as an improvement over this <a href="https://github.com/xyzxqs/XLowPoly">repository</a> by 
- - providing better qualityresults
- - wider choice of input sources like file path, bitmap or drawable resource.
- - natively using Rx java for background processing thereby reducing boilerplate code on the developer's end.
+LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyzxqs/XLowPoly">repository</a> by 
+ - providing better quality results.
+ - provides wider choice of input sources like file path, bitmap or drawable resource.
+ - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Samples
 
@@ -46,6 +46,20 @@ This library serves as an improvement over this <a href="https://github.com/xyzx
 
 ## Insights
 
+ - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
+ - Use of [JNI](#jni) enables much faster execution than other similar libraries.
+ - Use of [Sobel Operator](#sobel-operator) for edge deteaction.
+ - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized effect on the image. 
+ 
+ ### JNI
+ 
+ 
+ ### Sobel Operator
+ 
+ 
+ ### Delaunay Triangulation
+ 
+ 
 
 ## Installation
 
@@ -92,13 +106,13 @@ Please note that using this library, it is assumed that RxJava and RxAndroid are
   
 	private Single<Bitmap> generateLowpoly(Bitmap originalBitmap){
 	   	 return LowPoly.generate(originalBitmap)
-	    	 // Observe on thread according to your need
+	    	 	// Observe on thread according to your need
       		.observeOn(AndroidSchedulers.mainThread())
 	}
 	
 <br>
 
-###### A full implementation is in the app module of this repo.
+###### A full implementation is in the app module of this repository.
 
 ## How to Contribute
 
