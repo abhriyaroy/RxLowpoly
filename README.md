@@ -24,27 +24,27 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
 
 <div>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample1.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output1.jpeg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/WSH3idW.jpg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample2.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output2.jpeg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/V83MpCw.jpg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample3.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output3.jpeg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/Ko0HUvh.jpg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output4.jpeg" alt="Lowpoly" width=400 height=300>
+  <img src="[Imgur](https://i.imgur.com/3uYLnKI.jpg" alt="Lowpoly" width=400 height=300>
 </div>
 <br>
 <div>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample5.jpeg" alt="Original" width=400 height=300>
-  <img src="Outputs/output5.jpeg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/vFDLl1N.jpg" alt="Lowpoly" width=400 height=300>
 </div>
 
 ## Insights
