@@ -47,7 +47,11 @@ Detecting edges is one of the fundamental operations you can do in image process
 
 <p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
  
+<<<<<<< HEAD
  For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+=======
+ For further understanding please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+>>>>>>> Add sobel description
  
  ### Delaunay Triangulation
  
