@@ -34,7 +34,7 @@ Original Image | Lowpoly Image
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
- - Use of [Sobel Operator](#sobel-operator) for edge deteaction.
+ - Use of [Sobel Operator](#sobel-operator) for edge detection.
  - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized lowpoly effect on the image. 
  
  ### JNI
@@ -61,7 +61,6 @@ Detecting edges is one of the fundamental operations you can do in image process
  
  <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
  <p align="center">Credits: <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Wikipedia</a></p>
- 
  
 ## Installation
 
