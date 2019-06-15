@@ -22,6 +22,7 @@ LowpolyRxJava serves as an improvement over this [repository]https://github.com/
 ## Samples
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Original Image | Lowpoly Image
 -------------- | -------------
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
@@ -33,7 +34,16 @@ Original Image | Lowpoly Image
 <p align="center>
   <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=300>
+=======
+<p>
+	
+<img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250>
+
+<img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
+
+>>>>>>> Update alignment samples
 </p>
+
 							  
 <p align="center>
   <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
