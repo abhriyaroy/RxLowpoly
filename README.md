@@ -58,8 +58,11 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
  
  ### Sobel Operator
  
- A very common operator for doing this is a Sobel Operator, which is an approximation to a derivative of an image. It is separate in the y and x directions. If we look at the x-direction, the gradient of an image in the x-direction is equal to this operator here. We use a kernel 3 by 3 matrix, one for each x and y direction. The gradient for x-direction has minus numbers on the left hand side and positive numbers on the right hand side and we are preserving a little bit of the center pixels. Similarly, the gradient for y-direction has minus numbers on the bottom and positive numbers on top and here we are preserving a little bit on the middle row pixels.
+Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels) to process and maintains the "structural" aspect of the image. The Sobel edge detector is one such gradient based method. It works with first order derivatives. It calculates the first derivatives of the image separately for the X and Y axes. The derivatives are only approximations (because the images are not continuous). To approximate them, the following kernels are used for convolution: <br>
+
+<p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
  
+ For further understanding please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
  
  ### Delaunay Triangulation
  
@@ -90,6 +93,7 @@ Add it in your root build.gradle at the end of repositories:
   Step 2. Add the dependency
 
 	dependencies {
+		...
 	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
 	}
 
