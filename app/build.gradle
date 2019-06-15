@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../lowpolyrxjava/versions.gradle'
+apply from: '../lowpolyrx/versions.gradle'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION
@@ -25,18 +25,12 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
   // Android support
   implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-  implementation "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
   // Rx java
   implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
   // Rx android
   implementation "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
   // Material Dialog
   implementation "com.afollestad.material-dialogs:core:$MATERIAL_DIALOG_VERSION"
-  // Autodispose
-  implementation "com.uber.autodispose:autodispose-ktx:$AUTODISPOSE_VERSION"
-  implementation "com.uber.autodispose:autodispose-android-ktx:$AUTODISPOSE_VERSION"
-  implementation "com.uber.autodispose:autodispose-android-archcomponents-ktx:$AUTODISPOSE_VERSION"
-  implementation "com.uber.autodispose:autodispose-android-archcomponents-test-ktx:$AUTODISPOSE_VERSION"
   // Constraint layout
   implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
   // Glide

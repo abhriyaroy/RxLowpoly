@@ -1,20 +1,19 @@
 package com.zebrostudio.lowpolyrx
 
-import android.arch.lifecycle.Lifecycle
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import com.afollestad.materialdialogs.MaterialDialog
-import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
-import com.uber.autodispose.autoDisposable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.imageComparisonView
 import java.io.File
 
-class MainActivity : AppCompatActivity() {
+class MainActivityKotlin : AppCompatActivity() {
 
+  private lateinit var disposable: Disposable
   private var lowpolyWaitLoader: MaterialDialog? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +32,13 @@ class MainActivity : AppCompatActivity() {
 
     lowpolyWaitLoader?.show()
 
-    generateLowpoly()
+    disposable = generateLowpoly()
         .observeOn(AndroidSchedulers.mainThread())
-        .autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
         .subscribe({
-          imageComparisonView.setImages(R.mipmap.sample_large, it)
-          val file = File(Environment.getExternalStorageDirectory(), "Sample6.jpg")
+          imageComparisonView.setImages(R.mipmap.captain, it)
+          val file = File(Environment.getExternalStorageDirectory(), "Sample18.jpg")
           file.createNewFile()
-          file.writeBitmap(it, Bitmap.CompressFormat.JPEG, 100)
+          file.writeBitmap(it, Bitmap.CompressFormat.PNG, 100)
           lowpolyWaitLoader?.dismiss()
         }, {
           lowpolyWaitLoader?.dismiss()
@@ -48,8 +46,15 @@ class MainActivity : AppCompatActivity() {
 
   }
 
+  override fun onDestroy() {
+    if (!disposable.isDisposed) {
+      disposable.dispose()
+    }
+    super.onDestroy()
+  }
+
   private fun generateLowpoly(): Single<Bitmap> {
-    return LowPolyRx().getLowPolyImage(this, R.mipmap.sample_large)
+    return LowPolyRx().getLowPolyImage(this, R.mipmap.captain)
   }
 
 }

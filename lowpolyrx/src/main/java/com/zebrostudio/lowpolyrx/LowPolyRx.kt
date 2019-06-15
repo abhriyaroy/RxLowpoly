@@ -11,10 +11,11 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
-private const val POINT_COUNT = 1000F
+private const val POINT_COUNT = 8000F
 
 class LowPolyRx {
 
+  @JvmOverloads
   fun getLowPolyImage(
     context: Context,
     @DrawableRes drawableResId: Int,
@@ -27,6 +28,7 @@ class LowPolyRx {
         .subscribeOn(Schedulers.io())
   }
 
+  @JvmOverloads
   fun getLowPolyImage(
     filePath: String,
     pointCount: Float = POINT_COUNT
@@ -38,6 +40,7 @@ class LowPolyRx {
         .subscribeOn(Schedulers.io())
   }
 
+  @JvmOverloads
   fun getLowPolyImage(
     inputBitmap: Bitmap,
     pointCount: Float = POINT_COUNT
