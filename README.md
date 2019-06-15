@@ -52,7 +52,7 @@ Detecting edges is one of the fundamental operations you can do in image process
  ### Delaunay Triangulation
  
  The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
- We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce triangles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
+ We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce triangles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These separate triangles taken together in-turn provide us with the image having a crystallized effect.
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
