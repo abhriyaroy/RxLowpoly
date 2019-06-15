@@ -10,7 +10,7 @@ An android library to convert your dull normal images into awesome ones with a c
 - [Samples](#samples)
 - [Insights](#insights)
 - [Installation](#installation)
-- [Usage Example](#usage-example)
+- [Usage Examples](#usage-examples)
 - [How to Contribute](#how-to-contribute)
 
 ## Introduction
@@ -63,7 +63,8 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
  
  ### Delaunay Triangulation
  
- The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934. In mathematics and computational geometry, a Delaunay triangulation (also known as a Delone triangulation) for a given set P of discrete points in a plane is a triangulation DT(P) such that no point in P is inside the circumcircle of any triangle in DT(P). These triangles inturn provide us with the crystallized image.
+ The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
+ We take a set P of discrete points in an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken togeteher inturn provide us with the image having a crystallized effect.
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -104,25 +105,96 @@ Please note that using this library, it is assumed that RxJava and RxAndroid are
   		implementation "io.reactivex.rxjava2:rxandroid:$LATEST_RX_ANDROID_VERSION"
 	}
 
-## Usage Example
+## Usage Examples
 
 ##### Kotlin way - <br>
 
-	private fun generateLowpoly(originalBitmap: Bitmap): Single<Bitmap> {
-		return LowPoly.generate(originalBitmap)
+	LowPolyRx().getLowPolyImage(originalBitmap)
 		 // Observe on thread according to your need
       		.observeOn(AndroidSchedulers.mainThread())
-	}
+		.subscribe({bitmap ->
+			// Do something with the result bitmap
+		},{
+			// Show some error message
+		})
+		
+Or
+
+	LowPolyRx().getLowPolyImage(this, R.drawable.image)
+        	// Observe on thread according to your need
+        	.observeOn(AndroidSchedulers.mainThread())
+        	.subscribe({bitmap ->
+         		 // Do something with the result bitmap
+        	},{
+          		// Show some error message
+        	})
+		
+Or
+
+	LowPolyRx().getLowPolyImage(filePath)
+        	// Observe on thread according to your need
+        	.observeOn(AndroidSchedulers.mainThread())
+        	.subscribe({bitmap ->
+          		// Do something with the result bitmap
+        	},{
+         		 // Show some error message
+        	})
+
 	
 ##### Java way - <br>
   
-	private Single<Bitmap> generateLowpoly(Bitmap originalBitmap){
-	   	 return LowPoly.generate(originalBitmap)
+  	 new LowPolyRx().getLowPolyImage(originalBitmap)
 	    	 	// Observe on thread according to your need
-      		.observeOn(AndroidSchedulers.mainThread())
-	}
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
+			
+Or
+
+	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
+	    	 	// Observe on thread according to your need
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
+			
+Or
+
+	new LowPolyRx().getLowPolyImage(filePath)
+	    	 	// Observe on thread according to your need
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
 	
 <br>
+
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 7000f`
 
 ###### A full implementation is in the app module of this repository.
 
