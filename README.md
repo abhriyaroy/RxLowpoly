@@ -82,10 +82,14 @@ Original Image | Lowpoly Image
  ### JNI
  
 <<<<<<< HEAD
+<<<<<<< HEAD
 Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
 =======
 Java is the default programming language to make applications on Android. However, Java is not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
 >>>>>>> Update JNI description
+=======
+Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
+>>>>>>> Add punctuations
 LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  
@@ -96,19 +100,27 @@ Detecting edges is one of the fundamental operations you can do in image process
 <p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
  
 <<<<<<< HEAD
+<<<<<<< HEAD
  For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
 =======
  For further understanding please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
 >>>>>>> Add sobel description
+=======
+ For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+>>>>>>> Add punctuations
  
  ### Delaunay Triangulation
  
  The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
 <<<<<<< HEAD
+<<<<<<< HEAD
  We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
 =======
  We take a set P of discrete points in an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken togeteher inturn provide us with the image having a crystallized effect.
 >>>>>>> Modify Delaunay definition
+=======
+ We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
+>>>>>>> Add punctuations
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -316,7 +328,7 @@ Or
 	
 <br>
 
-You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100f`<br>
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100`<br>
 
 <<<<<<< HEAD
 ###### A full implementation is in the app module of this repository.
