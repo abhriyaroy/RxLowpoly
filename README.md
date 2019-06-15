@@ -42,7 +42,6 @@ Original Image | Lowpoly Image
 Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
 LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
- 
  ### Sobel Operator
  
 Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels) to process and maintains the "structural" aspect of the image. The Sobel edge detector is one such gradient based method. It works with first order derivatives. It calculates the first derivatives of the image separately for the X and Y axes. The derivatives are only approximations (because the images are not continuous). To approximate them, the following kernels are used for convolution: <br>
