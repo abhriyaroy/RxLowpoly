@@ -44,5 +44,5 @@ dependencies {
   // Imagecomparison view
   implementation "com.github.abhriyaroy:ImageComparisonView:$IMAGE_COMPARISON_VIEW_VERSION"
   // Module dependencies
-  implementation project(":lowpolyrxjava")
+  implementation project(":lowpolyrx")
 }

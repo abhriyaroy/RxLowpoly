@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply from: './versions.gradle'
+
+android {
+  compileSdkVersion COMPILE_SDK_VERSION
+
+  defaultConfig {
+    minSdkVersion MINIMUM_SDK_VERSION
+    targetSdkVersion TARGET_SDK_VERSION
+    versionCode LOWPOLY_RX_VERSION_CODE
+    versionName LOWPOLY_RX_VERSION_NAME
+
+    externalNativeBuild {
+      cmake {
+        cppFlags "-std=c++11 -frtti -fexceptions"
+      }
+    }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  externalNativeBuild {
+    cmake {
+      path "CMakeLists.txt"
+    }
+  }
+}
+
+dependencies {
+  // Kotlin
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
+  // Android support
+  implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+  // Rx java
+  implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+
+  testImplementation "junit:junit:$JUNIT_VERSION"
+  testImplementation "org.assertj:assertj-core:$ASSERTJ_VERSION"
+  testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$MOCKITO_VERSION"
+}
+
+repositories {
+  mavenCentral()
+}
