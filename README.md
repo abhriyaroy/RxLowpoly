@@ -14,71 +14,20 @@ An android library to convert your dull normal images into awesome ones with a c
 - [How to Contribute](#how-to-contribute)
 
 ## Introduction
-LowpolyRxJava serves as an improvement over this [repository]https://github.com/xyzxqs/XLowPoly) by 
+LowpolyRxJava serves as an improvement over this [repository](https://github.com/xyzxqs/XLowPoly) by 
  - providing better quality results.
  - provides wider choice of input sources like file path, bitmap or drawable resource.
  - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Samples
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Add table for images
 Original Image | Lowpoly Image
 -------------- | -------------
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
-<<<<<<< HEAD
 							  
-=======
-<p align="center>
-  <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=300>
-=======
-<p>
-	
-=======
-<p align="center">	
->>>>>>> Add new samples with proper alignment
-<img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250>
-<img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
-<<<<<<< HEAD
-
->>>>>>> Update alignment samples
-</p>
-
-							  
-<p align="center>
-  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=300>
-=======
->>>>>>> Add new samples with proper alignment
-</p>
-							  
-<p align="center">
-  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original"width=400 height=250>
-  <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=250>
-</p>
-							  
-<p align="center">
-  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250>
-  <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
-</p>
-							  
-<p align="center">
-  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250>
-  <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
-</p>
-
->>>>>>> Update samples
-=======
-							  
->>>>>>> Add table for images
 ## Insights
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
@@ -88,15 +37,7 @@ Original Image | Lowpoly Image
  
  ### JNI
  
-<<<<<<< HEAD
-<<<<<<< HEAD
 Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
-=======
-Java is the default programming language to make applications on Android. However, Java is not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
->>>>>>> Update JNI description
-=======
-Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
->>>>>>> Add punctuations
 LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  
@@ -106,28 +47,12 @@ Detecting edges is one of the fundamental operations you can do in image process
 
 <p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
  
-<<<<<<< HEAD
-<<<<<<< HEAD
  For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
-=======
- For further understanding please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
->>>>>>> Add sobel description
-=======
- For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
->>>>>>> Add punctuations
  
  ### Delaunay Triangulation
  
  The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
-<<<<<<< HEAD
-<<<<<<< HEAD
- We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
-=======
- We take a set P of discrete points in an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken togeteher inturn provide us with the image having a crystallized effect.
->>>>>>> Modify Delaunay definition
-=======
- We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
->>>>>>> Add punctuations
+ We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce triangles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -159,7 +84,7 @@ Add it in your root build.gradle at the end of repositories:
 
 That's it! <br>
 
-Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but incase, you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
+Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but in-case you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
 	
 	dependencies{
 		...
@@ -208,10 +133,6 @@ Or
 ### Java way - <br>
   
   	 new LowPolyRx().getLowPolyImage(originalBitmap)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Reformat example java code indentation
 	    	 // Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -222,44 +143,18 @@ Or
         	}, new Consumer<Throwable>() {
           		@Override public void accept(Throwable throwable) {
             			// Show some error message
-<<<<<<< HEAD
 					
           		}
         	});
-=======
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
-					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
->>>>>>> Modify Delaunay definition
-=======
-					
-          		}
-        	});
->>>>>>> Reformat example java code indentation
 			
 Or
 
 	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Reformat example java code indentation
 	    	// Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
           		@Override public void accept(Bitmap bitmap) {
 				// Do something with the result bitmap
-<<<<<<< HEAD
 			
           		}
         	}, new Consumer<Throwable>() {
@@ -288,65 +183,13 @@ Or
 	
 <br>
 
-You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100`<br>
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 8000f`<br>
 
 A full implementation can be found in the app module of this repository.
-=======
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
-					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
-=======
->>>>>>> Reformat example java code indentation
-			
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
-		
-Or
-
-	new LowPolyRx().getLowPolyImage(filePath)
-	    	// Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-					
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
-	
-<br>
-
-You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100`<br>
-
-<<<<<<< HEAD
-###### A full implementation is in the app module of this repository.
->>>>>>> Modify Delaunay definition
-=======
-A full implementation can be found in the app module of this repository.
->>>>>>> Update samples
 
 ## How to Contribute
 
-Please feel free to raise an issue incase you come across a bug or even if you have any minor suggestion. Also, please raise a Pull Request if you've made any improvements which you feel should be incorporated into this library.
+Please feel free to raise an issue in-case you come across a bug or even if you have any minor suggestion. Also, please raise a Pull Request if you've made any improvements which you feel should be incorporated into this library.
 
 ## About the Author
 ### Abhriya Roy
