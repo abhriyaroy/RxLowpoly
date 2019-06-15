@@ -144,53 +144,53 @@ Or
 ##### Java way - <br>
   
   	 new LowPolyRx().getLowPolyImage(originalBitmap)
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
+	    	 // Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
+				
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
 					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
+          		}
+        	});
 			
 Or
 
 	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
-					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
+	    	// Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
 			
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
+		
 Or
 
 	new LowPolyRx().getLowPolyImage(filePath)
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
+	    	// Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
 					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
 	
 <br>
 
