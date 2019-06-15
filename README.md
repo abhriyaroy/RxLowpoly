@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/5qDAlse.jpg" width=750 height=450></p>
+<p align="center"><img src="https://i.imgur.com/0q5xcQ0.jpg" width=750 height=450></p>
 
 
 # LowpolyRxJava Android
