@@ -21,10 +21,14 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
 
 ## Samples
 
-<p align="center>
-  <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=300>
+<p>
+	
+<img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250>
+
+<img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
+
 </p>
+
 							  
 <p align="center>
   <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
