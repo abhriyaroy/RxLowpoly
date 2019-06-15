@@ -67,9 +67,11 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
- Which leads to the resultant crystallized image as :-
- <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250>
- Credits : <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation>Wikipedia</a></p>
+ Which leads to the resultant crystallized image as :- <br>
+ 
+ <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
+ <p align="center">Credits: <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Wikipedia</a></p>
+ 
  
 ## Installation
 
