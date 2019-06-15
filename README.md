@@ -22,18 +22,18 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
 ## Samples
 
 <p align="center>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample1.jpeg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/WSH3idW.jpg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=300>
 </p>
 							  
 <p align="center>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample2.jpeg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/V83MpCw.jpg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=300>
 </p>
 							  
 <p align="center>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample3.jpeg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/Ko0HUvh.jpg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=300>
 </p>
 							  
 <p align="center>
@@ -42,8 +42,8 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
 </p>
 							  
 <p align="center>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample5.jpeg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/vFDLl1N.jpg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/1zgjCyE.jpg" width=400 height=300>
 </p>
 
 ## Insights
@@ -51,7 +51,7 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
  - Use of [Sobel Operator](#sobel-operator) for edge deteaction.
- - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized effect on the image. 
+ - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized lowpoly effect on the image. 
  
  ### JNI
  
@@ -114,7 +114,7 @@ Please note that using this library, it is assumed that RxJava and RxAndroid are
 
 ## Usage Examples
 
-##### Kotlin way - <br>
+### Kotlin way - <br>
 
 	LowPolyRx().getLowPolyImage(originalBitmap)
 		 // Observe on thread according to your need
@@ -148,7 +148,7 @@ Or
         	})
 
 	
-##### Java way - <br>
+### Java way - <br>
   
   	 new LowPolyRx().getLowPolyImage(originalBitmap)
 	    	 // Observe on thread according to your need
@@ -201,9 +201,9 @@ Or
 	
 <br>
 
-You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 7000f`
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100f`<br>
 
-###### A full implementation is in the app module of this repository.
+A full implementation can be found in the app module of this repository.
 
 ## How to Contribute
 
