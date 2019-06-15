@@ -52,7 +52,11 @@ Detecting edges is one of the fundamental operations you can do in image process
  ### Delaunay Triangulation
  
  The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
+<<<<<<< HEAD
  We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken together in-turn provide us with the image having a crystallized effect.
+=======
+ We take a set P of discrete points in an image plane P and apply Delaunay Triangulation DT(P) to produce traingles connecting 3 points at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These seperate triangles taken togeteher inturn provide us with the image having a crystallized effect.
+>>>>>>> Modify Delaunay definition
  
  <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -133,6 +137,7 @@ Or
 ### Java way - <br>
   
   	 new LowPolyRx().getLowPolyImage(originalBitmap)
+<<<<<<< HEAD
 	    	 // Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -146,10 +151,26 @@ Or
 					
           		}
         	});
+=======
+	    	 	// Observe on thread according to your need
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
+>>>>>>> Modify Delaunay definition
 			
 Or
 
 	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
+<<<<<<< HEAD
 	    	// Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -186,6 +207,44 @@ Or
 You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100`<br>
 
 A full implementation can be found in the app module of this repository.
+=======
+	    	 	// Observe on thread according to your need
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
+			
+Or
+
+	new LowPolyRx().getLowPolyImage(filePath)
+	    	 	// Observe on thread according to your need
+      			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe(new Consumer<Bitmap>() {
+          			@Override public void accept(Bitmap bitmap) {
+					// Do something with the result bitmap
+					
+          			}
+        		}, new Consumer<Throwable>() {
+          			@Override public void accept(Throwable throwable) {
+            				// Show some error message
+					
+          			}
+        		});
+	
+<br>
+
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 7000f`
+
+###### A full implementation is in the app module of this repository.
+>>>>>>> Modify Delaunay definition
 
 ## How to Contribute
 
