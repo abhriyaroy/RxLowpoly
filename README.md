@@ -23,6 +23,7 @@ LowpolyRxJava serves as an improvement over this [repository]https://github.com/
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Original Image | Lowpoly Image
 -------------- | -------------
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
@@ -37,9 +38,12 @@ Original Image | Lowpoly Image
 =======
 <p>
 	
+=======
+<p align="center">	
+>>>>>>> Add new samples with proper alignment
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250>
-
 <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
+<<<<<<< HEAD
 
 >>>>>>> Update alignment samples
 </p>
@@ -48,21 +52,23 @@ Original Image | Lowpoly Image
 <p align="center>
   <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=300>
+=======
+>>>>>>> Add new samples with proper alignment
 </p>
 							  
-<p align="center>
-  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=300>
+<p align="center">
+  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original"width=400 height=250>
+  <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=250>
 </p>
 							  
-<p align="center>
-  <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/3uYLnKI.jpg" alt="Lowpoly" width=400 height=300>
+<p align="center">
+  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250>
+  <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
 </p>
 							  
-<p align="center>
-  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=300>
-  <img src="https://i.imgur.com/1zgjCyE.jpg" width=400 height=300>
+<p align="center">
+  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250>
+  <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
 </p>
 
 >>>>>>> Update samples
