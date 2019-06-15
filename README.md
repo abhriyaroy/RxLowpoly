@@ -26,18 +26,22 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
   <img src="app/src/main/res/mipmap-xxxhdpi/sample1.jpeg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/WSH3idW.jpg" alt="Lowpoly" width=400 height=300>
 </p>
+							  
 <p align="center>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample2.jpeg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/V83MpCw.jpg" alt="Lowpoly" width=400 height=300>
 </p>
+							  
 <p align="center>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample3.jpeg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/Ko0HUvh.jpg" alt="Lowpoly" width=400 height=300>
 </p>
+							  
 <p align="center>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
-  <img src="[Imgur](https://i.imgur.com/3uYLnKI.jpg" alt="Lowpoly" width=400 height=300>
+  <img src="https://i.imgur.com/3uYLnKI.jpg" alt="Lowpoly" width=400 height=300>
 </p>
+							  
 <p align="center>
   <img src="app/src/main/res/mipmap-xxxhdpi/sample5.jpeg" alt="Original" width=400 height=300>
   <img src="https://i.imgur.com/vFDLl1N.jpg" alt="Lowpoly" width=400 height=300>
@@ -55,50 +59,18 @@ LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyz
  
  ### Sobel Operator
  
+ A very common operator for doing this is a Sobel Operator, which is an approximation to a derivative of an image. It is separate in the y and x directions. If we look at the x-direction, the gradient of an image in the x-direction is equal to this operator here. We use a kernel 3 by 3 matrix, one for each x and y direction. The gradient for x-direction has minus numbers on the left hand side and positive numbers on the right hand side and we are preserving a little bit of the center pixels. Similarly, the gradient for y-direction has minus numbers on the bottom and positive numbers on top and here we are preserving a little bit on the middle row pixels.
+ 
  
  ### Delaunay Triangulation
  
+ The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934. In mathematics and computational geometry, a Delaunay triangulation (also known as a Delone triangulation) for a given set P of discrete points in a plane is a triangulation DT(P) such that no point in P is inside the circumcircle of any triangle in DT(P). These triangles inturn provide us with the crystallized image.
  
-
-## Installation
-
-Step 1. Add the JitPack repository to your build file
-
-Add it in your root build.gradle at the end of repositories:
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-  
-  Step 2. Add the dependency
-
-	dependencies {
-	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
-	}
-
-That's it!! <br>
-
-Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but incase, you don't have these dependencies, please add the following dependencies to your `app/build.gradle` file :-
-	
-	dependencies{
-		...
-		// Rx java
-  		implementation "io.reactivex.rxjava2:rxjava:$LATEST_RX_JAVA_VERSION"
-  		// Rx android
-  		implementation "io.reactivex.rxjava2:rxandroid:$LATEST_RX_ANDROID_VERSION"
-	}
-
-## Usage Example
-
-##### Kotlin way - <br>
-
-	private fun generateLowpoly(originalBitmap: Bitmap): Single<Bitmap> {
-		return LowPoly.generate(originalBitmap)
-		 // Observe on thread according to your need
-      		.observeOn(AndroidSchedulers.mainThread())
+ <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
+ 
+ Which leads to the resultant crystallized image as :-
+ <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
+ <p align="center">Credits : <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation>Add 
 	}
 	
 ##### Java way - <br>
