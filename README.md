@@ -138,6 +138,9 @@ Or
   
   	 new LowPolyRx().getLowPolyImage(originalBitmap)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Reformat example java code indentation
 	    	 // Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -148,6 +151,7 @@ Or
         	}, new Consumer<Throwable>() {
           		@Override public void accept(Throwable throwable) {
             			// Show some error message
+<<<<<<< HEAD
 					
           		}
         	});
@@ -166,16 +170,25 @@ Or
           			}
         		});
 >>>>>>> Modify Delaunay definition
+=======
+					
+          		}
+        	});
+>>>>>>> Reformat example java code indentation
 			
 Or
 
 	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Reformat example java code indentation
 	    	// Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
           		@Override public void accept(Bitmap bitmap) {
 				// Do something with the result bitmap
+<<<<<<< HEAD
 			
           		}
         	}, new Consumer<Throwable>() {
@@ -221,23 +234,33 @@ A full implementation can be found in the app module of this repository.
 					
           			}
         		});
+=======
+>>>>>>> Reformat example java code indentation
 			
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
+		
 Or
 
 	new LowPolyRx().getLowPolyImage(filePath)
-	    	 	// Observe on thread according to your need
-      			.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(new Consumer<Bitmap>() {
-          			@Override public void accept(Bitmap bitmap) {
-					// Do something with the result bitmap
+	    	// Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
 					
-          			}
-        		}, new Consumer<Throwable>() {
-          			@Override public void accept(Throwable throwable) {
-            				// Show some error message
-					
-          			}
-        		});
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+				
+          		}
+        	});
 	
 <br>
 
