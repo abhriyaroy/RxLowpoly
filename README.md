@@ -24,12 +24,16 @@ LowpolyRxJava serves as an improvement over this [repository]https://github.com/
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add table for images
 Original Image | Lowpoly Image
 -------------- | -------------
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
+<<<<<<< HEAD
 							  
 =======
 <p align="center>
@@ -72,6 +76,9 @@ Original Image | Lowpoly Image
 </p>
 
 >>>>>>> Update samples
+=======
+							  
+>>>>>>> Add table for images
 ## Insights
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
