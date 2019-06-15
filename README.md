@@ -21,6 +21,7 @@ LowpolyRxJava serves as an improvement over this [repository]https://github.com/
 
 ## Samples
 
+<<<<<<< HEAD
 Original Image | Lowpoly Image
 -------------- | -------------
 <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=250>
@@ -28,6 +29,33 @@ Original Image | Lowpoly Image
 <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=250>
 <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg" alt="Lowpoly" width=400 height=250>
 							  
+=======
+<p align="center>
+  <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/Z4zOgqH.jpg" alt="Lowpoly" width=400 height=300>
+</p>
+							  
+<p align="center>
+  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/mLjjrax.jpg" alt="Lowpoly" width=400 height=300>
+</p>
+							  
+<p align="center>
+  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/pm8MV8m.png" alt="Lowpoly" width=400 height=300>
+</p>
+							  
+<p align="center>
+  <img src="app/src/main/res/mipmap-xxxhdpi/sample4.jpeg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/3uYLnKI.jpg" alt="Lowpoly" width=400 height=300>
+</p>
+							  
+<p align="center>
+  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=300>
+  <img src="https://i.imgur.com/1zgjCyE.jpg" width=400 height=300>
+</p>
+
+>>>>>>> Update samples
 ## Insights
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August 2019.
@@ -272,10 +300,14 @@ Or
 	
 <br>
 
-You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 7000f`
+You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The default is `pointCount = 100f`<br>
 
+<<<<<<< HEAD
 ###### A full implementation is in the app module of this repository.
 >>>>>>> Modify Delaunay definition
+=======
+A full implementation can be found in the app module of this repository.
+>>>>>>> Update samples
 
 ## How to Contribute
 
