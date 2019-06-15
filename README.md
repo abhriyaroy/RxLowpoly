@@ -37,7 +37,11 @@ Original Image | Lowpoly Image
  
  ### JNI
  
+<<<<<<< HEAD
 Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
+=======
+Java is the default programming language to make applications on Android. However, Java is not always the best solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
+>>>>>>> Update JNI description
 LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  
