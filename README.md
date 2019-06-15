@@ -14,7 +14,7 @@ An android library to convert your dull normal images into awesome ones with a c
 - [How to Contribute](#how-to-contribute)
 
 ## Introduction
-LowpolyRxJava serves as an improvement over this <a href="https://github.com/xyzxqs/XLowPoly">repository</a> by 
+LowpolyRxJava serves as an improvement over this [repository]https://github.com/xyzxqs/XLowPoly) by 
  - providing better quality results.
  - provides wider choice of input sources like file path, bitmap or drawable resource.
  - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
