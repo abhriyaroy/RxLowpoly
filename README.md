@@ -12,6 +12,8 @@ An android library to convert your dull normal images into awesome ones with a c
 - [Installation](#installation)
 - [Usage Examples](#usage-examples)
 - [How to Contribute](#how-to-contribute)
+- [About the Author](#about-the-author)
+- [License](#license)
 
 ## Introduction
 LowpolyRxJava serves as an improvement over this [repository](https://github.com/xyzxqs/XLowPoly) by 
@@ -100,7 +102,7 @@ Please note that using this library, it is assumed that RxJava and RxAndroid are
 
 	LowPolyRx().getLowPolyImage(originalBitmap)
 		 // Observe on thread according to your need
-      		.observeOn(AndroidSchedulers.mainThread())
+      	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe({bitmap ->
 			// Do something with the result bitmap
 		},{
