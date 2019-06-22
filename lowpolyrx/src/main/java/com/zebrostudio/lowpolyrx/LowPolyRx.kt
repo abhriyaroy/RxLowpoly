@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
 private const val POINT_COUNT = 8000F
-private const val threshold = 1024
+private const val THRESHOLD = 1024
 
 class LowPolyRx {
 
@@ -57,23 +57,23 @@ class LowPolyRx {
     inputBitmap: Bitmap,
     pointCount: Float = POINT_COUNT
   ): Single<Bitmap> {
-    return generateLowpolyFromScaledDownBitmap(inputBitmap, pointCount)
+    return Single.just(generate(inputBitmap, pointCount, true))
         .subscribeOn(Schedulers.io())
   }
 
   private fun getBitmapFromUri(context: Context, input: Uri): Single<Bitmap> {
-    return Single.create {emitter->
+    return Single.create { emitter ->
       emitter.onSuccess(MediaStore.Images.Media.getBitmap(context.contentResolver, input).let {
-        getScaledDownBitmap(it, threshold)
+        getScaledDownBitmap(it, THRESHOLD)
       })
     }
   }
 
   private fun getBitmapFromDrawable(context: Context,
     @DrawableRes drawableResId: Int): Single<Bitmap> {
-    return Single.create {emitter->
+    return Single.create { emitter ->
       emitter.onSuccess(BitmapFactory.decodeResource(context.resources, drawableResId).let {
-        getScaledDownBitmap(it, threshold)
+        getScaledDownBitmap(it, THRESHOLD)
       })
     }
   }
@@ -81,25 +81,8 @@ class LowPolyRx {
   private fun getBitmapFromFile(path: String): Single<Bitmap> {
     return Single.create { emitter ->
       emitter.onSuccess(BitmapFactory.decodeFile(path).let {
-        getScaledDownBitmap(it, threshold)
+        getScaledDownBitmap(it, THRESHOLD)
       })
-    }
-  }
-
-  private fun generateLowpolyFromScaledDownBitmap(
-    inputBitmap: Bitmap,
-    pointCount: Float
-  ): Single<Bitmap> {
-    return Single.create { emitter ->
-      Bitmap.createScaledBitmap(
-        inputBitmap, (inputBitmap.width),
-        (inputBitmap.height), false
-      )
-          .run {
-            generate(this, pointCount, true).let {
-              emitter.onSuccess(it)
-            }
-          }
     }
   }
 
