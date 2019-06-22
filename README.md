@@ -20,8 +20,8 @@
  LowpolyRxJava serves as an improvement over this [repository](https://github.com/xyzxqs/XLowPoly) by 
   - fixing `out of memory` crashes by scaling down the image losslessly before processing 
   - providing better quality results by using `8000` as the point count by default.
-  - provides wider choice of input sources like uri, bitmap, file path or drawable resource.
-  - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
+  - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
+  - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Samples
 
