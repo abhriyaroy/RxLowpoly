@@ -1,19 +1,31 @@
 package com.zebrostudio.lowpolyrx
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
-import android.support.annotation.DrawableRes
+import android.graphics.*
+import android.net.Uri
+import android.provider.MediaStore
+import androidx.annotation.DrawableRes
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
 private const val POINT_COUNT = 8000F
+private const val threshold = 1024
 
 class LowPolyRx {
+
+  @JvmOverloads
+  fun getLowPolyImage(
+    context: Context,
+    uri: Uri,
+    pointCount: Float = POINT_COUNT
+  ): Single<Bitmap> {
+    return getBitmapFromUri(context, uri)
+        .flatMap {
+          getLowPolyImage(it, pointCount)
+        }
+        .subscribeOn(Schedulers.io())
+  }
 
   @JvmOverloads
   fun getLowPolyImage(
@@ -49,15 +61,28 @@ class LowPolyRx {
         .subscribeOn(Schedulers.io())
   }
 
-  private fun getBitmapFromDrawable(context: Context, @DrawableRes drawableResId: Int): Single<Bitmap> {
-    return Single.create {
-      it.onSuccess(BitmapFactory.decodeResource(context.resources, drawableResId))
+  private fun getBitmapFromUri(context: Context, input: Uri): Single<Bitmap> {
+    return Single.create {emitter->
+      emitter.onSuccess(MediaStore.Images.Media.getBitmap(context.contentResolver, input).let {
+        getScaledDownBitmap(it, threshold)
+      })
+    }
+  }
+
+  private fun getBitmapFromDrawable(context: Context,
+    @DrawableRes drawableResId: Int): Single<Bitmap> {
+    return Single.create {emitter->
+      emitter.onSuccess(BitmapFactory.decodeResource(context.resources, drawableResId).let {
+        getScaledDownBitmap(it, threshold)
+      })
     }
   }
 
   private fun getBitmapFromFile(path: String): Single<Bitmap> {
     return Single.create { emitter ->
-      emitter.onSuccess(BitmapFactory.decodeFile(path))
+      emitter.onSuccess(BitmapFactory.decodeFile(path).let {
+        getScaledDownBitmap(it, threshold)
+      })
     }
   }
 
@@ -67,8 +92,8 @@ class LowPolyRx {
   ): Single<Bitmap> {
     return Single.create { emitter ->
       Bitmap.createScaledBitmap(
-          inputBitmap, (inputBitmap.width),
-          (inputBitmap.height), false
+        inputBitmap, (inputBitmap.width),
+        (inputBitmap.height), false
       )
           .run {
             generate(this, pointCount, true).let {
@@ -131,6 +156,53 @@ class LowPolyRx {
     threshold: Int,
     point_count: Float
   ): IntArray
+
+  private fun getScaledDownBitmap(bitmap: Bitmap, threshold: Int): Bitmap {
+    val width = bitmap.width
+    val height = bitmap.height
+    var newWidth = width
+    var newHeight = height
+
+    if (width > height && width > threshold) {
+      newWidth = threshold
+      newHeight = (height * newWidth.toFloat() / width).toInt()
+    }
+
+    if (width > height && width <= threshold) {
+      return bitmap
+    }
+
+    if (width < height && height > threshold) {
+      newHeight = threshold
+      newWidth = (width * newHeight.toFloat() / height).toInt()
+    }
+
+    if (width < height && height <= threshold) {
+      return bitmap
+    }
+
+    if (width == height && width > threshold) {
+      newWidth = threshold
+      newHeight = newWidth
+    }
+
+    return if (width == height && width <= threshold) {
+      bitmap
+    } else getResizedBitmap(bitmap, newWidth, newHeight)
+
+  }
+
+  private fun getResizedBitmap(bm: Bitmap,
+    newWidth: Int,
+    newHeight: Int): Bitmap {
+    val width = bm.width
+    val height = bm.height
+    val scaleWidth = newWidth.toFloat() / width
+    val scaleHeight = newHeight.toFloat() / height
+    val matrix = Matrix()
+    matrix.postScale(scaleWidth, scaleHeight)
+    return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false)
+  }
 
   companion object {
 
