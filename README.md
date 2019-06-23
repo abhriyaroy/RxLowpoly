@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/0q5xcQ0.jpg" width=750 height=450></p>
+<p align="center"><img src="https://i.imgur.com/0q5xcQ0.jpg"></p>
 
 # LowpolyRx
 
@@ -8,7 +8,7 @@
 ## Table of Contents
  - [Introduction](#introduction)
  - [Samples](#samples)
- - [Insights](#insights)
+ - [Library Details](#library-details)
  - [Installation](#installation)
  - [Usage Examples](#usage-examples)
  - [How to Contribute](#how-to-contribute)
@@ -16,10 +16,13 @@
  - [License](#license)
 
 ## Introduction
- LowpolyRxJava serves as an improvement over this [repository](https://github.com/xyzxqs/XLowPoly) by 
-  - providing better quality results.
-  - provides wider choice of input sources like file path, bitmap or drawable resource.
-  - natively using RxJava for background processing thereby reducing boilerplate code on the developer's end.
+
+ LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
+  - fixing `out of memory` crashes by scaling down the image losslessly before processing.
+  - providing better quality results by using `8000` as the point count by default.
+  - the higher point count leads to a longer execution period, but it is significantly reduced by `scaling down the image` before processing.
+  - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
+  - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Samples
 
@@ -30,7 +33,7 @@
  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg"  alt="Lowpoly" width=400 height=250>
 							  
-## Insights
+## App Details
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August      2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
@@ -39,28 +42,21 @@
  
  ### JNI
  
-  Java/Kotlin are the default programming languages used to make applications on Android. However, these are not always the best           solution for making fast apps. Here comes the Java Native Interface (JNI) which defines a way for the bytecode that Android compiles     from managed code (written in Java or Kotlin programming languages) to interact with native code (written in C/C++) which is many       times faster than the compiled Java/Kotlin code. Thus, to let developers to make optimized part of codes in C/C++, Google offers the     Android Native Development Kit (NDK) which allows developers to write code in C/C++ that compiles to native code.<br>
-  LowpolyRx uses native code for edge detection using the [Sobel Operator](#sobel-operator) and also for implementing the [Delaunay       Triangulation](#delaunay-triangulation) algorithm.
+  LowpolyRx uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to use native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  ### Sobel Operator
  
-  Detecting edges is one of the fundamental operations you can do in image processing. It helps you reduce the amount of data (pixels)     to process and maintains the "structural" aspect of the image. The Sobel edge detector is one such gradient based method. It works       with first order derivatives. It calculates the first derivatives of the image separately for the X and Y axes. The derivatives are     only approximations (because the images are not continuous). To approximate them, the following kernels are used for convolution: <br>
-
- <p align="center"><img src="https://i.imgur.com/p52Cs6s.png" width=500 height=250></p>
- 
- For further understanding, please refer to http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+ The <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm">Sobel Edge Detector</a> is a gradient based edge detection algorithm which provides us with seperate planes on which the [Delaunay Triangulation](#delaunay-triangulation) can be applied.
  
  ### Delaunay Triangulation
- 
-  The triangulation algorithm is named after Boris Delaunay for his work on this topic from 1934.<br>
-  We take a set P of discrete points on an image plane P and apply Delaunay Triangulation DT(P) to produce triangles connecting 3 points   at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These separate triangles taken together in-turn   provide us with the image having a crystallized effect.
+
+  We take a set P of discrete points on an image plane P and apply <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay Triangulation</a> DT(P) to produce triangles connecting 3 points   at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These separate triangles taken together in-turn   provide us with the image having a crystallized effect.
  
   <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
   Which leads to the resultant crystallized image as :- <br>
  
   <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
-  <p align="center">Credits: <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Wikipedia</a></p>
  
 ## Installation
 
@@ -98,7 +94,9 @@
 
 ### Kotlin way - <br>
 
-	LowPolyRx().getLowPolyImage(originalBitmap)
+Using `uri` :-
+
+	LowPolyRx.generateLowpoly(context, uri)
 		 // Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe({bitmap ->
@@ -107,9 +105,20 @@
 			// Show some error message
 		})
 		
- Or
+Or using `bitmap` :-
 
-	LowPolyRx().getLowPolyImage(this, R.drawable.image)
+	LowPolyRx.generateLowpoly(originalBitmap)
+		 // Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe({bitmap ->
+			// Do something with the result bitmap
+		},{
+			// Show some error message
+		})
+		
+ Or using `drawable` :-
+
+	LowPolyRx.generateLowpoly(context, R.drawable.image)
         	// Observe on thread according to your need
         	.observeOn(AndroidSchedulers.mainThread())
         	.subscribe({bitmap ->
@@ -118,9 +127,9 @@
           		// Show some error message
         	})
 		
- Or
+ Or using `file path` :-
 
-	LowPolyRx().getLowPolyImage(filePath)
+	LowPolyRx.generateLowpoly(filePath)
         	// Observe on thread according to your need
         	.observeOn(AndroidSchedulers.mainThread())
         	.subscribe({bitmap ->
@@ -131,8 +140,27 @@
 
 	
 ### Java way - <br>
+
+Using `uri` :-
+
+	LowPolyRx.generateLowpoly(context, uri)
+	    	 // Observe on thread according to your need
+      	.observeOn(AndroidSchedulers.mainThread())
+		.subscribe(new Consumer<Bitmap>() {
+          		@Override public void accept(Bitmap bitmap) {
+				// Do something with the result bitmap
+				
+          		}
+        	}, new Consumer<Throwable>() {
+          		@Override public void accept(Throwable throwable) {
+            			// Show some error message
+					
+          		}
+        	});
+		
+Or using `bitmap` :-
   
-  	 new LowPolyRx().getLowPolyImage(originalBitmap)
+  	 LowPolyRx.generateLowpoly(originalBitmap)
 	    	 // Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -147,9 +175,9 @@
           		}
         	});
 			
- Or
+ Or using `drawable` :-
 
-	new LowPolyRx().getLowPolyImage(context, R.drawable.image)
+	LowPolyRx.generateLowpoly(context, R.drawable.image)
 	    	// Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -164,9 +192,9 @@
           		}
         	});
 		
- Or
+ Or using `file path` :-
 
-	new LowPolyRx().getLowPolyImage(filePath)
+	LowPolyRx.generateLowpoly(filePath)
 	    	// Observe on thread according to your need
       	.observeOn(AndroidSchedulers.mainThread())
 		.subscribe(new Consumer<Bitmap>() {
@@ -185,13 +213,14 @@
 
   You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The         default is `pointCount = 8000f`<br>
 
-  A full implementation can be found in the app module of this repository.
+  Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
 
 ## How to Contribute
 
-  Please feel free to raise an issue in-case you come across a bug or even if you have any minor suggestion. Also, please raise a Pull     Request if you've made any improvements which you feel should be incorporated into this library.
+  Please feel free to raise an issue in-case you come across a bug or even if you have any minor suggestion.
 
 ## About the Author
+
 ### Abhriya Roy
 
  Android Developer with 2 years of experience in building apps that look and feel great. 
