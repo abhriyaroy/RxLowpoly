@@ -17,9 +17,10 @@
 
 ## Introduction
 
- LowpolyRxJava serves as an improvement over this [repository](https://github.com/xyzxqs/XLowPoly) by 
-  - fixing `out of memory` crashes by scaling down the image losslessly before processing 
+ LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
+  - fixing `out of memory` crashes by scaling down the image losslessly before processing.
   - providing better quality results by using `8000` as the point count by default.
+  - the higher point count leads to a longer execution period, but it is significantly reduced by `scaling down the image` before processing.
   - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
   - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
@@ -212,13 +213,14 @@ Or using `bitmap` :-
 
   You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The         default is `pointCount = 8000f`<br>
 
-  A full implementation can be found in the app module of this repository.
+  Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
 
 ## How to Contribute
 
   Please feel free to raise an issue in-case you come across a bug or even if you have any minor suggestion.
 
 ## About the Author
+
 ### Abhriya Roy
 
  Android Developer with 2 years of experience in building apps that look and feel great. 
