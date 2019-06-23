@@ -2,4 +2,6 @@
   <string name="app_name">LowpolyRxExample</string>
   <string name="lowpoly_wait_loader_message">Generating lowpoly image. Please wait...</string>
   <string name="lowpoly_generation_error_message">Something went wrong</string>
+  <string name="convert_button_text">CONVERT</string>
+  <string name="choose_image_button_text">CHOOSE IMAGE</string>
 </resources>

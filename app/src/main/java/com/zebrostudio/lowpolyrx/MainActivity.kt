@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun generateLowpolyImageFromDrawable() {
-    LowPolyRx().getLowPolyImage(this, R.drawable.captain)
+    LowPolyRx.generateLowpoly(this, R.drawable.captain)
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSubscribe {
           showConvertingImageLoader()
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun generateLowpolyImageFromUri() {
-    LowPolyRx().getLowPolyImage(this, imageUri)
+    LowPolyRx.generateLowpoly(this, imageUri)
         .observeOn(AndroidSchedulers.mainThread())
         .doOnSubscribe {
           showConvertingImageLoader()

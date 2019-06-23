@@ -10,52 +10,48 @@ import io.reactivex.schedulers.Schedulers
 
 private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
 private const val POINT_COUNT = 8000F
-private const val THRESHOLD = 1024
+private const val THRESHOLD = 1080
 
-class LowPolyRx {
+class LowPolyRx private constructor() {
 
-  @JvmOverloads
-  fun getLowPolyImage(
+  fun lowPolyImageSingle(
     context: Context,
     uri: Uri,
-    pointCount: Float = POINT_COUNT
+    pointCount: Float
   ): Single<Bitmap> {
     return getBitmapFromUri(context, uri)
         .flatMap {
-          getLowPolyImage(it, pointCount)
+          lowPolyImageSingle(it, pointCount)
         }
         .subscribeOn(Schedulers.io())
   }
 
-  @JvmOverloads
-  fun getLowPolyImage(
+  fun lowPolyImageSingle(
     context: Context,
     @DrawableRes drawableResId: Int,
-    pointCount: Float = POINT_COUNT
+    pointCount: Float
   ): Single<Bitmap> {
     return getBitmapFromDrawable(context, drawableResId)
         .flatMap {
-          getLowPolyImage(it, pointCount)
+          lowPolyImageSingle(it, pointCount)
         }
         .subscribeOn(Schedulers.io())
   }
 
-  @JvmOverloads
-  fun getLowPolyImage(
+  fun lowPolyImageSingle(
     filePath: String,
-    pointCount: Float = POINT_COUNT
+    pointCount: Float
   ): Single<Bitmap> {
     return getBitmapFromFile(filePath)
         .flatMap {
-          getLowPolyImage(it, pointCount)
+          lowPolyImageSingle(it, pointCount)
         }
         .subscribeOn(Schedulers.io())
   }
 
-  @JvmOverloads
-  fun getLowPolyImage(
+  fun lowPolyImageSingle(
     inputBitmap: Bitmap,
-    pointCount: Float = POINT_COUNT
+    pointCount: Float
   ): Single<Bitmap> {
     return Single.just(generate(inputBitmap, pointCount, true))
         .subscribeOn(Schedulers.io())
@@ -171,7 +167,9 @@ class LowPolyRx {
 
     return if (width == height && width <= threshold) {
       bitmap
-    } else getResizedBitmap(bitmap, newWidth, newHeight)
+    } else {
+      getResizedBitmap(bitmap, newWidth, newHeight)
+    }
 
   }
 
@@ -191,6 +189,30 @@ class LowPolyRx {
 
     init {
       System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
+    }
+
+    @JvmOverloads
+    fun generateLowpoly(context: Context,
+      uri: Uri,
+      pointCount: Float = POINT_COUNT): Single<Bitmap> {
+      return LowPolyRx().lowPolyImageSingle(context, uri, pointCount)
+    }
+
+    @JvmOverloads
+    fun generateLowpoly(context: Context,
+      @DrawableRes drawableResId: Int,
+      pointCount: Float = POINT_COUNT): Single<Bitmap> {
+      return LowPolyRx().lowPolyImageSingle(context, drawableResId, pointCount)
+    }
+
+    @JvmOverloads
+    fun generateLowpoly(filePath: String, pointCount: Float = POINT_COUNT): Single<Bitmap> {
+      return LowPolyRx().lowPolyImageSingle(filePath, pointCount)
+    }
+
+    @JvmOverloads
+    fun generateLowpoly(inputBitmap: Bitmap, pointCount: Float = POINT_COUNT): Single<Bitmap> {
+      return LowPolyRx().lowPolyImageSingle(inputBitmap, pointCount)
     }
 
   }
