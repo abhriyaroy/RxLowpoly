@@ -1,4 +1,4 @@
-package com.zebrostudio.lowpolyrx
+package com.zebrostudio.rxlowpoly
 
 import android.content.Context
 import android.graphics.*
@@ -90,7 +90,6 @@ class LowPolyRx private constructor() {
   ): Bitmap {
     val width = input.width
     val height = input.height
-
     val newImage = Bitmap.createBitmap(input.width, input.height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(newImage)
     val paint = Paint()

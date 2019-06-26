@@ -1,4 +1,4 @@
-package com.zebrostudio.lowpolyrx
+package com.zebrostudio.rxlowpoly
 
 import android.content.Context
 import androidx.annotation.ColorRes

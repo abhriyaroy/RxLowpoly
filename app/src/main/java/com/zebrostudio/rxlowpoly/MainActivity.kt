@@ -1,4 +1,4 @@
-package com.zebrostudio.lowpolyrx
+package com.zebrostudio.rxlowpoly
 
 import android.graphics.Bitmap
 import android.net.Uri
