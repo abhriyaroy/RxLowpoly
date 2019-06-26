@@ -1,5 +1,5 @@
 package com.zebrostudio.rxlowpoly.internal.exceptions
 
-class StoragePermissionNotAvailableException : Exception(){
+class StoragePermissionNotAvailableException(
   override val message: String = "Please grant storage permissions"
-}
+) : Exception()
