@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.annotation.DrawableRes
+import com.zebrostudio.rxlowpoly.internal.exceptions.InvalidUriException
 import java.io.File
+import java.io.FileNotFoundException
 
 interface BitmapUtils {
   fun getBitmapFromDrawable(
@@ -33,7 +35,11 @@ class BitmapUtilsImpl : BitmapUtils {
   }
 
   override fun getBitmapFromUri(context: Context, input: Uri): Bitmap {
-    return MediaStore.Images.Media.getBitmap(context.contentResolver, input)
+    return try {
+      MediaStore.Images.Media.getBitmap(context.contentResolver, input)
+    } catch (fileNotFoundException: FileNotFoundException) {
+      throw InvalidUriException()
+    }
   }
 
 }

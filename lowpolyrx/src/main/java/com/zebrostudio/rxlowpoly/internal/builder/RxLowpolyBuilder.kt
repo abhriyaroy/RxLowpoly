@@ -157,12 +157,7 @@ class RxLowpolyBuilder {
       }
       URI -> {
         if (permissionsManager.hasReadStoragePermission(context)) {
-          if (storageHelper.isReadable(inputUri)) {
-            println("generate bitmap")
-            bitmapUtils.getBitmapFromUri(context, inputUri)
-          } else {
-            throw InvalidFileException("Uri is not readable")
-          }
+          bitmapUtils.getBitmapFromUri(context, inputUri)
         } else {
           throw StoragePermissionNotAvailableException("Read permission is not available")
         }

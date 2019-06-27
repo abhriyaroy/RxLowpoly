@@ -87,6 +87,7 @@ class MainActivity : AppCompatActivity() {
     RxLowpoly.with(applicationContext)
       .input(imageUri)
       .generateAsyn()
+      .observeOn(AndroidSchedulers.mainThread())
       .doOnSubscribe {
         showConvertingImageLoader()
         compositeDisposable.add(it)
@@ -95,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         showResult(it)
       }, {
         // show error
+        println("error ${it.message}")
         lowpolyWaitLoader?.dismiss()
       })
   }

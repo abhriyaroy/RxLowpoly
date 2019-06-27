@@ -8,7 +8,6 @@ import java.io.FileOutputStream
 
 interface StorageHelper {
   fun isReadable(file: File): Boolean
-  fun isReadable(uri: Uri): Boolean
   fun writeBitmap(bitmap: Bitmap, file: File)
   fun writeBitmap(bitmap: Bitmap, uri: Uri)
 }
@@ -20,10 +19,6 @@ class StorageHelperImpl : StorageHelper {
       return true
     }
     return false
-  }
-
-  override fun isReadable(uri: Uri): Boolean {
-    return isReadable(File(uri.toString()))
   }
 
   @Throws(InvalidFileException::class)
