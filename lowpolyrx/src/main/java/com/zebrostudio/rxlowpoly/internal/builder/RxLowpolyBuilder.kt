@@ -15,6 +15,9 @@ import io.reactivex.schedulers.Schedulers
 import java.io.File
 
 private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
+private const val READ_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE = "Read permission is not available"
+private const val WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE = "Write permission is not available"
+private const val FILE_NOT_READABLE_ERROR_MESSAGE = "File is not readable"
 
 class RxLowpolyBuilder {
   private var permissionsManager: PermissionManager = PermissionManagerImpl()
@@ -111,7 +114,7 @@ class RxLowpolyBuilder {
   }
 
   @CheckResult
-  fun generateAsyn(): Single<Bitmap> {
+  fun generateAsync(): Single<Bitmap> {
     return getBitmap()
       .subscribeOn(Schedulers.io())
   }
@@ -149,17 +152,17 @@ class RxLowpolyBuilder {
           if (storageHelper.isReadable(inputFile)) {
             bitmapUtils.getBitmapFromFile(inputFile)
           } else {
-            throw InvalidFileException("File is not readable")
+            throw InvalidFileException(FILE_NOT_READABLE_ERROR_MESSAGE)
           }
         } else {
-          throw StoragePermissionNotAvailableException("Read permission is not available")
+          throw StoragePermissionNotAvailableException(READ_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE)
         }
       }
       URI -> {
         if (permissionsManager.hasReadStoragePermission(context)) {
           bitmapUtils.getBitmapFromUri(context, inputUri)
         } else {
-          throw StoragePermissionNotAvailableException("Read permission is not available")
+          throw StoragePermissionNotAvailableException(READ_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE)
         }
       }
     }
@@ -169,7 +172,7 @@ class RxLowpolyBuilder {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(bitmap, outputFile)
     } else {
-      throw StoragePermissionNotAvailableException("Write permission is not available")
+      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE )
     }
   }
 
@@ -177,7 +180,7 @@ class RxLowpolyBuilder {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(bitmap, outputUri)
     } else {
-      throw StoragePermissionNotAvailableException("Write permission is not available")
+      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE )
     }
   }
 
@@ -186,28 +189,23 @@ class RxLowpolyBuilder {
     val downScaledHeight = bitmap.height / downScalingFactor
     var newWidth = downScaledWidth
     var newHeight = downScaledHeight
-
     if ((downScalingFactor == 1f && downScaledWidth > downScaledHeight && downScaledWidth <= maxWidth)
       || (downScalingFactor == 1f && downScaledHeight > downScaledWidth && downScaledHeight <= maxWidth)
     ) {
       return bitmap
     }
-
     if (downScaledWidth > downScaledHeight && downScaledWidth > maxWidth) {
       newWidth = maxWidth.toFloat()
       newHeight = (downScaledHeight * newWidth / downScaledWidth)
     }
-
     if (downScaledWidth < downScaledHeight && downScaledHeight > maxWidth) {
       newHeight = maxWidth.toFloat()
       newWidth = (downScaledWidth * newHeight / downScaledHeight)
     }
-
     if (downScaledHeight == downScaledWidth && downScaledWidth > maxWidth) {
       newWidth = maxWidth.toFloat()
       newHeight = newWidth
     }
-
     return getResizedBitmap(bitmap, newWidth, newHeight)
 
   }

@@ -68,7 +68,9 @@ class MainActivity : AppCompatActivity() {
 
     RxLowpoly.with(applicationContext)
       .input(R.drawable.captain)
-      .generateAsyn()
+      .quaity(Quality.VERY_HIGH)
+      .overrideScaling(5048)
+      .generateAsync()
       .observeOn(AndroidSchedulers.mainThread())
       .doOnSubscribe {
         showConvertingImageLoader()
@@ -86,7 +88,7 @@ class MainActivity : AppCompatActivity() {
   private fun generateLowpolyImageFromUri() {
     RxLowpoly.with(applicationContext)
       .input(imageUri)
-      .generateAsyn()
+      .generateAsync()
       .observeOn(AndroidSchedulers.mainThread())
       .doOnSubscribe {
         showConvertingImageLoader()
