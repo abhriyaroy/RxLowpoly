@@ -25,7 +25,7 @@
 extern "C" {
 #endif //__cplusplus
 
-void get_triangles(const int *pixels, int size_pixels, int w, int h, int threshold,
+void get_triangles(const int *pixels, int size_pixels, int w, int h,
                    float points, int *result, int *size_result);
 
 

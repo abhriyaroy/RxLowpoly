@@ -50,9 +50,8 @@ int threshold = 40;
  * thre : threshold 阈值
  * alpha : in percent 过滤百分比或点数(0.0, 1) or [1, max)
  */
-void get_triangles(const int *pixels, int size, int w, int h, int thre, float points,
+void get_triangles(const int *pixels, int size, int w, int h, float points,
                    int *result, int *size_result) {
-    threshold = thre;
 
     Point *collectors = (Point *) malloc((size / 2 + 1) * sizeof(Point));
     int size_collectors = 0;

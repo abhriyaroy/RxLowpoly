@@ -5,24 +5,24 @@
 JNIEXPORT jintArray JNICALL
 Java_com_zebrostudio_lowpolyrx_LowPolyRx_getTriangles(JNIEnv *env, jclass type,
                                                       jintArray pixels_,
-                                                      jint width, jint height, jint threshold,
+                                                      jint width, jint height,
                                                       jfloat point_count) {
-    jint *pixels = (*env)->GetIntArrayElements(env, pixels_, NULL);
-    jint size = (*env)->GetArrayLength(env, pixels_);
+  jint *pixels = (*env)->GetIntArrayElements(env, pixels_, NULL);
+  jint size = (*env)->GetArrayLength(env, pixels_);
 
-    jintArray tmpArray_ = (*env)->NewIntArray(env, size);
-    jint *tmpArray = (*env)->GetIntArrayElements(env, tmpArray_, NULL);
+  jintArray tmpArray_ = (*env)->NewIntArray(env, size);
+  jint *tmpArray = (*env)->GetIntArrayElements(env, tmpArray_, NULL);
 
-    int tmpSize = 0;
+  int tmpSize = 0;
 
-    get_triangles(pixels, size, width, height, threshold, point_count, tmpArray, &tmpSize);
+  get_triangles(pixels, size, width, height, point_count, tmpArray, &tmpSize);
 
-    (*env)->ReleaseIntArrayElements(env, pixels_, pixels, 0);
+  (*env)->ReleaseIntArrayElements(env, pixels_, pixels, 0);
 
-    jintArray result = (*env)->NewIntArray(env, tmpSize);
+  jintArray result = (*env)->NewIntArray(env, tmpSize);
 
-    (*env)->SetIntArrayRegion(env, result, 0, tmpSize, tmpArray);
+  (*env)->SetIntArrayRegion(env, result, 0, tmpSize, tmpArray);
 
-    (*env)->ReleaseIntArrayElements(env, tmpArray_, tmpArray, 0);
-    return result;
+  (*env)->ReleaseIntArrayElements(env, tmpArray_, tmpArray, 0);
+  return result;
 }
