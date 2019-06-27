@@ -4,10 +4,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.provider.MediaStore
+import android.os.ParcelFileDescriptor
 import androidx.annotation.DrawableRes
 import com.zebrostudio.rxlowpoly.internal.exceptions.InvalidUriException
 import java.io.File
+import java.io.FileDescriptor
 import java.io.FileNotFoundException
 
 interface BitmapUtils {
@@ -36,10 +37,14 @@ class BitmapUtilsImpl : BitmapUtils {
 
   override fun getBitmapFromUri(context: Context, input: Uri): Bitmap {
     return try {
-      MediaStore.Images.Media.getBitmap(context.contentResolver, input)
+      val parcelFileDescriptor: ParcelFileDescriptor =
+        context.contentResolver.openFileDescriptor(input, "r")
+      val fileDescriptor: FileDescriptor = parcelFileDescriptor.fileDescriptor
+      val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+      parcelFileDescriptor.close()
+      image
     } catch (fileNotFoundException: FileNotFoundException) {
       throw InvalidUriException()
     }
   }
-
 }

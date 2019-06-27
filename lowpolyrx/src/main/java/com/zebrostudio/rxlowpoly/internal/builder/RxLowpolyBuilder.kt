@@ -231,24 +231,38 @@ class RxLowpolyBuilder {
     pointCount: Float,
     fill: Boolean
   ): Bitmap {
-    val width = input.width
-    val height = input.height
     val newImage = Bitmap.createBitmap(input.width, input.height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(newImage)
     val paint = Paint()
     paint.isAntiAlias = false
     paint.style = if (fill) Paint.Style.FILL else Paint.Style.STROKE
+    drawTriangles(input.width, input.height, input, pointCount, paint, canvas)
+    return newImage
+  }
+
+  private fun drawTriangles(
+    width: Int,
+    height: Int,
+    input: Bitmap,
+    pointCount: Float,
+    paint: Paint,
+    canvas: Canvas
+  ) {
+    val pixels = IntArray(width * height)
+    input.getPixels(pixels, 0, width, 0, 0, width, height)
+    val triangles = getTriangles(pixels, width, height, pointCount)
+    drawTrianglePath(paint, canvas, triangles, input)
+  }
+
+  private fun drawTrianglePath(paint: Paint, canvas: Canvas, triangles: IntArray, input: Bitmap) {
+    val path = Path()
+    var i = 0
     var x1: Int
     var x2: Int
     var x3: Int
     var y1: Int
     var y2: Int
     var y3: Int
-    val pixels = IntArray(width * height)
-    input.getPixels(pixels, 0, width, 0, 0, width, height)
-    val triangles = getTriangles(pixels, width, height, pointCount)
-    val path = Path()
-    var i = 0
     while (i + 5 < triangles.size) {
       x1 = triangles[i]
       y1 = triangles[i + 1]
@@ -256,7 +270,6 @@ class RxLowpolyBuilder {
       y2 = triangles[i + 3]
       x3 = triangles[i + 4]
       y3 = triangles[i + 5]
-
       val color = input.getPixel((x1 + x2 + x3) / 3, (y1 + y2 + y3) / 3)
       path.rewind()
       path.moveTo(x1.toFloat(), y1.toFloat())
@@ -267,7 +280,6 @@ class RxLowpolyBuilder {
       canvas.drawPath(path, paint)
       i += 6
     }
-    return newImage
   }
 
   private external fun getTriangles(
