@@ -1,0 +1,106 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.zebrostudio.rxlowpoly.fragments.ChooserFragment">
+
+  <include layout="@layout/toolbar_layout"/>
+
+  <Button
+    android:id="@+id/bitmapAsyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="32dp"
+    android:text="Convert Bitmap Image Async"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+  <Button
+    android:id="@+id/bitmapSyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="163dp"
+    android:layout_marginStart="160dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert Bitmap Image Sync"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/bitmapAsyncButton" />
+
+  <Button
+    android:id="@+id/drawableAsyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert Drawable Image Async"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/bitmapSyncButton" />
+
+  <Button
+    android:id="@+id/drawableSyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert Drawable Image Sync"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/drawableAsyncButton" />
+
+  <Button
+    android:id="@+id/fileAsyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert File Image Async"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/drawableSyncButton" />
+
+  <Button
+    android:id="@+id/fileSyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert File Image Sync"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/fileAsyncButton" />
+
+
+  <Button
+    android:id="@+id/uriAsyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:text="Convert Uri Image Async"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/fileSyncButton" />
+
+  <Button
+    android:id="@+id/uriSyncButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="162dp"
+    android:layout_marginStart="161dp"
+    android:layout_marginTop="8dp"
+    android:text="Convert Uri Image Sync"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

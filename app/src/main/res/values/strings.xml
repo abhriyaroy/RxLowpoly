@@ -4,4 +4,7 @@
   <string name="lowpoly_generation_error_message">Something went wrong</string>
   <string name="convert_button_text">CONVERT</string>
   <string name="choose_image_button_text">CHOOSE IMAGE</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -40,4 +40,5 @@ dependencies {
   implementation "com.mlsdev.rximagepicker:library:2.2.1"
   // Module dependencies
   implementation project(":lowpolyrx")
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
