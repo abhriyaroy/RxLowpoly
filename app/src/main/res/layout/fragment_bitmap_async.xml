@@ -13,45 +13,49 @@
     android:id="@+id/imageView"
     android:layout_width="wrap_content"
     android:layout_height="250dp"
+    android:layout_marginBottom="8dp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/include"
+    app:layout_constraintVertical_bias="0.0"
     tools:src="@tools:sample/backgrounds/scenic" />
 
   <Button
-    android:id="@+id/convertToLowpolyButton"
+    android:id="@+id/lowpolyButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="16dp"
     android:text="Convert To Lowpoly"
     app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.497"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-  <Button
-    android:id="@+id/selectImageButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:text="Select Image"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/convertToLowpolyButton" />
 
   <CheckBox
     android:id="@+id/checkBox"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="66dp"
+    android:layout_marginTop="16dp"
     android:text="Save lowpoly image"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.50"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/convertToLowpolyButton" />
+    app:layout_constraintTop_toBottomOf="@+id/lowpolyButton" />
+
+  <CheckBox
+    android:id="@+id/synchronousCheckBox"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp"
+    android:text="Generate synchronously"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
   <Spinner
     android:id="@+id/spinner"
@@ -59,42 +63,47 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="16dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+    app:layout_constraintTop_toBottomOf="@+id/synchronousCheckBox" />
 
   <com.google.android.material.textfield.TextInputLayout
     android:id="@+id/textInputLayout"
-    android:layout_width="395dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
+    android:minWidth="150dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/spinner">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="Downscale Factor" />
+      android:hint="Downscale Factor"
+      android:minWidth="150dp" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
-    android:layout_width="395dp"
+    android:id="@+id/textInputLayout2"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
+    android:minWidth="150dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
     <com.google.android.material.textfield.TextInputEditText
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:hint="Maximum Width" />
+      android:hint="Maximum Width"
+      android:minWidth="150dp" />
   </com.google.android.material.textfield.TextInputLayout>
 
 
