@@ -6,21 +6,33 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
 import androidx.annotation.DrawableRes
+import java.io.File
 
-object BitmapUtils {
-
+interface BitmapUtils {
   fun getBitmapFromDrawable(
+    context: Context,
+    @DrawableRes drawableResId: Int
+  ): Bitmap
+
+  fun getBitmapFromFile(file: File): Bitmap
+
+  fun getBitmapFromUri(context: Context, input: Uri): Bitmap
+}
+
+class BitmapUtilsImpl : BitmapUtils {
+
+  override fun getBitmapFromDrawable(
     context: Context,
     @DrawableRes drawableResId: Int
   ): Bitmap {
     return BitmapFactory.decodeResource(context.resources, drawableResId)
   }
 
-  fun getBitmapFromFile(path: String): Bitmap {
-    return BitmapFactory.decodeFile(path)
+  override fun getBitmapFromFile(file: File): Bitmap {
+    return BitmapFactory.decodeFile(file.absolutePath)
   }
 
-  fun getBitmapFromUri(context: Context, input: Uri): Bitmap {
+  override fun getBitmapFromUri(context: Context, input: Uri): Bitmap {
     return MediaStore.Images.Media.getBitmap(context.contentResolver, input)
   }
 
