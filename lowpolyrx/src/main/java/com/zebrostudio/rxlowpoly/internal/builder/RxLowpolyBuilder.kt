@@ -16,7 +16,7 @@ import java.io.File
 
 class RxLowpolyBuilder {
   private var permissionsManager: PermissionManager = PermissionManagerImpl()
-  private var fileHelper: FileHelper = FileHelperImpl()
+  private var storageHelper: StorageHelper = StorageHelperImpl()
   private var bitmapUtils: BitmapUtils = BitmapUtilsImpl()
   private lateinit var context: Context
   private lateinit var inputType: InputType
@@ -29,6 +29,8 @@ class RxLowpolyBuilder {
   private var quality: Quality = Quality.VERY_HIGH
   private var maxWidth: Int = 1024
   private var downScalingFactor = 1f
+  private var shouldSaveOutputToFile = false
+  private var shouldSaveOutputToUri = false
 
   fun init(context: Context): RxLowpolyBuilder {
     this.context = context
@@ -90,12 +92,14 @@ class RxLowpolyBuilder {
 
   @CheckResult
   fun output(file: File): RxLowpolyBuilder {
+    shouldSaveOutputToFile = true
     outputFile = file
     return this
   }
 
   @CheckResult
   fun output(uri: Uri): RxLowpolyBuilder {
+    shouldSaveOutputToUri = true
     outputUri = uri
     return this
   }
@@ -110,7 +114,14 @@ class RxLowpolyBuilder {
   fun generate(): Bitmap {
     with(getInputBitmap()) {
       with(getScaledDownBitmap(this, downScalingFactor, maxWidth)) {
-        return generate(this, quality.pointCount, true)
+        with(generate(this, quality.pointCount, true)) {
+          if (shouldSaveOutputToFile) {
+            saveBitmapToFile(this)
+          } else if (shouldSaveOutputToUri) {
+            saveBitmapToUri(this)
+          }
+          return this
+        }
       }
     }
   }
@@ -129,7 +140,7 @@ class RxLowpolyBuilder {
       DRAWABLE -> bitmapUtils.getBitmapFromDrawable(context, inputDrawableId)
       FILE -> {
         if (permissionsManager.hasReadStoragePermission(context)) {
-          if (fileHelper.isReadable(inputFile)) {
+          if (storageHelper.isReadable(inputFile)) {
             bitmapUtils.getBitmapFromFile(inputFile)
           } else {
             throw InvalidFileException("File is not readable")
@@ -140,15 +151,31 @@ class RxLowpolyBuilder {
       }
       URI -> {
         if (permissionsManager.hasReadStoragePermission(context)) {
-          if (fileHelper.isReadable(inputUri)) {
+          if (storageHelper.isReadable(inputUri)) {
             bitmapUtils.getBitmapFromUri(context, inputUri)
           } else {
-            throw InvalidFileException("File is not readable")
+            throw InvalidFileException("Uri is not readable")
           }
         } else {
           throw StoragePermissionNotAvailableException("Read permission is not available")
         }
       }
+    }
+  }
+
+  private fun saveBitmapToFile(bitmap: Bitmap) {
+    if (permissionsManager.hasWriteStoragePermission(context)) {
+      storageHelper.writeBitmap(bitmap, outputFile)
+    } else {
+      throw StoragePermissionNotAvailableException("Write permission is not available")
+    }
+  }
+
+  private fun saveBitmapToUri(bitmap: Bitmap) {
+    if (permissionsManager.hasWriteStoragePermission(context)) {
+      storageHelper.writeBitmap(bitmap, outputUri)
+    } else {
+      throw StoragePermissionNotAvailableException("Write permission is not available")
     }
   }
 
