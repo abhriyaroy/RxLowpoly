@@ -39,16 +39,16 @@ class MainActivity : AppCompatActivity() {
   private fun attachClickListeners() {
     chooseImageButton.setOnClickListener {
       pickFile()
-          .subscribeOn(Schedulers.io())
-          .observeOn(AndroidSchedulers.mainThread())
-          .subscribe {
-            Glide.with(this)
-                .load(it)
-                .into(imageView)
-            isFileChosen = true
-            imageUri = it
-            convertButton.isEnabled = true
-          }
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe {
+          Glide.with(this)
+            .load(it)
+            .into(imageView)
+          isFileChosen = true
+          imageUri = it
+          convertButton.isEnabled = true
+        }
     }
 
     convertButton.setOnClickListener {
@@ -65,53 +65,58 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun generateLowpolyImageFromDrawable() {
-    LowPolyRx.generateLowpoly(this, R.drawable.captain)
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnSubscribe {
-          showConvertingImageLoader()
-          compositeDisposable.add(it)
-        }.subscribe({
-          // show image
-          showResult(it)
-        }, {
-          // show error
-          lowpolyWaitLoader?.dismiss()
-        })
+
+    RxLowpoly.with(applicationContext)
+      .input(R.drawable.captain)
+      .generateAsyn()
+      .observeOn(AndroidSchedulers.mainThread())
+      .doOnSubscribe {
+        showConvertingImageLoader()
+        compositeDisposable.add(it)
+      }
+      .subscribe({
+        // show image
+        showResult(it)
+      }, {
+        // show error
+        lowpolyWaitLoader?.dismiss()
+      })
   }
 
   private fun generateLowpolyImageFromUri() {
-    LowPolyRx.generateLowpoly(this, imageUri)
-        .observeOn(AndroidSchedulers.mainThread())
-        .doOnSubscribe {
-          showConvertingImageLoader()
-          compositeDisposable.add(it)
-        }.subscribe({
-          // show image
-          showResult(it)
-        }, {
-          // show error
-          lowpolyWaitLoader?.dismiss()
-        })
+    RxLowpoly.with(applicationContext)
+      .input(imageUri)
+      .generateAsyn()
+      .doOnSubscribe {
+        showConvertingImageLoader()
+        compositeDisposable.add(it)
+      }.subscribe({
+        // show image
+        showResult(it)
+      }, {
+        // show error
+        lowpolyWaitLoader?.dismiss()
+      })
   }
 
   private fun showConvertingImageLoader() {
     lowpolyWaitLoader = MaterialDialog.Builder(this)
-        .widgetColor(colorRes(R.color.colorWhite))
-        .contentColor(colorRes(R.color.colorWhite))
-        .content(getString(R.string.lowpoly_wait_loader_message))
-        .backgroundColor(colorRes(R.color.colorPrimary))
-        .progress(true, 0)
-        .progressIndeterminateStyle(false)
-        .cancelable(false)
-        .build()
+      .widgetColor(colorRes(R.color.colorWhite))
+      .contentColor(colorRes(R.color.colorWhite))
+      .content(getString(R.string.lowpoly_wait_loader_message))
+      .backgroundColor(colorRes(R.color.colorPrimary))
+      .progress(true, 0)
+      .progressIndeterminateStyle(false)
+      .cancelable(false)
+      .build()
 
     lowpolyWaitLoader?.show()
   }
 
   private fun showResult(bitmap: Bitmap) {
     Glide.with(this)
-        .load(bitmap)
-        .into(imageView)
+      .load(bitmap)
+      .into(imageView)
     convertButton.isEnabled = false
     lowpolyWaitLoader?.dismiss()
   }

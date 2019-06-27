@@ -14,6 +14,8 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.io.File
 
+private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
+
 class RxLowpolyBuilder {
   private var permissionsManager: PermissionManager = PermissionManagerImpl()
   private var storageHelper: StorageHelper = StorageHelperImpl()
@@ -31,6 +33,10 @@ class RxLowpolyBuilder {
   private var downScalingFactor = 1f
   private var shouldSaveOutputToFile = false
   private var shouldSaveOutputToUri = false
+
+  init {
+    System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
+  }
 
   fun init(context: Context): RxLowpolyBuilder {
     this.context = context
@@ -152,6 +158,7 @@ class RxLowpolyBuilder {
       URI -> {
         if (permissionsManager.hasReadStoragePermission(context)) {
           if (storageHelper.isReadable(inputUri)) {
+            println("generate bitmap")
             bitmapUtils.getBitmapFromUri(context, inputUri)
           } else {
             throw InvalidFileException("Uri is not readable")
