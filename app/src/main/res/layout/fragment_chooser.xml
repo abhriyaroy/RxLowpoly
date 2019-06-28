@@ -19,8 +19,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="32dp"
-    android:text="Convert Bitmap Image Async"
+    android:layout_marginTop="56dp"
+    android:text="@string/bitmap_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/toolbar" />
@@ -31,8 +31,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="163dp"
     android:layout_marginStart="160dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert Bitmap Image Sync"
+    android:layout_marginTop="16dp"
+    android:text="@string/bitmap_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/bitmapAsyncButton" />
@@ -43,8 +43,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert Drawable Image Async"
+    android:layout_marginTop="16dp"
+    android:text="@string/drawable_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/bitmapSyncButton" />
@@ -55,8 +55,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert Drawable Image Sync"
+    android:layout_marginTop="16dp"
+    android:text="@string/drawable_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/drawableAsyncButton" />
@@ -67,8 +67,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert File Image Async"
+    android:layout_marginTop="16dp"
+    android:text="@string/file_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/drawableSyncButton" />
@@ -79,8 +79,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert File Image Sync"
+    android:layout_marginTop="16dp"
+    android:text="@string/file_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/fileAsyncButton" />
@@ -92,7 +92,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:text="Convert Uri Image Async"
+    android:layout_marginTop="16dp"
+    android:text="@string/uri_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/fileSyncButton" />
@@ -101,12 +102,15 @@
     android:id="@+id/uriSyncButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:layout_marginEnd="162dp"
     android:layout_marginStart="161dp"
-    android:layout_marginTop="8dp"
-    android:text="Convert Uri Image Sync"
+    android:layout_marginTop="16dp"
+    android:text="@string/uri_sync_example_fragment_name"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton"
+    app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

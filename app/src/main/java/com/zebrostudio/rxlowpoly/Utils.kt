@@ -10,8 +10,8 @@ import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputEditText
 
 fun Context.colorRes(@ColorRes id: Int) = resources.getColor(id)
-fun Context.stringRes(@StringRes id: Int) = getString(id)
 
+fun Context.stringRes(@StringRes id: Int) = getString(id)
 
 fun View.visible() {
   visibility = VISIBLE

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.zebrostudio.rxlowpoly.examplefragments.*
-import com.zebrostudio.rxlowpoly.examplefragments.FragmentTags.*
+import com.zebrostudio.rxlowpoly.helpers.FragmentTags.*
 import kotlinx.android.synthetic.main.fragment_chooser.*
 import kotlinx.android.synthetic.main.fragment_chooser.view.*
 

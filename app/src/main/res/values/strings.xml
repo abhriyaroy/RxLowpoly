@@ -5,6 +5,12 @@
   <string name="convert_button_text">CONVERT</string>
   <string name="choose_image_button_text">CHOOSE IMAGE</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="bitmap_async_example_fragment_name">Bitmap Async Example</string>
+  <string name="drawable_async_example_fragment_name">Drawable Async Example</string>
+  <string name="file_async_example_fragment_name">File Async Example</string>
+  <string name="uri_async_example_fragment_name">Uri Async Example</string>
+  <string name="bitmap_sync_example_fragment_name">Bitmap Sync Example</string>
+  <string name="drawable_sync_example_fragment_name">Drawable Sync Example</string>
+  <string name="file_sync_example_fragment_name">File Sync Example</string>
+  <string name="uri_sync_example_fragment_name">Uri Sync Example</string>
 </resources>
