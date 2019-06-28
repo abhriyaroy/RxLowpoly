@@ -5,19 +5,22 @@
   android:layout_height="match_parent"
   tools:context="com.zebrostudio.rxlowpoly.fragments.BitmapAsyncFragment">
 
-  <include
-    android:id="@+id/include"
-    layout="@layout/toolbar_layout" />
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbarFragment"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
   <ImageView
     android:id="@+id/imageView"
     android:layout_width="wrap_content"
     android:layout_height="250dp"
-    android:layout_marginBottom="8dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/include"
+    app:layout_constraintTop_toBottomOf="@id/toolbarFragment"
     app:layout_constraintVertical_bias="0.0"
     tools:src="@tools:sample/backgrounds/scenic" />
 
@@ -34,28 +37,40 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-  <CheckBox
-    android:id="@+id/checkBox"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:text="Save lowpoly image"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.50"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/lowpolyButton" />
-
-  <CheckBox
-    android:id="@+id/synchronousCheckBox"
+  <RadioGroup
+    android:id="@+id/radioGroup"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="16dp"
-    android:text="Generate synchronously"
+    android:orientation="horizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+    app:layout_constraintTop_toBottomOf="@+id/lowpolyButton">
+
+    <TextView
+      android:id="@+id/header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Save lowpoly to :"
+      android:layout_marginEnd="16dp"/>
+
+    <RadioButton
+      android:id="@+id/saveToFile"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:layout_weight="1"
+      android:text="File" />
+
+    <RadioButton
+      android:id="@+id/saveToUri"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Uri" />
+
+  </RadioGroup>
 
   <Spinner
     android:id="@+id/spinner"
@@ -66,45 +81,54 @@
     android:layout_marginTop="16dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/synchronousCheckBox" />
+    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
   <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/textInputLayout"
+    android:id="@+id/downScalingFactorTextLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="16dp"
     android:minWidth="150dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/spinner">
 
     <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/downScalingFactorEditText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
       android:hint="Downscale Factor"
-      android:minWidth="150dp" />
+      android:inputType="numberDecimal"
+      android:minWidth="150dp"
+      android:singleLine="true" />
+
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/textInputLayout2"
+    android:id="@+id/maximumWidthTextLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="16dp"
     android:minWidth="150dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+    app:layout_constraintTop_toBottomOf="@id/downScalingFactorTextLayout">
 
     <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/maximumWidthEditText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
       android:hint="Maximum Width"
-      android:minWidth="150dp" />
-  </com.google.android.material.textfield.TextInputLayout>
+      android:inputType="number"
+      android:minWidth="150dp"
+      android:singleLine="true" />
 
+  </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

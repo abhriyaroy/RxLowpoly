@@ -3,7 +3,6 @@ package com.zebrostudio.rxlowpoly
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zebrostudio.rxlowpoly.fragments.ChooserFragment
-import com.zebrostudio.rxlowpoly.fragments.FragmentTags.CHOOSER
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +14,23 @@ class MainActivity : AppCompatActivity() {
 
   private fun setupChooserFragment() {
     with(supportFragmentManager.beginTransaction()) {
-      replace(R.id.fragmentContainer, ChooserFragment(), CHOOSER.tag)
-      addToBackStack(CHOOSER.tag)
+      replace(R.id.fragmentContainer, ChooserFragment())
       commit()
+    }
+  }
+
+  override fun onRequestPermissionsResult(
+    requestCode: Int,
+    permissions: Array<out String>,
+    grantResults: IntArray
+  ) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    supportFragmentManager.let {
+      it.findFragmentById(
+        it.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).id
+      )
+    }.let {
+      it?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
   }
 

@@ -5,7 +5,13 @@
   android:layout_height="match_parent"
   tools:context="com.zebrostudio.rxlowpoly.fragments.ChooserFragment">
 
-  <include layout="@layout/toolbar_layout"/>
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
   <Button
     android:id="@+id/bitmapAsyncButton"

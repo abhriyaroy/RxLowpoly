@@ -10,7 +10,7 @@ import com.zebrostudio.rxlowpoly.MainActivity
 import com.zebrostudio.rxlowpoly.R
 import com.zebrostudio.rxlowpoly.fragments.FragmentTags.BITMAPASYNC
 import kotlinx.android.synthetic.main.fragment_chooser.*
-import kotlinx.android.synthetic.main.toolbar_layout.*
+import kotlinx.android.synthetic.main.fragment_chooser.view.*
 
 class ChooserFragment : Fragment() {
 
@@ -23,16 +23,13 @@ class ChooserFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    (activity as AppCompatActivity).setSupportActionBar(toolbar)
+    (activity as AppCompatActivity).setSupportActionBar(view.toolbar)
     setupClickListeners()
   }
 
   private fun setupClickListeners() {
     bitmapAsyncButton.setOnClickListener {
-      showFragment(BitmapAsyncFragment(), BITMAPASYNC.tag)
-    }
-    bitmapSyncButton.setOnClickListener {
-      showFragment(BitmapSyncFragment(), BITMAPASYNC.tag)
+      showFragment(BitmapAsyncFragment(BITMAPASYNC), BITMAPASYNC.tag)
     }
   }
 
