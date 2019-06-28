@@ -1,48 +1,27 @@
 package com.zebrostudio.rxlowpoly.helpers
 
+import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
+import android.graphics.BitmapFactory
+import androidx.annotation.DrawableRes
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
 interface BitmapHelper {
-  fun drawableToBitmap(drawable: Drawable): Bitmap
-  fun drawableToBitmapSingle(drawable: Drawable): Single<Bitmap>
+  fun drawableToBitmap(context: Context, @DrawableRes drawable: Int): Bitmap
+  fun drawableToBitmapSingle(context: Context, @DrawableRes drawable: Int): Single<Bitmap>
 }
 
 class BitmapHelperImpl : BitmapHelper {
 
-  override fun drawableToBitmapSingle(drawable: Drawable): Single<Bitmap> {
-    return Single.just(drawableToBitmap(drawable))
+  override fun drawableToBitmapSingle(
+    context: Context, @DrawableRes drawable: Int
+  ): Single<Bitmap> {
+    return Single.just(drawableToBitmap(context, drawable))
       .subscribeOn(Schedulers.io())
   }
 
-  override fun drawableToBitmap(drawable: Drawable): Bitmap {
-    var bitmap: Bitmap? = null
-
-    if (drawable is BitmapDrawable) {
-      if (drawable.bitmap != null) {
-        return drawable.bitmap
-      }
-    }
-    if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
-      bitmap = Bitmap.createBitmap(
-        1,
-        1,
-        Bitmap.Config.ARGB_8888
-      ) // Single color bitmap will be created of 1x1 pixel
-    } else {
-      bitmap = Bitmap.createBitmap(
-        drawable.intrinsicWidth,
-        drawable.intrinsicHeight,
-        Bitmap.Config.ARGB_8888
-      )
-    }
-    val canvas = Canvas(bitmap!!)
-    drawable.setBounds(0, 0, canvas.width, canvas.height)
-    drawable.draw(canvas)
-    return bitmap
+  override fun drawableToBitmap(context: Context, @DrawableRes drawable: Int): Bitmap {
+    return BitmapFactory.decodeResource(context.resources, drawable)
   }
 }

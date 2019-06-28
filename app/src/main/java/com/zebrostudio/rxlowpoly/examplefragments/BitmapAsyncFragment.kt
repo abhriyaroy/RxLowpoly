@@ -43,7 +43,7 @@ class BitmapAsyncFragment : BaseFragment() {
       }, {
         println(it.message)
         materialDialog.dismiss()
-        context!!.showToast(ERROR_TOAST_MESSAGE+"${it.message}")
+        context!!.showToast(ERROR_TOAST_MESSAGE + "${it.message}")
       })
   }
 
@@ -51,11 +51,7 @@ class BitmapAsyncFragment : BaseFragment() {
     return storageHelper.getFileToSaveImage(SAVE_FILE_NAME)
       .flatMap {
         convertBitmapToLowpolyAsyncWithFileOutput(
-          bitmapHelper.drawableToBitmap(
-            resources.getDrawable(
-              R.drawable.captain
-            )
-          ), it
+          bitmapHelper.drawableToBitmap(context!!, R.drawable.captain), it
         )
       }
   }
@@ -64,11 +60,7 @@ class BitmapAsyncFragment : BaseFragment() {
     return storageHelper.getUriToSaveImage(SAVE_FILE_NAME)
       .flatMap {
         convertBitmapToLowpolyAsyncWithUriOutput(
-          bitmapHelper.drawableToBitmap(
-            resources.getDrawable(
-              R.drawable.captain
-            )
-          ), it
+          bitmapHelper.drawableToBitmap(context!!, R.drawable.captain), it
         )
       }
   }

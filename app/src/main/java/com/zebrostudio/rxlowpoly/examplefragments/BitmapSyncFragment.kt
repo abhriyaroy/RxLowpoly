@@ -51,11 +51,7 @@ class BitmapSyncFragment : BaseFragment() {
     return storageHelper.getFileToSaveImage(SAVE_FILE_NAME)
       .flatMap {
         convertBitmapToLowpolySyncWithFileOutput(
-          bitmapHelper.drawableToBitmap(
-            resources.getDrawable(
-              R.drawable.captain
-            )
-          ), it
+          bitmapHelper.drawableToBitmap(context!!, R.drawable.captain), it
         )
       }
   }
@@ -64,11 +60,7 @@ class BitmapSyncFragment : BaseFragment() {
     return storageHelper.getUriToSaveImage(SAVE_FILE_NAME)
       .flatMap {
         convertBitmapToLowpolySyncWithUriOutput(
-          bitmapHelper.drawableToBitmap(
-            resources.getDrawable(
-              R.drawable.captain
-            )
-          ), it
+          bitmapHelper.drawableToBitmap(context!!, R.drawable.captain), it
         )
       }
   }
