@@ -60,7 +60,7 @@ abstract class BaseFragment : Fragment() {
 
   private fun setupSpinner(view: View) {
     val dataAdapter =
-      ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, qualityList)
+      ArrayAdapter<String>(context!!, android.R.layout.simple_spinner_dropdown_item, qualityList)
     view.spinner.adapter = dataAdapter
     view.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {

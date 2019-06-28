@@ -10,7 +10,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputEditText
 
-fun Context.colorRes(@ColorRes id: Int) = resources.getColor(id)
+fun Context.colorRes(@ColorRes id: Int) = resources.getColor(id)!!
 
 fun Context.stringRes(@StringRes id: Int) = getString(id)!!
 
@@ -28,6 +28,14 @@ fun View.gone() {
 
 fun View.invisible() {
   visibility = INVISIBLE
+}
+
+fun View.disable(){
+  isEnabled = false
+}
+
+fun View.enable(){
+  isEnabled = true
 }
 
 private class TextChangeListener(

@@ -1,65 +1,86 @@
 package com.zebrostudio.rxlowpoly.examplefragments
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
-import com.zebrostudio.rxlowpoly.R
-import com.zebrostudio.rxlowpoly.RxLowpoly
-import com.zebrostudio.rxlowpoly.showToast
-import com.zebrostudio.rxlowpoly.stringRes
+import com.zebrostudio.rxlowpoly.*
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_example.view.*
 import java.io.File
 
 private const val SAVE_FILE_NAME = "FileAsyncExample"
+private const val CHOOSE_FILE_BUTTON_TEXT = "CHOOSE IMAGE FILE"
+private const val CONVERT_TO_LOWPOLY_TEXT = "CONVERT TO LOWPOLY"
 
 class FileAsyncFragment : BaseFragment() {
 
+  private var file: File? = null
+
   override fun configureView(view: View) {
     view.toolbarFragment.title = context!!.stringRes(R.string.file_async_example_fragment_name)
+    disableAllOperations(view)
+    view.lowpolyButton.text = CHOOSE_FILE_BUTTON_TEXT
     view.lowpolyButton.setOnClickListener {
       if (permissionChecker.isStoragePermissionAvailable(context!!)) {
-        getLowpolyImage(view)
+        if (view.lowpolyButton.text == CHOOSE_FILE_BUTTON_TEXT) {
+          getImageFile(view)
+        } else {
+          getLowpolyImage(view)
+        }
       } else {
         requestPermission()
       }
     }
   }
 
-  private fun getLowpolyImage(view: View) {
-    disposable = storageHelper.getInputImageFileSingle(activity!!.supportFragmentManager)
-      .flatMap {
-        if (shouldSaveToFile) {
-          getLowpolyInFile(it)
-        } else {
-          getLowpolyInUri(it)
+  @SuppressLint("CheckResult")
+  private fun getImageFile(view: View) {
+    storageHelper.getInputImageFileSingle(activity!!.supportFragmentManager)
+      .subscribeOn(Schedulers.io())
+      .observeOn(AndroidSchedulers.mainThread())
+      .subscribe { it ->
+        if (it != null) {
+          file = it
+          enableAllOperations(view)
+          view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
         }
-      }.observeOn(AndroidSchedulers.mainThread())
+      }
+  }
+
+  private fun getLowpolyImage(view: View) {
+    disposable = if (shouldSaveToFile) {
+      getLowpolyInFile()
+    } else {
+      getLowpolyInUri()
+    }.observeOn(AndroidSchedulers.mainThread())
       .doOnSubscribe {
         showMaterialDialog()
       }.subscribe({
         view.imageView.setImageBitmap(it)
         materialDialog.dismiss()
         context!!.showToast(SUCCESS_TOAST_MESSAGE)
+        view.lowpolyButton.text = CHOOSE_FILE_BUTTON_TEXT
+        disableAllOperations(view)
       }, {
-        println(it.message)
         materialDialog.dismiss()
         context!!.showToast(ERROR_TOAST_MESSAGE + "${it.message}")
       })
   }
 
-  private fun getLowpolyInFile(inputFile: File): Single<Bitmap> {
+  private fun getLowpolyInFile(): Single<Bitmap> {
     return storageHelper.getFileToSaveImage(SAVE_FILE_NAME)
       .flatMap {
-        convertImageFileToLowpolyAsyncWithFileOutput(inputFile, it)
+        convertImageFileToLowpolyAsyncWithFileOutput(file!!, it)
       }
   }
 
-  private fun getLowpolyInUri(inputFile: File): Single<Bitmap> {
+  private fun getLowpolyInUri(): Single<Bitmap> {
     return storageHelper.getUriToSaveImage(SAVE_FILE_NAME)
       .flatMap {
-        convertImageFileToLowpolyAsyncWithUriOutput(inputFile, it)
+        convertImageFileToLowpolyAsyncWithUriOutput(file!!, it)
       }
   }
 
@@ -85,5 +106,21 @@ class FileAsyncFragment : BaseFragment() {
       .quality(quality)
       .output(outputUri)
       .generateAsync()
+  }
+
+  private fun enableAllOperations(view: View) {
+    view.saveToFile.enable()
+    view.saveToUri.enable()
+    view.spinner.enable()
+    view.downScalingFactorTextLayout.enable()
+    view.maximumWidthTextLayout.enable()
+  }
+
+  private fun disableAllOperations(view: View) {
+    view.saveToFile.disable()
+    view.saveToUri.disable()
+    view.spinner.disable()
+    view.downScalingFactorTextLayout.disable()
+    view.maximumWidthTextLayout.disable()
   }
 }

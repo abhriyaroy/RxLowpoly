@@ -43,7 +43,6 @@ class DrawableSyncFragment : BaseFragment() {
         materialDialog.dismiss()
         context!!.showToast(SUCCESS_TOAST_MESSAGE)
       }, {
-        println(it.message)
         materialDialog.dismiss()
         context!!.showToast(ERROR_TOAST_MESSAGE + "${it.message}")
       })

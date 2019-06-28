@@ -31,22 +31,15 @@ class StorageHelperImpl : StorageHelper {
   override fun getInputImageFileSingle(supportFragmentManager: FragmentManager): Single<File> {
     return Single.fromObservable(RxImagePicker.with(supportFragmentManager).requestImage(Sources.GALLERY))
       .flatMap {
-        if (it == null){
-          throw Exception("No file is chosen")
-        }
-        Single.just(File(it.path))
+        println(it.path)
+        println(File(it.path).exists())
+        println(it.path.split(":")[1])
+        Single.just(File(it.path.split(":")[1]))
       }
   }
 
   override fun getInputImageUriSingle(supportFragmentManager: FragmentManager): Single<Uri> {
     return Single.fromObservable(RxImagePicker.with(supportFragmentManager).requestImage(Sources.GALLERY))
-      .map {
-        if (it == null){
-          throw Exception("No file is chosen")
-        }
-        it
-      }
-
   }
 
   private fun getFile(fileName: String): File {
@@ -61,4 +54,14 @@ class StorageHelperImpl : StorageHelper {
     }
     return file
   }
+
+  /* fun getPath(context: Context, uri: Uri): String? {
+     val projection = arrayOf(MediaStore.Images.Media.DATA)
+     val cursor = context.contentResolver.query(uri, projection, null, null, null) ?: return null
+     val column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+     cursor.moveToFirst()
+     val s = cursor.getString(column_index)
+     cursor.close()
+     return s
+   }*/
 }
