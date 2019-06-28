@@ -122,6 +122,7 @@ abstract class BaseFragment : Fragment() {
       .widgetColor(context!!.colorRes(R.color.colorWhite))
       .contentColor(context!!.colorRes(R.color.colorWhite))
       .content(context!!.stringRes(R.string.lowpoly_wait_loader_message))
+      .cancelable(false)
       .progressIndeterminateStyle(false)
       .progress(true, Int.MAX_VALUE)
       .build()

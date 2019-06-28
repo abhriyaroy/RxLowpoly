@@ -9,6 +9,7 @@ import com.zebrostudio.rxlowpoly.showToast
 import com.zebrostudio.rxlowpoly.stringRes
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_example.view.*
 import java.io.File
 
@@ -33,7 +34,8 @@ class BitmapSyncFragment : BaseFragment() {
       getLowpolyInFile()
     } else {
       getLowpolyInUri()
-    }.observeOn(AndroidSchedulers.mainThread())
+    }.subscribeOn(Schedulers.io())
+      .observeOn(AndroidSchedulers.mainThread())
       .doOnSubscribe {
         showMaterialDialog()
       }.subscribe({
