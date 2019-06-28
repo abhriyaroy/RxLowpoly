@@ -1,5 +1,6 @@
 package com.zebrostudio.rxlowpoly.fragments
 
+import android.Manifest
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +14,8 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.zebrostudio.rxlowpoly.*
 import kotlinx.android.synthetic.main.fragment_bitmap_async.view.*
 import java.io.File
+
+private const val REQUEST_CODE = 1000
 
 abstract class BaseFragment : Fragment() {
   internal lateinit var materialDialog: MaterialDialog
@@ -114,5 +117,14 @@ abstract class BaseFragment : Fragment() {
       .progress(true, Int.MAX_VALUE)
       .build()
     materialDialog.show()
+  }
+
+  internal fun requestPermission() {
+    requestPermissions(
+      arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+      ), REQUEST_CODE
+    )
   }
 }
