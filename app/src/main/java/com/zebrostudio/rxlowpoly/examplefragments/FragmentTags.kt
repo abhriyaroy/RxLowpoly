@@ -1,4 +1,4 @@
-package com.zebrostudio.rxlowpoly.fragments
+package com.zebrostudio.rxlowpoly.examplefragments
 
 enum class FragmentTags(val tag: String) {
   BITMAPASYNC("bitmapasync"),

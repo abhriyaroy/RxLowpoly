@@ -1,8 +1,8 @@
-package com.zebrostudio.rxlowpoly.fragments
+package com.zebrostudio.rxlowpoly.examplefragments
 
 import android.view.View
 import com.zebrostudio.rxlowpoly.R
-import kotlinx.android.synthetic.main.fragment_bitmap_async.view.*
+import kotlinx.android.synthetic.main.fragment_example.view.*
 
 class BitmapSyncFragment : BaseFragment() {
   override fun configureView(view: View) {

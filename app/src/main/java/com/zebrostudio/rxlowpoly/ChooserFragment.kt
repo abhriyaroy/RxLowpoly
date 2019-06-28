@@ -1,4 +1,4 @@
-package com.zebrostudio.rxlowpoly.fragments
+package com.zebrostudio.rxlowpoly
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.zebrostudio.rxlowpoly.MainActivity
-import com.zebrostudio.rxlowpoly.R
-import com.zebrostudio.rxlowpoly.fragments.FragmentTags.BITMAPASYNC
+import com.zebrostudio.rxlowpoly.examplefragments.*
+import com.zebrostudio.rxlowpoly.examplefragments.FragmentTags.*
 import kotlinx.android.synthetic.main.fragment_chooser.*
 import kotlinx.android.synthetic.main.fragment_chooser.view.*
 
@@ -29,7 +28,28 @@ class ChooserFragment : Fragment() {
 
   private fun setupClickListeners() {
     bitmapAsyncButton.setOnClickListener {
-      showFragment(BitmapAsyncFragment(BITMAPASYNC), BITMAPASYNC.tag)
+      showFragment(BitmapAsyncFragment(), BITMAPASYNC.tag)
+    }
+    bitmapSyncButton.setOnClickListener {
+      showFragment(BitmapSyncFragment(), BITMAPSYNC.tag)
+    }
+    drawableAsyncButton.setOnClickListener {
+      showFragment(DrawableAsyncFragment(), DRAWABLEASYNC.tag)
+    }
+    drawableSyncButton.setOnClickListener {
+      showFragment(DrawableSyncFragment(), DRAWABLESYNC.tag)
+    }
+    fileAsyncButton.setOnClickListener {
+      showFragment(FileAsyncFragment(), FILEASYNC.tag)
+    }
+    fileSyncButton.setOnClickListener {
+      showFragment(FileSyncFragment(), FILESYNC.tag)
+    }
+    uriAsyncButton.setOnClickListener {
+      showFragment(UriAsyncFragment(), URIASYNC.tag)
+    }
+    uriSyncButton.setOnClickListener {
+      showFragment(UriSyncFragment(), URISYNC.tag)
     }
   }
 

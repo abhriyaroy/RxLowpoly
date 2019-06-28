@@ -1,4 +1,4 @@
-package com.zebrostudio.rxlowpoly.fragments
+package com.zebrostudio.rxlowpoly.examplefragments
 
 import android.Manifest
 import android.net.Uri
@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.zebrostudio.rxlowpoly.*
-import kotlinx.android.synthetic.main.fragment_bitmap_async.view.*
+import com.zebrostudio.rxlowpoly.helpers.*
+import kotlinx.android.synthetic.main.fragment_example.view.*
 import java.io.File
 
 private const val REQUEST_CODE = 1000
@@ -21,9 +22,12 @@ abstract class BaseFragment : Fragment() {
   internal lateinit var materialDialog: MaterialDialog
   internal lateinit var file: File
   internal lateinit var uri: Uri
-  internal val permissionChecker: PermissionChecker = PermissionCheckerImpl()
-  internal val bitmapHelper: BitmapHelper = BitmapHelperImpl()
-  internal val storageHelper: StorageHelper = StorageHelperImpl()
+  internal val permissionChecker: PermissionChecker =
+    PermissionCheckerImpl()
+  internal val bitmapHelper: BitmapHelper =
+    BitmapHelperImpl()
+  internal val storageHelper: StorageHelper =
+    StorageHelperImpl()
   internal val qualityList: List<String> =
     mutableListOf("Very High", "High", "Medium", "Low", "Very Low")
   internal var quality: Quality = Quality.VERY_HIGH
@@ -35,7 +39,7 @@ abstract class BaseFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    return inflater.inflate(R.layout.fragment_bitmap_async, container, false)
+    return inflater.inflate(R.layout.fragment_example, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

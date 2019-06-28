@@ -1,4 +1,4 @@
-package com.zebrostudio.rxlowpoly
+package com.zebrostudio.rxlowpoly.helpers
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

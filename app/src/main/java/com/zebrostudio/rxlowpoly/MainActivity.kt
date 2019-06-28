@@ -2,7 +2,6 @@ package com.zebrostudio.rxlowpoly
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.zebrostudio.rxlowpoly.fragments.ChooserFragment
 
 class MainActivity : AppCompatActivity() {
 

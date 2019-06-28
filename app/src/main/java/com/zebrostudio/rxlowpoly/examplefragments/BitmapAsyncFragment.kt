@@ -1,11 +1,11 @@
-package com.zebrostudio.rxlowpoly.fragments
+package com.zebrostudio.rxlowpoly.examplefragments
 
 import android.graphics.Bitmap
 import android.view.View
 import com.zebrostudio.rxlowpoly.R
 import com.zebrostudio.rxlowpoly.RxLowpoly
 import io.reactivex.Single
-import kotlinx.android.synthetic.main.fragment_bitmap_async.view.*
+import kotlinx.android.synthetic.main.fragment_example.view.*
 
 class BitmapAsyncFragment : BaseFragment() {
 

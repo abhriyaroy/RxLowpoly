@@ -1,4 +1,4 @@
-package com.zebrostudio.rxlowpoly
+package com.zebrostudio.rxlowpoly.helpers
 
 import android.Manifest
 import android.content.Context
