@@ -14,7 +14,10 @@ class PermissionCheckerImpl : PermissionChecker {
   override fun isStoragePermissionAvailable(context: Context): Boolean {
     return checkSelfPermission(
       context,
-      Manifest.permission_group.STORAGE
+      Manifest.permission.READ_EXTERNAL_STORAGE
+    ) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(
+      context,
+      Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) == PackageManager.PERMISSION_GRANTED
   }
 }

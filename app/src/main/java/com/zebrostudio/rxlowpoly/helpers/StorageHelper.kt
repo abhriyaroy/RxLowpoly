@@ -13,19 +13,26 @@ interface StorageHelper {
 class StorageHelperImpl : StorageHelper {
   override fun getFileToSaveImage(fileName: String): Single<File> {
     return Single.create {
-      val file =
-        File(Environment.DIRECTORY_PICTURES + File.separator + fileName + "-" + System.currentTimeMillis() + ".png")
-      file.createNewFile()
-      it.onSuccess(file)
+      it.onSuccess(getFile(fileName))
     }
   }
 
   override fun getUriToSaveImage(fileName: String): Single<Uri> {
     return Single.create {
-      val file =
-        File(Environment.DIRECTORY_PICTURES + File.separator + fileName + "-" + System.currentTimeMillis() + ".png")
-      file.createNewFile()
-      it.onSuccess(Uri.fromFile(file))
+      it.onSuccess(Uri.fromFile(getFile(fileName)))
     }
+  }
+
+  private fun getFile(fileName: String): File {
+    val directory =
+      File(Environment.getExternalStorageDirectory().path + File.separator + "RxLowpolyExample")
+    if (!directory.exists()) {
+      directory.mkdirs()
+    }
+    val file = File(directory, fileName + "-" + System.currentTimeMillis() + ".png")
+    if (!file.exists()) {
+      file.createNewFile()
+    }
+    return file
   }
 }

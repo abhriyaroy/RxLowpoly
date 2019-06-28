@@ -1,7 +1,6 @@
 package com.zebrostudio.rxlowpoly.examplefragments
 
 import android.Manifest
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,27 +12,25 @@ import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.zebrostudio.rxlowpoly.*
 import com.zebrostudio.rxlowpoly.helpers.*
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_example.view.*
-import java.io.File
 
+const val SUCCESS_TOAST_MESSAGE = "Wohooo...Lowpoly image has been generated and saved!"
+const val ERROR_TOAST_MESSAGE = "Err..."
 private const val REQUEST_CODE = 1000
 
 abstract class BaseFragment : Fragment() {
   internal lateinit var materialDialog: MaterialDialog
-  internal lateinit var file: File
-  internal lateinit var uri: Uri
-  internal val permissionChecker: PermissionChecker =
-    PermissionCheckerImpl()
-  internal val bitmapHelper: BitmapHelper =
-    BitmapHelperImpl()
-  internal val storageHelper: StorageHelper =
-    StorageHelperImpl()
-  internal val qualityList: List<String> =
-    mutableListOf("Very High", "High", "Medium", "Low", "Very Low")
+  internal val permissionChecker: PermissionChecker = PermissionCheckerImpl()
+  internal val bitmapHelper: BitmapHelper = BitmapHelperImpl()
+  internal val storageHelper: StorageHelper = StorageHelperImpl()
   internal var quality: Quality = Quality.VERY_HIGH
   internal var downScalingFactor = 1f
   internal var maximumWidth = 1024
-  internal var shouldSaveToFile = false
+  internal var shouldSaveToFile = true
+  internal var disposable: Disposable? = null
+  private val qualityList: List<String> =
+    mutableListOf("Very High", "High", "Medium", "Low", "Very Low")
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -52,9 +49,16 @@ abstract class BaseFragment : Fragment() {
     configureView(view)
   }
 
+  override fun onDestroy() {
+    if (disposable?.isDisposed == false) {
+      disposable?.dispose()
+    }
+    super.onDestroy()
+  }
+
   abstract fun configureView(view: View)
 
-  internal fun setupSpinner(view: View) {
+  private fun setupSpinner(view: View) {
     val dataAdapter =
       ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, qualityList)
     view.spinner.adapter = dataAdapter
@@ -75,7 +79,7 @@ abstract class BaseFragment : Fragment() {
     }
   }
 
-  internal fun setupDownScalingFactor(view: View) {
+  private fun setupDownScalingFactor(view: View) {
     with(view.downScalingFactorEditText) {
       setText(downScalingFactor.toString())
       listenToTextChange(onTextChanged = {
@@ -90,7 +94,7 @@ abstract class BaseFragment : Fragment() {
     }
   }
 
-  internal fun setupMaximumWidth(view: View) {
+  private fun setupMaximumWidth(view: View) {
     with(view.maximumWidthEditText) {
       setText(maximumWidth.toString())
       listenToTextChange(onTextChanged = {
@@ -105,18 +109,19 @@ abstract class BaseFragment : Fragment() {
     }
   }
 
-  internal fun setUpRadioGroup(view: View) {
+  private fun setUpRadioGroup(view: View) {
+    view.saveToFile.isChecked = true
     view.radioGroup.setOnCheckedChangeListener { _, checkedId ->
       shouldSaveToFile = checkedId == R.id.saveToFile
     }
   }
 
-  internal fun showMaterialDialog(text: String) {
+  internal fun showMaterialDialog() {
     materialDialog = MaterialDialog.Builder(context!!)
       .backgroundColor(context!!.colorRes(R.color.colorPrimary))
       .widgetColor(context!!.colorRes(R.color.colorWhite))
       .contentColor(context!!.colorRes(R.color.colorWhite))
-      .content(text)
+      .content(context!!.stringRes(R.string.lowpoly_wait_loader_message))
       .progressIndeterminateStyle(false)
       .progress(true, Int.MAX_VALUE)
       .build()

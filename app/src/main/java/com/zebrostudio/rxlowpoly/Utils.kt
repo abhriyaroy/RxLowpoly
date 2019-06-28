@@ -5,13 +5,18 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.View.*
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import com.google.android.material.textfield.TextInputEditText
 
 fun Context.colorRes(@ColorRes id: Int) = resources.getColor(id)
 
-fun Context.stringRes(@StringRes id: Int) = getString(id)
+fun Context.stringRes(@StringRes id: Int) = getString(id)!!
+
+fun Context.showToast(message: String, length: Int = Toast.LENGTH_LONG) {
+  Toast.makeText(this, message, length).show()
+}
 
 fun View.visible() {
   visibility = VISIBLE

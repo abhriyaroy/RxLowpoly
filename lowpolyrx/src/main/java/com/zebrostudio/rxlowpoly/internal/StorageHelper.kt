@@ -36,7 +36,7 @@ class StorageHelperImpl : StorageHelper {
   @Throws(InvalidFileException::class)
   override fun writeBitmap(bitmap: Bitmap, uri: Uri) {
     if (isWritable(uri)) {
-      with(File(uri.toString())) {
+      with(File(uri.path)) {
         writeBitmap(bitmap, this)
       }
     } else {
@@ -52,6 +52,6 @@ class StorageHelperImpl : StorageHelper {
   }
 
   private fun isWritable(uri: Uri): Boolean {
-    return isWritable(File(uri.toString()))
+    return isWritable(File(uri.path))
   }
 }
