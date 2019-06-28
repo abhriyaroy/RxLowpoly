@@ -41,13 +41,13 @@ class RxLowpolyBuilder {
     System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
   }
 
-  fun init(context: Context): RxLowpolyBuilder {
+  internal fun init(context: Context): RxLowpolyBuilder {
     this.context = context
     return this
   }
 
   @CheckResult
-  fun quaity(quality: Quality): RxLowpolyBuilder {
+  fun quality(quality: Quality): RxLowpolyBuilder {
     this.quality = quality
     return this
   }
