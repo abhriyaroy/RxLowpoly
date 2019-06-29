@@ -13,5 +13,11 @@
   <string name="drawable_sync_example_fragment_name">Drawable Sync Example</string>
   <string name="file_sync_example_fragment_name">File Sync Example</string>
   <string name="uri_sync_example_fragment_name">Uri Sync Example</string>
+  <string name="fragment_example_lowpoly_button_text">Convert To Lowpoly</string>
+  <string name="fragment_example_save_to_file_radio_group_text">Save lowpoly to :</string>
+  <string name="fragment_example_save_to_file_radio_button_text">File</string>
+  <string name="fragment_example_save_to_uri_radio_button_text">Uri</string>
+  <string name="fragment_example_downscaling_factor_hint">Downscale Factor</string>
+  <string name="fragment_example_maximum_width_hint">Maximum Width</string>
 
 </resources>

@@ -18,7 +18,8 @@
   <ImageView
     android:id="@+id/imageView"
     android:layout_width="wrap_content"
-    android:layout_height="250dp"
+    android:layout_height="@dimen/fragment_example_imageview_height"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -30,12 +31,9 @@
     android:id="@+id/lowpolyButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
-    android:text="Convert To Lowpoly"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:text="@string/fragment_example_lowpoly_button_text"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.497"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -43,8 +41,7 @@
     android:id="@+id/radioGroup"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
     android:orientation="horizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -54,23 +51,21 @@
       android:id="@+id/header"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginEnd="16dp"
-      android:text="Save lowpoly to :" />
+      android:layout_marginEnd="@dimen/fragment_example_radio_group_spacing"
+      android:text="@string/fragment_example_save_to_file_radio_group_text" />
 
     <RadioButton
       android:id="@+id/saveToFile"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginEnd="8dp"
-      android:layout_weight="1"
-      android:text="File" />
+      android:layout_marginEnd="@dimen/fragment_example_radio_group_spacing"
+      android:text="@string/fragment_example_save_to_file_radio_button_text" />
 
     <RadioButton
       android:id="@+id/saveToUri"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_weight="1"
-      android:text="Uri" />
+      android:text="@string/fragment_example_save_to_uri_radio_button_text" />
 
   </RadioGroup>
 
@@ -78,9 +73,7 @@
     android:id="@+id/spinner"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
@@ -89,10 +82,8 @@
     android:id="@+id/downScalingFactorTextLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
-    android:minWidth="150dp"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/spinner">
@@ -102,9 +93,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:gravity="center_horizontal"
-      android:hint="Downscale Factor"
+      android:hint="@string/fragment_example_downscaling_factor_hint"
       android:inputType="numberDecimal"
-      android:minWidth="150dp"
+      android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
       android:singleLine="true" />
 
   </com.google.android.material.textfield.TextInputLayout>
@@ -115,8 +106,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
-    android:minWidth="150dp"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/downScalingFactorTextLayout">
@@ -126,9 +117,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:gravity="center_horizontal"
-      android:hint="Maximum Width"
+      android:hint="@string/fragment_example_maximum_width_hint"
       android:inputType="number"
-      android:minWidth="150dp"
+      android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
       android:singleLine="true" />
 
   </com.google.android.material.textfield.TextInputLayout>

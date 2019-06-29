@@ -2,4 +2,8 @@
 <resources>
   <dimen name="fragment_chooser_button_width">240dp</dimen>
   <dimen name="fragment_chooser_button_margin_top">16dp</dimen>
+  <dimen name="fragment_example_widget_margin_top">16dp</dimen>
+  <dimen name="fragment_example_imageview_height">250dp</dimen>
+  <dimen name="fragment_example_radio_group_spacing">8dp</dimen>
+  <dimen name="fragment_example_text_input_layout_minimum_width">150dp</dimen>
 </resources>
