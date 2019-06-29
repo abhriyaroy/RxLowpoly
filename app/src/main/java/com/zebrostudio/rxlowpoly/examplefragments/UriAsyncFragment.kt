@@ -14,6 +14,8 @@ import java.io.File
 private const val SAVE_FILE_NAME = "UriAsyncExample"
 private const val CHOOSE_URI_BUTTON_TEXT = "CHOOSE IMAGE URI"
 private const val CONVERT_TO_LOWPOLY_TEXT = "CONVERT TO LOWPOLY"
+private const val URI_IMPORTED_SUCCESS_MESSAGE = "Uri imported! Please click on convert to lowpoly"
+private const val URI_NOT_IMPORTED_ERROR_MESSAGE = "Uri couldn't be imported! Please choose a valid uri to proceed"
 
 class UriAsyncFragment : BaseFragment() {
 
@@ -45,9 +47,9 @@ class UriAsyncFragment : BaseFragment() {
         uri = it
         enableAllOperations(view)
         view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
-        context!!.showToast("Uri imported! Please click on convert to lowpoly")
+        context!!.showToast(URI_IMPORTED_SUCCESS_MESSAGE)
       }, {
-        context!!.showToast("Please choose a file to proceed")
+        context!!.showToast(URI_NOT_IMPORTED_ERROR_MESSAGE)
       })
   }
 

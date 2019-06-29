@@ -53,19 +53,11 @@ class RxLowpolyBuilder {
   }
 
   @CheckResult
-  fun overrideScaling(downScalingFactor: Float): RxLowpolyBuilder {
-    this.downScalingFactor = Math.abs(downScalingFactor)
-    return this
-  }
-
-  @CheckResult
-  fun overrideScaling(maxWidth: Int): RxLowpolyBuilder {
-    this.maxWidth = Math.abs(maxWidth)
-    return this
-  }
-
-  @CheckResult
-  fun overrideScaling(downScalingFactor: Float, maxWidth: Int): RxLowpolyBuilder {
+  @JvmOverloads
+  fun overrideScaling(
+    downScalingFactor: Float = this.downScalingFactor,
+    maxWidth: Int = this.maxWidth
+  ): RxLowpolyBuilder {
     this.downScalingFactor = Math.abs(downScalingFactor)
     this.maxWidth = Math.abs(maxWidth)
     return this
@@ -172,7 +164,7 @@ class RxLowpolyBuilder {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(bitmap, outputFile)
     } else {
-      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE )
+      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE)
     }
   }
 
@@ -180,7 +172,7 @@ class RxLowpolyBuilder {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(context, bitmap, outputUri)
     } else {
-      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE )
+      throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE)
     }
   }
 

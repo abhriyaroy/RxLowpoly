@@ -28,28 +28,28 @@ class ChooserFragment : Fragment() {
 
   private fun setupClickListeners() {
     bitmapAsyncButton.setOnClickListener {
-      showFragment(BitmapAsyncFragment(), BITMAPASYNC.tag)
+      showFragment(BitmapAsyncFragment(), BITMAP_ASYNC.tag)
     }
     bitmapSyncButton.setOnClickListener {
-      showFragment(BitmapSyncFragment(), BITMAPSYNC.tag)
+      showFragment(BitmapSyncFragment(), BITMAP_SYNC.tag)
     }
     drawableAsyncButton.setOnClickListener {
-      showFragment(DrawableAsyncFragment(), DRAWABLEASYNC.tag)
+      showFragment(DrawableAsyncFragment(), DRAWABLE_ASYNC.tag)
     }
     drawableSyncButton.setOnClickListener {
-      showFragment(DrawableSyncFragment(), DRAWABLESYNC.tag)
+      showFragment(DrawableSyncFragment(), DRAWABLE_SYNC.tag)
     }
     fileAsyncButton.setOnClickListener {
-      showFragment(FileAsyncFragment(), FILEASYNC.tag)
+      showFragment(FileAsyncFragment(), FILE_ASYNC.tag)
     }
     fileSyncButton.setOnClickListener {
-      showFragment(FileSyncFragment(), FILESYNC.tag)
+      showFragment(FileSyncFragment(), FILE_SYNC.tag)
     }
     uriAsyncButton.setOnClickListener {
-      showFragment(UriAsyncFragment(), URIASYNC.tag)
+      showFragment(UriAsyncFragment(), URI_ASYNC.tag)
     }
     uriSyncButton.setOnClickListener {
-      showFragment(UriSyncFragment(), URISYNC.tag)
+      showFragment(UriSyncFragment(), URI_SYNC.tag)
     }
   }
 

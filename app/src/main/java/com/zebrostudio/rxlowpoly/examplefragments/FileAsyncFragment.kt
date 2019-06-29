@@ -15,6 +15,8 @@ import java.io.File
 private const val SAVE_FILE_NAME = "FileAsyncExample"
 private const val CHOOSE_FILE_BUTTON_TEXT = "CHOOSE IMAGE FILE"
 private const val CONVERT_TO_LOWPOLY_TEXT = "CONVERT TO LOWPOLY"
+private const val FILE_IMPORTED_SUCCESS_MESSAGE = "File imported! Please click on convert to lowpoly"
+private const val FILE_NOT_IMPORTED_ERROR_MESSAGE = "File couldn't be imported! Please choose a file to proceed"
 
 class FileAsyncFragment : BaseFragment() {
 
@@ -46,11 +48,11 @@ class FileAsyncFragment : BaseFragment() {
         file = it
         enableAllOperations(view)
         view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
-        context!!.showToast("File imported! Please click on convert to lowpoly")
+        context!!.showToast(FILE_IMPORTED_SUCCESS_MESSAGE)
       }, {
         println(it.message)
         Log.e("error", it.printStackTrace().toString())
-        context!!.showToast("Please choose a file to proceed")
+        context!!.showToast(FILE_NOT_IMPORTED_ERROR_MESSAGE)
       })
   }
 

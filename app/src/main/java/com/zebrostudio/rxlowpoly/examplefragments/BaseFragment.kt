@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_example.view.*
 const val SUCCESS_TOAST_MESSAGE = "Wohooo...Lowpoly image has been generated and saved!"
 const val ERROR_TOAST_MESSAGE = "Err..."
 private const val REQUEST_CODE = 1000
+private const val DOWN_SCALING_FACTOR_ERROR_MESSAGE = "Please enter a valid float number"
+private const val MAX_WIDTH_ERROR_MESSAGE = "Please enter an integer"
 
 abstract class BaseFragment : Fragment() {
   internal lateinit var materialDialog: MaterialDialog
@@ -88,7 +90,7 @@ abstract class BaseFragment : Fragment() {
           val value: Float = it.toString().toFloat()
           downScalingFactor = value
         } catch (exception: NumberFormatException) {
-          view.downScalingFactorTextLayout.error = "Please enter a valid float number"
+          view.downScalingFactorTextLayout.error = DOWN_SCALING_FACTOR_ERROR_MESSAGE
         }
       })
     }
@@ -103,7 +105,7 @@ abstract class BaseFragment : Fragment() {
           val value: Int = it.toString().toInt()
           maximumWidth = value
         } catch (exception: NumberFormatException) {
-          view.maximumWidthTextLayout.error = "Please enter an integer"
+          view.maximumWidthTextLayout.error = MAX_WIDTH_ERROR_MESSAGE
         }
       })
     }

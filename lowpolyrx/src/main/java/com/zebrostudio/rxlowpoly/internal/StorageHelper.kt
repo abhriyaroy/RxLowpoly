@@ -9,6 +9,9 @@ import com.zebrostudio.rxlowpoly.internal.exceptions.InvalidFileException
 import java.io.File
 import java.io.FileOutputStream
 
+private const val INVALID_FILE_EXCEPTION_MESSAGE = "File is not writable"
+private const val INVALID_URI_EXCEPTION_MESSAGE = "Uri is not writable"
+
 interface StorageHelper {
   fun isReadable(file: File): Boolean
   fun writeBitmap(bitmap: Bitmap, file: File)
@@ -32,7 +35,7 @@ class StorageHelperImpl : StorageHelper {
         close()
       }
     } else {
-      throw InvalidFileException("File is not writable")
+      throw InvalidFileException(INVALID_FILE_EXCEPTION_MESSAGE)
     }
   }
 
@@ -43,7 +46,7 @@ class StorageHelperImpl : StorageHelper {
         writeBitmap(bitmap, this)
       }
     } else {
-      throw InvalidFileException("Uri is not writable")
+      throw InvalidFileException(INVALID_URI_EXCEPTION_MESSAGE)
     }
   }
 
@@ -75,7 +78,7 @@ class StorageHelperImpl : StorageHelper {
 
       return s
     } catch (npe: NullPointerException) {
-      throw InvalidFileException("Uri is not writable")
+      throw InvalidFileException(INVALID_URI_EXCEPTION_MESSAGE)
     } finally {
       cursor?.close()
     }

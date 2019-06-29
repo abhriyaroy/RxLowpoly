@@ -1,12 +1,14 @@
 package com.zebrostudio.rxlowpoly.helpers
 
 import android.content.Context
+import android.database.Cursor
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import androidx.fragment.app.FragmentManager
 import com.mlsdev.rximagepicker.RxImagePicker
 import com.mlsdev.rximagepicker.Sources
+import com.zebrostudio.rxlowpoly.internal.exceptions.InvalidFileException
 import io.reactivex.Single
 import java.io.File
 
@@ -40,10 +42,7 @@ class StorageHelperImpl : StorageHelper {
   ): Single<File> {
     return Single.fromObservable(RxImagePicker.with(supportFragmentManager).requestImage(Sources.GALLERY))
       .flatMap {
-        val imageFile = File("/storage/emulated/0/Download/images.jpeg")
-        println("Image file ${imageFile.exists()}")
-        println("Image file path ${Uri.fromFile(imageFile).path}")
-        Single.just(File(getPath(context, Uri.fromFile(imageFile))))
+        Single.just(File(getPath(context, it)))
       }
   }
 
@@ -66,15 +65,24 @@ class StorageHelperImpl : StorageHelper {
 
   @Throws(NullPointerException::class)
   private fun getPath(context: Context, uri: Uri): String? {
-    if (File(uri.path).exists()) {
+    val file = File(uri.path)
+    if (file.exists()) {
       return uri.path
     }
-    val projection = arrayOf(MediaStore.Images.Media.DATA)
-    val cursor = context.contentResolver.query(uri, projection, null, null, null)
-    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-    cursor.moveToFirst()
-    val path = cursor.getString(columnIndex)
-    cursor.close()
-    return path
+    var cursor: Cursor? = null
+    try {
+      val projection = arrayOf(MediaStore.Images.Media.DATA)
+      cursor = context.contentResolver
+        .query(uri, projection, null, null, null) ?: return null
+      val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+      cursor.moveToFirst()
+      val s = cursor.getString(columnIndex)
+
+      return s
+    } catch (npe: NullPointerException) {
+      throw InvalidFileException("Uri is not writable")
+    } finally {
+      cursor?.close()
+    }
   }
 }
