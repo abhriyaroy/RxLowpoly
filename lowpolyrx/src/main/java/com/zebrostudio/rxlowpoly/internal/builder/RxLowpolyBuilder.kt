@@ -31,7 +31,7 @@ class RxLowpolyBuilder {
   private lateinit var outputFile: File
   private lateinit var outputUri: Uri
   private var inputDrawableId: Int = 0
-  private var quality: Quality = Quality.VERY_HIGH
+  private var quality: Quality = Quality.HIGH
   private var maxWidth: Int = 1024
   private var downScalingFactor = 1f
   private var shouldSaveOutputToFile = false
@@ -53,7 +53,22 @@ class RxLowpolyBuilder {
   }
 
   @CheckResult
-  @JvmOverloads
+  fun overrideScaling(
+    downScalingFactor: Float
+  ): RxLowpolyBuilder {
+    this.downScalingFactor = Math.abs(downScalingFactor)
+    return this
+  }
+
+  @CheckResult
+  fun overrideScaling(
+    maxWidth: Int
+  ): RxLowpolyBuilder {
+    this.maxWidth = Math.abs(maxWidth)
+    return this
+  }
+
+  @CheckResult
   fun overrideScaling(
     downScalingFactor: Float = this.downScalingFactor,
     maxWidth: Int = this.maxWidth

@@ -7,6 +7,7 @@ import com.zebrostudio.rxlowpoly.internal.exceptions.WrongContextException
 
 object RxLowpoly {
 
+  @JvmStatic
   @Throws(WrongContextException::class)
   fun with(applicationContext: Context): RxLowpolyBuilder {
     if (applicationContext is Application) {

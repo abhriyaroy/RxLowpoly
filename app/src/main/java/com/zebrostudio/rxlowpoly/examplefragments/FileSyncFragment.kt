@@ -3,7 +3,6 @@ package com.zebrostudio.rxlowpoly.examplefragments
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import com.zebrostudio.rxlowpoly.R
 import com.zebrostudio.rxlowpoly.RxLowpoly
@@ -54,8 +53,6 @@ class FileSyncFragment : BaseFragment() {
         view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
         context!!.showToast(FILE_IMPORTED_SUCCESS_MESSAGE)
       }, {
-        println(it.message)
-        Log.e("error", it.printStackTrace().toString())
         context!!.showToast(FILE_NOT_IMPORTED_ERROR_MESSAGE)
       })
   }
