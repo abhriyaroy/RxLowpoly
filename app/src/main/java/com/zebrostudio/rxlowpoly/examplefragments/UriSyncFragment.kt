@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
-import com.zebrostudio.rxlowpoly.*
+import com.zebrostudio.rxlowpoly.R
+import com.zebrostudio.rxlowpoly.RxLowpoly
+import com.zebrostudio.rxlowpoly.showToast
+import com.zebrostudio.rxlowpoly.stringRes
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -119,19 +122,4 @@ class UriSyncFragment : BaseFragment() {
     }
   }
 
-  private fun enableAllOperations(view: View) {
-    view.saveToFile.enable()
-    view.saveToUri.enable()
-    view.spinner.enable()
-    view.downScalingFactorTextLayout.enable()
-    view.maximumWidthTextLayout.enable()
-  }
-
-  private fun disableAllOperations(view: View) {
-    view.saveToFile.disable()
-    view.saveToUri.disable()
-    view.spinner.disable()
-    view.downScalingFactorTextLayout.disable()
-    view.maximumWidthTextLayout.disable()
-  }
 }

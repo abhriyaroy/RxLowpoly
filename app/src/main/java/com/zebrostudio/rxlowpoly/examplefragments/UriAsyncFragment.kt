@@ -4,7 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
-import com.zebrostudio.rxlowpoly.*
+import com.zebrostudio.rxlowpoly.R
+import com.zebrostudio.rxlowpoly.RxLowpoly
+import com.zebrostudio.rxlowpoly.showToast
+import com.zebrostudio.rxlowpoly.stringRes
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +18,8 @@ private const val SAVE_FILE_NAME = "UriAsyncExample"
 private const val CHOOSE_URI_BUTTON_TEXT = "CHOOSE IMAGE URI"
 private const val CONVERT_TO_LOWPOLY_TEXT = "CONVERT TO LOWPOLY"
 private const val URI_IMPORTED_SUCCESS_MESSAGE = "Uri imported! Please click on convert to lowpoly"
-private const val URI_NOT_IMPORTED_ERROR_MESSAGE = "Uri couldn't be imported! Please choose a valid uri to proceed"
+private const val URI_NOT_IMPORTED_ERROR_MESSAGE =
+  "Uri couldn't be imported! Please choose a valid uri to proceed"
 
 class UriAsyncFragment : BaseFragment() {
 
@@ -109,21 +113,5 @@ class UriAsyncFragment : BaseFragment() {
       .quality(quality)
       .output(outputUri)
       .generateAsync()
-  }
-
-  private fun enableAllOperations(view: View) {
-    view.saveToFile.enable()
-    view.saveToUri.enable()
-    view.spinner.enable()
-    view.downScalingFactorTextLayout.enable()
-    view.maximumWidthTextLayout.enable()
-  }
-
-  private fun disableAllOperations(view: View) {
-    view.saveToFile.disable()
-    view.saveToUri.disable()
-    view.spinner.disable()
-    view.downScalingFactorTextLayout.disable()
-    view.maximumWidthTextLayout.disable()
   }
 }

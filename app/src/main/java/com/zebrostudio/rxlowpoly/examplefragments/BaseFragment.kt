@@ -139,4 +139,20 @@ abstract class BaseFragment : Fragment() {
       ), REQUEST_CODE
     )
   }
+
+  internal fun enableAllOperations(view: View) {
+    view.saveToFile.enable()
+    view.saveToUri.enable()
+    view.spinner.enable()
+    view.downScalingFactorTextLayout.enable()
+    view.maximumWidthTextLayout.enable()
+  }
+
+  internal fun disableAllOperations(view: View) {
+    view.saveToFile.disable()
+    view.saveToUri.disable()
+    view.spinner.disable()
+    view.downScalingFactorTextLayout.disable()
+    view.maximumWidthTextLayout.disable()
+  }
 }

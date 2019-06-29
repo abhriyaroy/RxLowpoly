@@ -1,9 +1,7 @@
 <resources>
   <string name="app_name">LowpolyRxExample</string>
-  <string name="lowpoly_wait_loader_message">Generating lowpoly image. Please wait...</string>
+  <string name="lowpoly_wait_loader_message">Generating lowpoly image. Please wait…</string>
   <string name="lowpoly_generation_error_message">Something went wrong</string>
-  <string name="convert_button_text">CONVERT</string>
-  <string name="choose_image_button_text">CHOOSE IMAGE</string>
 
   <string name="bitmap_async_example_fragment_name">Bitmap Async Example</string>
   <string name="drawable_async_example_fragment_name">Drawable Async Example</string>
@@ -13,6 +11,7 @@
   <string name="drawable_sync_example_fragment_name">Drawable Sync Example</string>
   <string name="file_sync_example_fragment_name">File Sync Example</string>
   <string name="uri_sync_example_fragment_name">Uri Sync Example</string>
+
   <string name="fragment_example_lowpoly_button_text">Convert To Lowpoly</string>
   <string name="fragment_example_save_to_file_radio_group_text">Save lowpoly to :</string>
   <string name="fragment_example_save_to_file_radio_button_text">File</string>

@@ -53,43 +53,43 @@ int threshold = 40;
 void get_triangles(const int *pixels, int size, int w, int h, float points,
                    int *result, int *size_result) {
 
-    Point *collectors = (Point *) malloc((size / 2 + 1) * sizeof(Point));
-    int size_collectors = 0;
+  Point *collectors = (Point *) malloc((size / 2 + 1) * sizeof(Point));
+  int size_collectors = 0;
 
-    sobel(pixels, w, h, &call, collectors, &size_collectors);
+  sobel(pixels, w, h, &call, collectors, &size_collectors);
 
-    Point *vertices = (Point *) malloc((size_collectors + 4) * sizeof(Point));
-    int size_vertices = 0;
+  Point *vertices = (Point *) malloc((size_collectors + 4) * sizeof(Point));
+  int size_vertices = 0;
 
-    dilution(collectors, size_collectors, w, h, points, vertices, &size_vertices);
+  dilution(collectors, size_collectors, w, h, points, vertices, &size_vertices);
 
-    free(collectors);
+  free(collectors);
 
-    if (points > 1.0f) {
-        dedup(vertices, &size_vertices);
-    }
-    PNode *triangles = (PNode *) malloc(sizeof(PNode));
-    triangles->index = -1;
-    triangles->next = NULL;
+  if (points > 1.0f) {
+    dedup(vertices, &size_vertices);
+  }
+  PNode *triangles = (PNode *) malloc(sizeof(PNode));
+  triangles->index = -1;
+  triangles->next = NULL;
 
-    triangulate(vertices, size_vertices, w, h, triangles);
+  triangulate(vertices, size_vertices, w, h, triangles);
 
-    *size_result = 0;
-    for (PNode *p = triangles->next; p != NULL;) {
-        Point *pi = &(vertices[p->index]);
-        result[(*size_result)++] = pi->x;
-        result[(*size_result)++] = pi->y;
-        p = p->next;
-    }
-    free(vertices);
+  *size_result = 0;
+  for (PNode *p = triangles->next; p != NULL;) {
+    Point *pi = &(vertices[p->index]);
+    result[(*size_result)++] = pi->x;
+    result[(*size_result)++] = pi->y;
+    p = p->next;
+  }
+  free(vertices);
 
-    pnode_free(triangles);
-    free(triangles);
-    triangles = NULL;
+  pnode_free(triangles);
+  free(triangles);
+  triangles = NULL;
 }
 
 bool call(int magnitude, int x, int y) {
-    return magnitude > threshold;
+  return magnitude > threshold;
 }
 
 

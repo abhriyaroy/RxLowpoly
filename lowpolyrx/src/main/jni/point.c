@@ -21,13 +21,13 @@
 #include "point.h"
 
 bool point_remove(Point *array, int *size, int index) {
-    if (index >= *size) {
-        return false;
-    } else {
-        for (int i = index; i < *size; ++i) {
-            array[i] = array[i + 1];
-        }
-        --(*size);
-        return true;
+  if (index >= *size) {
+    return false;
+  } else {
+    for (int i = index; i < *size; ++i) {
+      array[i] = array[i + 1];
     }
+    --(*size);
+    return true;
+  }
 }
