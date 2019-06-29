@@ -18,6 +18,11 @@ android {
       minifyEnabled false
     }
   }
+  compileOptions {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+  }
+  buildToolsVersion = BUILD_TOOLS_VERSION
 }
 
 dependencies {

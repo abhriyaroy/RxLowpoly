@@ -3,6 +3,7 @@ package com.zebrostudio.rxlowpoly.examplefragments
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import com.zebrostudio.rxlowpoly.*
 import io.reactivex.Single
@@ -38,16 +39,19 @@ class FileAsyncFragment : BaseFragment() {
 
   @SuppressLint("CheckResult")
   private fun getImageFile(view: View) {
-    storageHelper.getInputImageFileSingle(activity!!.supportFragmentManager)
+    storageHelper.getInputImageFileSingle(context!!, activity!!.supportFragmentManager)
       .subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
-      .subscribe { it ->
-        if (it != null) {
-          file = it
-          enableAllOperations(view)
-          view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
-        }
-      }
+      .subscribe({ it ->
+        file = it
+        enableAllOperations(view)
+        view.lowpolyButton.text = CONVERT_TO_LOWPOLY_TEXT
+        context!!.showToast("File imported! Please click on convert to lowpoly")
+      }, {
+        println(it.message)
+        Log.e("error", it.printStackTrace().toString())
+        context!!.showToast("Please choose a file to proceed")
+      })
   }
 
   private fun getLowpolyImage(view: View) {

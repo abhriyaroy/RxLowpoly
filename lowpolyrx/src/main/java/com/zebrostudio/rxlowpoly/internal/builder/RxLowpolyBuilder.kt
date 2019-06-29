@@ -178,7 +178,7 @@ class RxLowpolyBuilder {
 
   private fun saveBitmapToUri(bitmap: Bitmap) {
     if (permissionsManager.hasWriteStoragePermission(context)) {
-      storageHelper.writeBitmap(bitmap, outputUri)
+      storageHelper.writeBitmap(context, bitmap, outputUri)
     } else {
       throw StoragePermissionNotAvailableException(WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE )
     }
