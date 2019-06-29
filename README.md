@@ -7,10 +7,12 @@
 
 ## Table of Contents
  - [Introduction](#introduction)
- - [Samples](#samples)
+ - [Lowpoly Samples](#lowpoly-samples)
  - [Library Details](#library-details)
  - [Installation](#installation)
  - [Usage Examples](#usage-examples)
+ - [Critical Analysis](#critical-analysis)
+ - [Sample App](#sample-app)
  - [How to Contribute](#how-to-contribute)
  - [About the Author](#about-the-author)
  - [License](#license)
@@ -24,7 +26,7 @@
   - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
   - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
-## Samples
+## Lowpoly Samples
 
  Original Image | Lowpoly Image
  -------------- | -------------
@@ -214,6 +216,13 @@ Or using `bitmap` :-
   You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The         default is `pointCount = 8000f`<br>
 
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
+  
+## Critical Analysis
+  
+  
+## Sample App
+
+
 
 ## How to Contribute
 
