@@ -193,7 +193,9 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of `sy
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
   
 ## Critical Analysis
-  
+ 
+Device | Input | Output | Input Source | Output Type | Downscale Factor | Quality | Time Required (in millis) 
+------ | ----- | ------ | ------------ | ----------- | ---------------- | ------- | ------------------------- 
   
 ## Sample App
 
