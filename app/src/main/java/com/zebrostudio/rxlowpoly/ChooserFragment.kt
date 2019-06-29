@@ -1,15 +1,17 @@
 package com.zebrostudio.rxlowpoly
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.zebrostudio.rxlowpoly.examplefragments.*
 import com.zebrostudio.rxlowpoly.helpers.FragmentTags.*
 import kotlinx.android.synthetic.main.fragment_chooser.*
 import kotlinx.android.synthetic.main.fragment_chooser.view.*
+
+private const val REPOSITORY_LINK = "https://github.com/abhriyaroy/RxLowpoly"
 
 class ChooserFragment : Fragment() {
 
@@ -22,8 +24,24 @@ class ChooserFragment : Fragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    (activity as AppCompatActivity).setSupportActionBar(view.toolbar)
+    setUpToolbar(view)
     setupClickListeners()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    inflater?.inflate(R.menu.chooser_fragment_menu, menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    if (item?.itemId == R.id.githubRepoMenuItem) {
+      startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(REPOSITORY_LINK)))
+    }
+    return true
+  }
+
+  private fun setUpToolbar(view: View) {
+    (activity as AppCompatActivity).setSupportActionBar(view.toolbar)
+    setHasOptionsMenu(true)
   }
 
   private fun setupClickListeners() {

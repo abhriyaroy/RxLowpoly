@@ -12,6 +12,8 @@
   <string name="file_sync_example_fragment_name">File Sync Example</string>
   <string name="uri_sync_example_fragment_name">Uri Sync Example</string>
 
+  <string name="fragment_chooser_github_menu_text">Open Github Repo</string>
+
   <string name="fragment_example_lowpoly_button_text">Convert To Lowpoly</string>
   <string name="fragment_example_save_to_file_radio_group_text">Save lowpoly to :</string>
   <string name="fragment_example_save_to_file_radio_button_text">File</string>
