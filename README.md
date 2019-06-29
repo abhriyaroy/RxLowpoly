@@ -217,7 +217,7 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of `sy
  &nbsp;
  <a href="https://angel.co/abhriya-roy?public_profile=1"><img src="https://i.imgur.com/TiwMDMK.png" alt="Angel List" width=40  height=40></a>
  &nbsp;
- <a href="https://play.google.com/store/apps/developer?id=Zebro+Studio"><img src="https://i.imgur.com/UV5QJ4v.png" alt="Angel List" width=45  height=45></a>
+ <a href="https://play.google.com/store/apps/developer?id=Zebro+Studio"><img src="https://i.imgur.com/Rj1IsYI.png" alt="Angel List" width=40  height=40></a>
 
  <br>
 
