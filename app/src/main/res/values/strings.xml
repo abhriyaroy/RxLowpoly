@@ -13,4 +13,5 @@
   <string name="drawable_sync_example_fragment_name">Drawable Sync Example</string>
   <string name="file_sync_example_fragment_name">File Sync Example</string>
   <string name="uri_sync_example_fragment_name">Uri Sync Example</string>
+
 </resources>
