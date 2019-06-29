@@ -1,6 +1,6 @@
-<p align="center"><img src="https://i.imgur.com/0q5xcQ0.jpg"></p>
+<p align="center"><img src="https://i.imgur.com/6PCYQGr.png"></p>
 
-# LowpolyRx
+# RxLowpoly
 
  An android library to convert your dull normal images into awesome ones with a crystallized lowpoly effect.
  <br>
@@ -33,7 +33,7 @@
  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg"  alt="Lowpoly" width=400 height=250>
 							  
-## App Details
+## Library Details
 
  - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August      2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
