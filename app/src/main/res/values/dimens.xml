@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="fragment_chooser_button_width">240dp</dimen>
+  <dimen name="fragment_chooser_button_margin_top">16dp</dimen>
+</resources>
