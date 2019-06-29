@@ -128,7 +128,7 @@ We can also set a quality for the lowpoly image :-
 	RxLowpoly.with(applicationContext)
       	.input(inputUri)
       	.overrideScaling(downScalingFactor)
-      	.quality(quality) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
+      	.quality(Quality.HIGH) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
       	.generateAsync()
 	
 We can also save the lowpoly image to a file :-
@@ -136,11 +136,11 @@ We can also save the lowpoly image to a file :-
 	RxLowpoly.with(activity!!.applicationContext)
       	.input(inputUri)
       	.overrideScaling(downScalingFactor)
-      	.quality(quality)
+      	.quality(Quality.HIGH)
       	.output(outputUri) // An uri of a file is also supported as an output destination
       	.generateAsync()
 	
-All  `asynchrnous` operation is done on the `io scheduler`.
+All  `asynchronous` operation is done on the `io scheduler`.
 
 ### Synchronous call 
 
@@ -152,7 +152,7 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of `sy
   
 ## Critical Analysis
 
-The following tests have been performed on a Xiaomi Redmi Note 5 Pro with 6 gb Ram. <br>
+The following tests have been performed on a` Xiaomi Redmi Note 5 Pro with 6 gb Ram`. <br>
 
  
 Input | Output | Input Source | Output Type | Quality | Time Required (in millis) 
