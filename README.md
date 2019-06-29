@@ -94,7 +94,7 @@
 
 ## Usage Examples
 
-### Asynchronous call - <br>
+### Asynchronous call 
 
 The most simple use case is :-
 
@@ -142,51 +142,9 @@ We can also save the lowpoly image to a file :-
 	
 All  `asynchrnous` operation is done on the `io scheduler`.
 
-### Synchronous call :-
+### Synchronous call 
 
-The most simple use case is :-
-
-	RxLowpoly.with(applicationContext)
-      	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
-      	.generate()
-
-When we need to downscale the image :-
-
-	RxLowpoly.with(applicationContext)
-      	.input(bitmap)
-      	.overrideScaling(downScalingFactor)
-      	.generate()
-	
-When we need to set a maximum width for the image :-
-	
-	RxLowpoly.with(applicationContext)
-      	.input(bitmap)
-      	.overrideScaling(maxWidth)
-      	.generate()
-	
-Or when we need to downscale and apply a maximum width as well :-
-
-	RxLowpoly.with(applicationContext)
-      	.input(bitmap)
-      	.overrideScaling(downScalingFactor, maxWidth)
-      	.generate()
-	
-We can also set a quality for the lowpoly image :- 
-
-	RxLowpoly.with(applicationContext)
-      	.input(inputUri)
-      	.overrideScaling(downScalingFactor)
-      	.quality(quality) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
-      	.generate()
-	
-We can also save the lowpoly image to a file :-
-
-	RxLowpoly.with(activity!!.applicationContext)
-      	.input(inputUri)
-      	.overrideScaling(downScalingFactor)
-      	.quality(quality)
-      	.output(outputUri) // An uri of a file is also supported as an output destination
-      	.generate()
+Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a `synchronous call` with a `lowpoly bitmap` as a result.
 	
 A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
@@ -220,6 +178,8 @@ Input | Output | Input Source | Output Type | Quality | Time Required (in millis
 <img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | File | Very Low | 923
 <img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | File | Very Low | 876
 
+Thus it is evident that when quality is set to `High`, it provides a good trade-off between speed and texture hence the default value of `Quality` is set to `HIGH`.<br>
+Also, we notice that `bitmap` is the fastest input format followed by `Uri`, `File` and `Drawable` respectively.
 
 ## Sample App
 
