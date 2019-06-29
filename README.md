@@ -94,126 +94,101 @@
 
 ## Usage Examples
 
-### Kotlin way - <br>
+### Asynchronous call - <br>
 
-Using `uri` :-
+The most simple use case is :-
 
-	LowPolyRx.generateLowpoly(context, uri)
-		 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe({bitmap ->
-			// Do something with the result bitmap
-		},{
-			// Show some error message
-		})
-		
-Or using `bitmap` :-
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
+      	.generateAsync()
 
-	LowPolyRx.generateLowpoly(originalBitmap)
-		 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe({bitmap ->
-			// Do something with the result bitmap
-		},{
-			// Show some error message
-		})
-		
- Or using `drawable` :-
+When we need to downscale the image :-
 
-	LowPolyRx.generateLowpoly(context, R.drawable.image)
-        	// Observe on thread according to your need
-        	.observeOn(AndroidSchedulers.mainThread())
-        	.subscribe({bitmap ->
-         		 // Do something with the result bitmap
-        	},{
-          		// Show some error message
-        	})
-		
- Or using `file path` :-
-
-	LowPolyRx.generateLowpoly(filePath)
-        	// Observe on thread according to your need
-        	.observeOn(AndroidSchedulers.mainThread())
-        	.subscribe({bitmap ->
-          		// Do something with the result bitmap
-        	},{
-         		 // Show some error message
-        	})
-
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor)
+      	.generateAsync()
 	
-### Java way - <br>
-
-Using `uri` :-
-
-	LowPolyRx.generateLowpoly(context, uri)
-	    	 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-				
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-					
-          		}
-        	});
-		
-Or using `bitmap` :-
-  
-  	 LowPolyRx.generateLowpoly(originalBitmap)
-	    	 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-				
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-					
-          		}
-        	});
-			
- Or using `drawable` :-
-
-	LowPolyRx.generateLowpoly(context, R.drawable.image)
-	    	// Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-			
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
-		
- Or using `file path` :-
-
-	LowPolyRx.generateLowpoly(filePath)
-	    	// Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-					
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
+When we need to set a maximum width for the image :-
 	
- <br>
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(maxWidth)
+      	.generateAsync()
+	
+Or when we need to downscale and apply a maximum width as well :-
 
-  You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The         default is `pointCount = 8000f`<br>
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor, maxWidth)
+      	.generateAsync()
+	
+We can also set a quality for the lowpoly image :- 
+
+	RxLowpoly.with(applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
+      	.generateAsync()
+	
+We can also save the lowpoly image to a file :-
+
+	RxLowpoly.with(activity!!.applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality)
+      	.output(outputUri) // An uri of a file is also supported as an output destination
+      	.generateAsync()
+	
+All  `asynchrnous` operation is done on the `io scheduler`.
+
+### Synchronous call :-
+
+The most simple use case is :-
+
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
+      	.generate()
+
+When we need to downscale the image :-
+
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor)
+      	.generate()
+	
+When we need to set a maximum width for the image :-
+	
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(maxWidth)
+      	.generate()
+	
+Or when we need to downscale and apply a maximum width as well :-
+
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor, maxWidth)
+      	.generate()
+	
+We can also set a quality for the lowpoly image :- 
+
+	RxLowpoly.with(applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
+      	.generate()
+	
+We can also save the lowpoly image to a file :-
+
+	RxLowpoly.with(activity!!.applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality)
+      	.output(outputUri) // An uri of a file is also supported as an output destination
+      	.generate()
+	
+A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
   
@@ -221,7 +196,6 @@ Or using `bitmap` :-
   
   
 ## Sample App
-
 
 
 ## How to Contribute
