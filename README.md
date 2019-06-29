@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/6PCYQGr.png"></p>
+<p align="center"><img src="https://i.imgur.com/mtMoSDX.jpg"></p>
 
 # RxLowpoly
 
@@ -7,10 +7,12 @@
 
 ## Table of Contents
  - [Introduction](#introduction)
- - [Samples](#samples)
+ - [Lowpoly Samples](#lowpoly-samples)
  - [Library Details](#library-details)
  - [Installation](#installation)
  - [Usage Examples](#usage-examples)
+ - [Critical Analysis](#critical-analysis)
+ - [Sample App](#sample-app)
  - [How to Contribute](#how-to-contribute)
  - [About the Author](#about-the-author)
  - [License](#license)
@@ -19,12 +21,12 @@
 
  LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
   - fixing `out of memory` crashes by scaling down the image losslessly before processing.
-  - providing better quality results by using `8000` as the point count by default.
+  - providing better quality results by using `4000` as the point count by default which provides a good trade-off between speed and time.
   - the higher point count leads to a longer execution period, but it is significantly reduced by `scaling down the image` before processing.
-  - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
+  - provides wider choice of input sources like `bitmap`, `file`, `uri` or `drawable resource`.
   - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
-## Samples
+## Lowpoly Samples
 
  Original Image | Lowpoly Image
  -------------- | -------------
@@ -92,128 +94,95 @@
 
 ## Usage Examples
 
-### Kotlin way - <br>
+### Asynchronous call 
 
-Using `uri` :-
+The most simple use case is :-
 
-	LowPolyRx.generateLowpoly(context, uri)
-		 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe({bitmap ->
-			// Do something with the result bitmap
-		},{
-			// Show some error message
-		})
-		
-Or using `bitmap` :-
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
+      	.generateAsync()
 
-	LowPolyRx.generateLowpoly(originalBitmap)
-		 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe({bitmap ->
-			// Do something with the result bitmap
-		},{
-			// Show some error message
-		})
-		
- Or using `drawable` :-
+When we need to downscale the image :-
 
-	LowPolyRx.generateLowpoly(context, R.drawable.image)
-        	// Observe on thread according to your need
-        	.observeOn(AndroidSchedulers.mainThread())
-        	.subscribe({bitmap ->
-         		 // Do something with the result bitmap
-        	},{
-          		// Show some error message
-        	})
-		
- Or using `file path` :-
-
-	LowPolyRx.generateLowpoly(filePath)
-        	// Observe on thread according to your need
-        	.observeOn(AndroidSchedulers.mainThread())
-        	.subscribe({bitmap ->
-          		// Do something with the result bitmap
-        	},{
-         		 // Show some error message
-        	})
-
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor)
+      	.generateAsync()
 	
-### Java way - <br>
-
-Using `uri` :-
-
-	LowPolyRx.generateLowpoly(context, uri)
-	    	 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-				
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-					
-          		}
-        	});
-		
-Or using `bitmap` :-
-  
-  	 LowPolyRx.generateLowpoly(originalBitmap)
-	    	 // Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-				
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-					
-          		}
-        	});
-			
- Or using `drawable` :-
-
-	LowPolyRx.generateLowpoly(context, R.drawable.image)
-	    	// Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-			
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
-		
- Or using `file path` :-
-
-	LowPolyRx.generateLowpoly(filePath)
-	    	// Observe on thread according to your need
-      	.observeOn(AndroidSchedulers.mainThread())
-		.subscribe(new Consumer<Bitmap>() {
-          		@Override public void accept(Bitmap bitmap) {
-				// Do something with the result bitmap
-					
-          		}
-        	}, new Consumer<Throwable>() {
-          		@Override public void accept(Throwable throwable) {
-            			// Show some error message
-				
-          		}
-        	});
+When we need to set a maximum width for the image :-
 	
- <br>
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(maxWidth)
+      	.generateAsync()
+	
+Or when we need to downscale and apply a maximum width as well :-
 
-  You can additionally supply `pointCount` as an optional float argument to each of the above methods depending on your needs. The         default is `pointCount = 8000f`<br>
+	RxLowpoly.with(applicationContext)
+      	.input(bitmap)
+      	.overrideScaling(downScalingFactor, maxWidth)
+      	.generateAsync()
+	
+We can also set a quality for the lowpoly image :- 
+
+	RxLowpoly.with(applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
+      	.generateAsync()
+	
+We can also save the lowpoly image to a file :-
+
+	RxLowpoly.with(activity!!.applicationContext)
+      	.input(inputUri)
+      	.overrideScaling(downScalingFactor)
+      	.quality(quality)
+      	.output(outputUri) // An uri of a file is also supported as an output destination
+      	.generateAsync()
+	
+All  `asynchrnous` operation is done on the `io scheduler`.
+
+### Synchronous call 
+
+Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a `synchronous call` with a lowpoly `bitmap` as a result.
+	
+A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
+  
+## Critical Analysis
+
+The following tests have been performed on a Xiaomi Redmi Note 5 Pro with 6 gb Ram. <br>
+
+ 
+Input | Output | Input Source | Output Type | Quality | Time Required (in millis) 
+----- | ------ | ------------ | ----------- | ------- | -------------------------
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | File | Very High | 15813
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | File | Very High | 16275
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | File | Very High | 15987
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/cajVv2j.png" width=360 height=200> | Uri | File | Very High | 15931
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/OMSV6Ks.png" width=360 height=200> | Bitmap | File | High | 4547
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/9sThhqj.png" width=360 height=200> | Drawable | File | High | 5088
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/mlSfBBD.png" width=360 height=200> | File | File | High | 4734
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/HvBU1en.png" width=360 height=200> | Uri | File | High | 4612
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/KDMzSwy.png" width=360 height=200> | Bitmap | File | Medium | 1113
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/wz1aAhd.png" width=360 height=200> | Drawable | File | Medium | 1672
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/20YfeVF.png" width=360 height=200> | File | File | Medium | 1297
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/7tYMYcZ.png" width=360 height=200> | Uri | File | Medium | 1152
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/TeYASKY.png" width=360 height=200> | Bitmap | File | Low | 918
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/BXUCBJB.png" width=360 height=200> | Drawable | File | Low | 1496
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/FXmsHa5.png" width=360 height=200> | File | File | Low | 1091
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/muLCMQX.png" width=360 height=200> | Uri | File | Low | 996
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/R3p7FOn.png" width=360 height=200> | Bitmap | File | Very Low | 850
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/lei9Yzx.png" width=360 height=200> | Drawable | File | Very Low | 1024
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | File | Very Low | 923
+<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | File | Very Low | 876
+
+Thus it is evident that when quality is set to `High`, it provides a good trade-off between speed and texture hence the default value of `Quality` is set to `HIGH`.<br>
+Also, we notice that `bitmap` is the fastest input format followed by `Uri`, `File` and `Drawable` respectively.
+
+## Sample App
+
 
 ## How to Contribute
 
@@ -232,7 +201,9 @@ Or using `bitmap` :-
  &nbsp;
  <a href="https://stackoverflow.com/users/6197251/abhriya-roy"><img src="https://i.imgur.com/JakJaHP.png" alt="Stack Overflow" width=40  height=40></a> 
  &nbsp;
- <a href="https://angel.co/abhriya-roy?public_profile=1"><img src="https://i.imgur.com/TiwMDMK.pngg" alt="Angel List" width=40  height=40></a>
+ <a href="https://angel.co/abhriya-roy?public_profile=1"><img src="https://i.imgur.com/TiwMDMK.png" alt="Angel List" width=40  height=40></a>
+ &nbsp;
+ <a href="https://play.google.com/store/apps/developer?id=Zebro+Studio"><img src="https://i.imgur.com/Rj1IsYI.png" alt="Angel List" width=40  height=40></a>
 
  <br>
 
