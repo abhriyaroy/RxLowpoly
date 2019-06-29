@@ -21,9 +21,9 @@
 
  LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
   - fixing `out of memory` crashes by scaling down the image losslessly before processing.
-  - providing better quality results by using `8000` as the point count by default.
+  - providing better quality results by using `4000` as the point count by default which provides a good trade-off between speed and time.
   - the higher point count leads to a longer execution period, but it is significantly reduced by `scaling down the image` before processing.
-  - provides wider choice of input sources like `uri`, `bitmap`, `file path` or `drawable resource`.
+  - provides wider choice of input sources like `bitmap`, `file`, `uri` or `drawable resource`.
   - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
 
 ## Lowpoly Samples
@@ -144,7 +144,7 @@ All  `asynchrnous` operation is done on the `io scheduler`.
 
 ### Synchronous call 
 
-Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a `synchronous call` with a `lowpoly bitmap` as a result.
+Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a `synchronous call` with a lowpoly `bitmap` as a result.
 	
 A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
