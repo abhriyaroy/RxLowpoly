@@ -13,6 +13,12 @@ interface PermissionManager {
 
 class PermissionManagerImpl : PermissionManager {
 
+  /**
+   * Returns true if external storage read permission is present.
+   *
+   * @param context The application context.
+   * @return Boolean.
+   */
   override fun hasReadStoragePermission(context: Context): Boolean {
     if (checkSelfPermission(
         context,
@@ -24,6 +30,12 @@ class PermissionManagerImpl : PermissionManager {
     return false
   }
 
+  /**
+   * Returns true if external storage write permission is present.
+   *
+   * @param context The application [Context].
+   * @return Boolean.
+   */
   override fun hasWriteStoragePermission(context: Context): Boolean {
     if (checkSelfPermission(
         context,

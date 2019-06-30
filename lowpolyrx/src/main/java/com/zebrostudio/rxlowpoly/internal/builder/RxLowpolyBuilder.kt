@@ -28,30 +28,54 @@ class RxLowpolyBuilder {
   private lateinit var inputBitmap: Bitmap
   private lateinit var inputFile: File
   private lateinit var inputUri: Uri
+  private lateinit var outputType: OutputType
   private lateinit var outputFile: File
   private lateinit var outputUri: Uri
   private var inputDrawableId: Int = 0
   private var quality: Quality = Quality.HIGH
   private var maxWidth: Int = 1024
-  private var downScalingFactor = 1f
-  private var shouldSaveOutputToFile = false
-  private var shouldSaveOutputToUri = false
+  private var downScalingFactor = 1.0f
+  private var shouldSaveOutput = false
 
+  /**
+   * Loads the native so file.
+   */
   init {
     System.loadLibrary(LOWPOLY_RX_SO_FILENAME)
   }
 
+  /**
+   * Begins a lowpoly generation by passing in the application [Context].
+   * This method is called internally.
+   *
+   * @param context The application [Context].
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   internal fun init(context: Context): RxLowpolyBuilder {
     this.context = context
     return this
   }
 
+  /**
+   * Replaces the default [Quality.HIGH] with the supplied [quality].
+   * This method call is optional.
+   *
+   * @param quality The application [Context].
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun quality(quality: Quality): RxLowpolyBuilder {
     this.quality = quality
     return this
   }
 
+  /**
+   * Replaces the default [downScalingFactor] of 1.0f with the supplied downscaling factor.
+   * This method call is optional.
+   *
+   * @param  downScalingFactor The float factor by which the image should be downscaled.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun overrideScaling(
     downScalingFactor: Float
@@ -60,6 +84,13 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Replaces the default [maxWidth] of 1024 with the supplied maximum width.
+   * This method call is optional.
+   *
+   * @param  maxWidth The maximum width of the image in integer.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun overrideScaling(
     maxWidth: Int
@@ -68,6 +99,15 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Replaces the default [downScalingFactor] of 1.0f with the supplied [downScalingFactor] and also
+   * replaces the default [maxWidth] of 1024 with the supplied maximum width.
+   * This method call is optional.
+   *
+   * @param  downScalingFactor The float factor by which the image should be downscaled.
+   * @param  maxWidth The maximum width of the image in integer.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun overrideScaling(
     downScalingFactor: Float = this.downScalingFactor,
@@ -78,6 +118,13 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Takes the image [Bitmap] as input and sets the [inputType] as [InputType.BITMAP].
+   * This method call is mandatory if a [Bitmap] source is the input.
+   *
+   * @param  bitmap The bitmap of the original image.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun input(bitmap: Bitmap): RxLowpolyBuilder {
     inputType = BITMAP
@@ -85,6 +132,13 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Takes the input [DrawableRes] and sets the [inputType] as [InputType.DRAWABLE].
+   * This method call is mandatory if a [DrawableRes] is the input.
+   *
+   * @param  drawableIdRes The drawable resource id of the original image.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun input(@DrawableRes drawableIdRes: Int): RxLowpolyBuilder {
     inputType = DRAWABLE
@@ -92,6 +146,13 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Takes the image [File] as input and sets the [inputType] as [InputType.FILE].
+   * This method call is mandatory if an image [File] is the input.
+   *
+   * @param  file The file containing the original image.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun input(file: File): RxLowpolyBuilder {
     inputType = FILE
@@ -99,6 +160,13 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Takes the image [Uri] as input and sets the [inputType] as [InputType.URI].
+   * This method call is mandatory if an image uri is the input.
+   *
+   * @param  uri The uri of the original image.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun input(uri: Uri): RxLowpolyBuilder {
     inputType = URI
@@ -106,35 +174,70 @@ class RxLowpolyBuilder {
     return this
   }
 
+  /**
+   * Sets the output destination as a [File] and sets the [shouldSaveOutput] flag as true.
+   * This method is optional and can be used to save the lowpoly image to a [File].
+   *
+   * @param  file The destination [File] where the lowpoly image will be saved.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun output(file: File): RxLowpolyBuilder {
-    shouldSaveOutputToFile = true
+    shouldSaveOutput = true
+    outputType = OutputType.FILE
     outputFile = file
     return this
   }
 
+  /**
+   * Sets the output destination as an [Uri] and sets the [shouldSaveOutput] flag as true.
+   * This method is optional and can be used to save the lowpoly image to an [Uri].
+   *
+   * @param  uri The destination [Uri] where the lowpoly image will be saved.
+   * @return This instance of the [RxLowpolyBuilder].
+   */
   @CheckResult
   fun output(uri: Uri): RxLowpolyBuilder {
-    shouldSaveOutputToUri = true
+    shouldSaveOutput = true
+    outputType = OutputType.URI
     outputUri = uri
     return this
   }
 
+  /**
+   * This is a terminal method which returns a [Single] containing the bitmap of the
+   * generated lowpoly image.
+   *
+   * This method call is mandatory if [generate] is not called.
+   *
+   * @return The lowpoly bitmap wrapped in a [Single].
+   */
   @CheckResult
   fun generateAsync(): Single<Bitmap> {
     return getBitmap()
       .subscribeOn(Schedulers.io())
   }
 
+  /**
+   * This is a terminal method which returns a [Bitmap] containing the bitmap of the generated
+   * lowpoly image.
+   * This method call is mandatory if [generateAsync] is not called.
+   *
+   *
+   * @return The lowpoly bitmap.
+   * @throws StoragePermissionNotAvailableException when storage permissions are not available.
+   * @throws InvalidFileException when the input or output [File] or [Uri] is invalid.
+   */
   @Throws(StoragePermissionNotAvailableException::class, InvalidFileException::class)
   fun generate(): Bitmap {
     with(getInputBitmap()) {
-      with(getScaledDownBitmap(this, downScalingFactor, maxWidth)) {
-        with(generate(this, quality.pointCount, true)) {
-          if (shouldSaveOutputToFile) {
-            saveBitmapToFile(this)
-          } else if (shouldSaveOutputToUri) {
-            saveBitmapToUri(this)
+      with(getScaledDownBitmap(this)) {
+        with(generate(this, quality.pointCount)) {
+          if (shouldSaveOutput) {
+            when (outputType) {
+              OutputType.FILE -> saveBitmapToFile(this)
+              OutputType.URI -> saveBitmapToUri(this)
+            }
           }
           return this
         }
@@ -142,6 +245,12 @@ class RxLowpolyBuilder {
     }
   }
 
+  /**
+   * Makes an internal call to [generate] wrapped in a [Single].
+   * This method call is mandatory if [generateAsync] is not called.
+   *
+   * @return The lowpoly bitmap.
+   */
   private fun getBitmap(): Single<Bitmap> {
     return Single.create { emitter ->
       with(generate()) {
@@ -150,6 +259,14 @@ class RxLowpolyBuilder {
     }
   }
 
+  /**
+   * Obtains the [Bitmap] from the supplied input source using [inputType].
+   *
+   * @return The input image [Bitmap].
+   * @throws StoragePermissionNotAvailableException when storage permissions are not available.
+   * @throws InvalidFileException when the input [File] is invalid.
+   */
+  @Throws(StoragePermissionNotAvailableException::class, InvalidFileException::class)
   private fun getInputBitmap(): Bitmap {
     return when (inputType) {
       BITMAP -> inputBitmap
@@ -175,6 +292,14 @@ class RxLowpolyBuilder {
     }
   }
 
+  /**
+   * Writes the lowpoly [Bitmap] into the [outputFile].
+   *
+   * @param bitmap The input image bitmap
+   * @throws StoragePermissionNotAvailableException when storage permissions are not available.
+   * @throws InvalidFileException when the input [File] is invalid.
+   */
+  @Throws(StoragePermissionNotAvailableException::class, InvalidFileException::class)
   private fun saveBitmapToFile(bitmap: Bitmap) {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(bitmap, outputFile)
@@ -183,6 +308,14 @@ class RxLowpolyBuilder {
     }
   }
 
+  /**
+   * Writes the lowpoly [Bitmap] into the [outputUri].
+   *
+   * @param bitmap The input image [Bitmap].
+   * @throws StoragePermissionNotAvailableException when storage permissions are not available.
+   * @throws InvalidFileException when the input uri cannot be converted into a writable [File].
+   */
+  @Throws(StoragePermissionNotAvailableException::class, InvalidFileException::class)
   private fun saveBitmapToUri(bitmap: Bitmap) {
     if (permissionsManager.hasWriteStoragePermission(context)) {
       storageHelper.writeBitmap(context, bitmap, outputUri)
@@ -191,7 +324,15 @@ class RxLowpolyBuilder {
     }
   }
 
-  private fun getScaledDownBitmap(bitmap: Bitmap, downScalingFactor: Float, maxWidth: Int): Bitmap {
+  /**
+   * Calculates the width and height of the resultant scaled down [Bitmap] with respect
+   * to the [downScalingFactor] and [maxWidth] while maintaining the original aspect ratio.
+   * Makes a call to [getResizedBitmap] to obtain the downscaled [Bitmap].
+   *
+   * @param bitmap The input image [Bitmap].
+   * @return The downscaled [Bitmap].
+   */
+  private fun getScaledDownBitmap(bitmap: Bitmap): Bitmap {
     val downScaledWidth = bitmap.width / downScalingFactor
     val downScaledHeight = bitmap.height / downScalingFactor
     var newWidth = downScaledWidth
@@ -217,34 +358,59 @@ class RxLowpolyBuilder {
 
   }
 
+  /**
+   * Scales down the [Bitmap] with respect to the [downScalingFactor] and [maxWidth] while
+   * maintaining the original aspect ratio.
+   *
+   * @param bitmap The input image [Bitmap].
+   * @param newWidth The width of the resultant scaled down image.
+   * @param newHeight The height of the resultant scaled down image.
+   * @return The downscaled [Bitmap]
+   */
   private fun getResizedBitmap(
-    bm: Bitmap,
+    bitmap: Bitmap,
     newWidth: Float,
     newHeight: Float
   ): Bitmap {
-    val width = bm.width
-    val height = bm.height
+    val width = bitmap.width
+    val height = bitmap.height
     val scaleWidth = newWidth / width
     val scaleHeight = newHeight / height
     val matrix = Matrix()
     matrix.postScale(scaleWidth, scaleHeight)
-    return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, false)
+    return Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, false)
   }
 
+  /**
+   * Generates the lowpoly [Bitmap].
+   *
+   * @param input The original image's [Bitmap].
+   * @param pointCount The number of points which determine the quality of the lowpoly.
+   * @return The generated lowpoly [Bitmap].
+   */
   private fun generate(
     input: Bitmap,
-    pointCount: Float,
-    fill: Boolean
+    pointCount: Float
   ): Bitmap {
     val newImage = Bitmap.createBitmap(input.width, input.height, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(newImage)
     val paint = Paint()
     paint.isAntiAlias = false
-    paint.style = if (fill) Paint.Style.FILL else Paint.Style.STROKE
+    paint.style = Paint.Style.FILL
     drawTriangles(input.width, input.height, input, pointCount, paint, canvas)
     return newImage
   }
 
+  /**
+   * Draws the triangles according to the vertex coordinates on the [Bitmap].
+   *
+   * @param width The width of the downscaled image.
+   * @param height The height of the downscaled image.
+   * @param input The downscaled [Bitmap] image.
+   * @param pointCount The number of points which determine the quality of the lowpoly.
+   * @param paint The [Paint] which is used to draw triangles on to the canvas.
+   * @param canvas The [Canvas] on which the triangles are to be drawn.
+   */
   private fun drawTriangles(
     width: Int,
     height: Int,
@@ -256,10 +422,18 @@ class RxLowpolyBuilder {
     val pixels = IntArray(width * height)
     input.getPixels(pixels, 0, width, 0, 0, width, height)
     val triangles = getTriangles(pixels, width, height, pointCount)
-    drawTrianglePath(paint, canvas, triangles, input)
+    drawTrianglePath(input, paint, canvas, triangles)
   }
 
-  private fun drawTrianglePath(paint: Paint, canvas: Canvas, triangles: IntArray, input: Bitmap) {
+  /**
+   * Connects the vertices of the triangles and using a [Path].
+   *
+   * @param input The downscaled [Bitmap] image.
+   * @param paint The [Paint] which is used to draw triangles on to the canvas.
+   * @param canvas The [Canvas] on which the triangles are to be drawn.
+   * @param triangles The [IntArray] containing the coordinates of the vertices of the triangles.
+   */
+  private fun drawTrianglePath(input: Bitmap, paint: Paint, canvas: Canvas, triangles: IntArray) {
     val path = Path()
     var i = 0
     var x1: Int
@@ -287,6 +461,11 @@ class RxLowpolyBuilder {
     }
   }
 
+  /**
+   * An external function which makes a JNI call to get triangle's coordinates in the image.
+   *
+   * @return [IntArray] containing pixel coordinates of triangle vertices.
+   */
   private external fun getTriangles(
     pixels: IntArray,
     width: Int,

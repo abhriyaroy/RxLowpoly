@@ -7,6 +7,13 @@ import com.zebrostudio.rxlowpoly.internal.exceptions.WrongContextException
 
 object RxLowpoly {
 
+  /**
+   * Entry point of the RxLowpolyBuilder.
+   * Application context is required to run outside of activity scope.
+   *
+   *  @param applicationContext context.
+   *  @return [RxLowpolyBuilder].
+   */
   @JvmStatic
   @Throws(WrongContextException::class)
   fun with(applicationContext: Context): RxLowpolyBuilder {

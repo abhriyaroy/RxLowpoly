@@ -20,6 +20,11 @@ interface StorageHelper {
 
 class StorageHelperImpl : StorageHelper {
 
+  /**
+   * Returns whether a [File] is readable or not.
+   *
+   * @param file The input [File].
+   */
   override fun isReadable(file: File): Boolean {
     if (file.canRead()) {
       return true
@@ -27,6 +32,13 @@ class StorageHelperImpl : StorageHelper {
     return false
   }
 
+  /**
+   * Writes a bitmap into a specified file.
+   *
+   * @param bitmap The generated lowpoly [Bitmap].
+   * @param file The destination [Uri] to write the [Bitmap] to.
+   * @throws InvalidFileException if the destination [File] is not writable.
+   */
   @Throws(InvalidFileException::class)
   override fun writeBitmap(bitmap: Bitmap, file: File) {
     if (isWritable(file)) {
@@ -39,6 +51,14 @@ class StorageHelperImpl : StorageHelper {
     }
   }
 
+  /**
+   * Writes a bitmap into a specified {@param uri}
+   *
+   * @param context The application [Context]
+   * @param bitmap The generated lowpoly [Bitmap]
+   * @param uri The destination [Uri] to write the [Bitmap] to
+   * @throws InvalidFileException if the destination [Uri] is not writable
+   */
   @Throws(InvalidFileException::class)
   override fun writeBitmap(context: Context, bitmap: Bitmap, uri: Uri) {
     if (isWritable(context, uri)) {
@@ -50,6 +70,12 @@ class StorageHelperImpl : StorageHelper {
     }
   }
 
+  /**
+   * Returns true if a the specified is writable.
+   *
+   * @param file The output file.
+   * @return Boolean.
+   */
   private fun isWritable(file: File): Boolean {
     if (file.canWrite()) {
       return true
@@ -57,10 +83,23 @@ class StorageHelperImpl : StorageHelper {
     return false
   }
 
+  /**
+   * Returns true if the specified uri is writable.
+   *
+   * @param uri The output uri.
+   * @return Boolean.
+   */
   private fun isWritable(context: Context, uri: Uri): Boolean {
     return isWritable(File(getPath(context, uri)))
   }
 
+  /**
+   * Extracts the file path from an uri.
+   *
+   * @param context The application context.
+   * @param uri The source uri.
+   * @return nullable [File] path as [String].
+   */
   @Throws(InvalidFileException::class)
   private fun getPath(context: Context, uri: Uri): String? {
     val file = File(uri.path)
