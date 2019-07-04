@@ -155,8 +155,8 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of `sy
 The following tests have been performed on a` Xiaomi Redmi Note 5 Pro with 6 gb Ram`. <br>
 
  
-Input  | Output | Input Source | Output Type | Quality | Time Required (in millis) 
------- | ------ | ------------ | ----------- | ------- | ------
+Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type | Quality | Execution Time (ms)
+----------------------------------- | ------------- | ------------ | ----------- | ------- | ------
 <img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | File | Very High | 15813
 <img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | File | Very High | 16275
 <img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | File | Very High | 15987
