@@ -98,34 +98,34 @@
 
 The most simple use case is :-
 
-	RxLowpoly.with(applicationContext)
+	RxLowpoly.with(context)
       	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
       	.generateAsync()
 
 When we need to downscale the image :-
 
-	RxLowpoly.with(applicationContext)
+	RxLowpoly.with(context)
       	.input(bitmap)
       	.overrideScaling(downScalingFactor)
       	.generateAsync()
 	
 When we need to set a maximum width for the image :-
 	
-	RxLowpoly.with(applicationContext)
+	RxLowpoly.with(context)
       	.input(bitmap)
       	.overrideScaling(maxWidth)
       	.generateAsync()
 	
 Or when we need to downscale and apply a maximum width as well :-
 
-	RxLowpoly.with(applicationContext)
+	RxLowpoly.with(context)
       	.input(bitmap)
       	.overrideScaling(downScalingFactor, maxWidth)
       	.generateAsync()
 	
 We can also set a quality for the lowpoly image :- 
 
-	RxLowpoly.with(applicationContext)
+	RxLowpoly.with(context)
       	.input(inputUri)
       	.overrideScaling(downScalingFactor)
       	.quality(Quality.HIGH) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
@@ -133,7 +133,7 @@ We can also set a quality for the lowpoly image :-
 	
 We can also save the lowpoly image to a file :-
 
-	RxLowpoly.with(activity!!.applicationContext)
+	RxLowpoly.with(context)
       	.input(inputUri)
       	.overrideScaling(downScalingFactor)
       	.quality(Quality.HIGH)
