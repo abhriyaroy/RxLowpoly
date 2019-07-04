@@ -183,6 +183,8 @@ Also, we notice that `bitmap` is the fastest input format followed by `Uri`, `Fi
 
 ## Sample App
 
+The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpolyrx">sample app</a> provides an implementation of various configurations of `RxLowpoly` which one can experience first hand before using the library.
+
 
 ## How to Contribute
 
