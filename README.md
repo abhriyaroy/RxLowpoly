@@ -137,7 +137,7 @@ We can also save the lowpoly image to a file :-
       	.input(inputUri)
       	.overrideScaling(downScalingFactor)
       	.quality(Quality.HIGH)
-      	.output(outputUri) // An uri of a file is also supported as an output destination
+      	.output(outputFile) // An uri of a file is also supported as an output destination
       	.generateAsync()
 	
 All  `asynchronous` operation is done on the `io scheduler`.
