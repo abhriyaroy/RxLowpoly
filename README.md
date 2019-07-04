@@ -82,7 +82,7 @@
 
  That's it! <br>
 
-  Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but in-   case you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
+  Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but in-case you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
 	
 	dependencies{
 		...
