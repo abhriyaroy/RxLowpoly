@@ -116,13 +116,6 @@ When we need to set a maximum width for the image :-
       	.overrideScaling(maxWidth)
       	.generateAsync()
 	
-Or when we need to downscale and apply a maximum width as well :-
-
-	RxLowpoly.with(context)
-      	.input(bitmap)
-      	.overrideScaling(downScalingFactor, maxWidth)
-      	.generateAsync()
-	
 We can also set a quality for the lowpoly image :- 
 
 	RxLowpoly.with(context)
