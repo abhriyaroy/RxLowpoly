@@ -145,7 +145,7 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of `sy
   
 ## Critical Analysis
 
-The following tests have been performed on a` Xiaomi Redmi Note 5 Pro with 6 gb Ram`. <br>
+The following tests have been performed on a `Xiaomi Redmi Note 5 Pro with 6 gb Ram`. <br>
 
  
 Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type | Quality | Execution Time (ms)
@@ -178,7 +178,7 @@ Also, we notice that `bitmap` is the fastest input format followed by `Uri`, `Fi
 
 ## Sample App
 
-The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpolyrx">sample app</a> provides an implementation of various configurations of `RxLowpoly` which one can experience first hand before using the library.
+The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpolyrx">sample app</a> provides an implementation of various configurations of `RxLowpoly` which one can experience and assess first hand before using the library.
 
 
 ## How to Contribute
