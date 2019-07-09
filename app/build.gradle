@@ -10,8 +10,8 @@ android {
     applicationId "com.zebrostudio.lowpolyrx"
     minSdkVersion MINIMUM_SDK_VERSION
     targetSdkVersion TARGET_SDK_VERSION
-    versionCode 1
-    versionName "1.0"
+    versionCode APP_VERSION_CODE
+    versionName APP_VERSION_NAME
   }
   buildTypes {
     release {
