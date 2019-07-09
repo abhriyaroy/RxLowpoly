@@ -92,7 +92,6 @@
 	dependencies {
 		...
 	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
-	    ...
 	}
 
  That's it! <br>
