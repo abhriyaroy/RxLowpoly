@@ -202,10 +202,10 @@ The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpo
 -  Screenshots :-
 
 <p>
-<img src="https://i.imgur.com/iAfVx56.png" width=250 height=500> &nbsp;&nbsp;
-<img src="https://i.imgur.com/XPtYUZL.png" width=250 height=500> &nbsp;&nbsp;
-<img src="https://i.imgur.com/2gLp46d.png" width=250 height=500> &nbsp;&nbsp;
-<img src="https://i.imgur.com/GqQZGwg.png" width=250 height=500> &nbsp;&nbsp;
+<img src="https://i.imgur.com/iAfVx56.png" width=230 height=450> &nbsp;
+<img src="https://i.imgur.com/XPtYUZL.png" width=230 height=450> &nbsp;
+<img src="https://i.imgur.com/2gLp46d.png" width=230 height=450> &nbsp;
+<img src="https://i.imgur.com/GqQZGwg.png" width=230 height=0> &nbsp;
 </p>
 
 
