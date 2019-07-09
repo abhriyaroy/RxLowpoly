@@ -97,7 +97,8 @@ class UriAsyncFragment : BaseFragment() {
   ): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(inputUri)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(outputFile)
       .generateAsync()
@@ -109,7 +110,8 @@ class UriAsyncFragment : BaseFragment() {
   ): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(inputUri)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(outputUri)
       .generateAsync()

@@ -100,25 +100,6 @@ class RxLowpolyBuilder {
   }
 
   /**
-   * Replaces the default [downScalingFactor] of 1.0f with the supplied [downScalingFactor] and also
-   * replaces the default [maxWidth] of 1024 with the supplied maximum width.
-   * This method call is optional.
-   *
-   * @param  downScalingFactor The float factor by which the image should be downscaled.
-   * @param  maxWidth The maximum width of the image in integer.
-   * @return This instance of the [RxLowpolyBuilder].
-   */
-  @CheckResult
-  fun overrideScaling(
-    downScalingFactor: Float = this.downScalingFactor,
-    maxWidth: Int = this.maxWidth
-  ): RxLowpolyBuilder {
-    this.downScalingFactor = Math.abs(downScalingFactor)
-    this.maxWidth = Math.abs(maxWidth)
-    return this
-  }
-
-  /**
    * Takes the image [Bitmap] as input and sets the [inputType] as [InputType.BITMAP].
    * This method call is mandatory if a [Bitmap] source is the input.
    *
