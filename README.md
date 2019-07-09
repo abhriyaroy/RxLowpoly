@@ -2,8 +2,8 @@
 
 # RxLowpoly
 
- An android library to convert your dull normal images into awesome ones with a crystallized lowpoly effect.
- <br>
+ An android library to convert your dull ordinary images into awesome
+ ones with a crystallized lowpoly effect. <br>
 
 ## Table of Contents
  - [Introduction](#introduction)
@@ -20,27 +20,36 @@
 ## Introduction
 
  LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
-  - fixing `out of memory` crashes by scaling down the image losslessly before processing.
-  - providing better quality results by using `4000` as the point count by default which provides a good trade-off between speed and time.
-  - the higher point count leads to a longer execution period, but it is significantly reduced by `scaling down the image` before processing.
-  - provides wider choice of input sources like `bitmap`, `file`, `uri` or `drawable resource`.
-  - natively using `RxJava` for background processing thereby reducing boilerplate code on the developer's end.
+ -  fixing `out of memory` crashes by scaling down the image in a
+    loss-less manner before processing.
+ -  providing better quality results by using `4000` as the point count
+    by default which provides a good trade-off between speed and time.
+ -  the higher point count leads to a longer execution period, but it is
+    significantly reduced by `scaling down the image` before processing.
+ -  provides wider choice of input sources like `bitmap`, `file`, `uri`
+    or `drawable resource`.
+ -  natively using `RxJava` for background processing thereby reducing
+    boilerplate code on the developer's end.
 
 ## Lowpoly Samples
 
  Original Image | Lowpoly Image
  -------------- | -------------
- <img src="https://i.imgur.com/mHZhqia.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg"  alt="Lowpoly" width=400 height=250>
+ <img src="https://i.imgur.com/iCddK29.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/Z4zOgqH.jpg"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/mLjjrax.jpg"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg"  alt="Lowpoly" width=400 height=250>
 							  
 ## Library Details
 
- - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google specified requirement for all apps to be 64 bit enabled by August      2019.
+ - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google
+   specified requirement for all apps to be 64 bit enabled by August
+   2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
  - Use of [Sobel Operator](#sobel-operator) for edge detection.
- - Use of [Delaunay Triangulation](#delaunay-triangulation) on the result from the sobel operator to construct the final crsystallized      lowpoly effect on the image. 
+-  Use of [Delaunay Triangulation](#delaunay-triangulation) on the
+   result from the sobel operator to construct the final crystallized
+   lowpoly effect on the image.
  
  ### JNI
  
@@ -52,7 +61,12 @@
  
  ### Delaunay Triangulation
 
-  We take a set P of discrete points on an image plane P and apply <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay Triangulation</a> DT(P) to produce triangles connecting 3 points   at a time such that no point in P is inside the circumcircle of any triangle in DT(P). These separate triangles taken together in-turn   provide us with the image having a crystallized effect.
+  We take a set P of `discrete points` on an image plane P and apply <a
+  href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay
+  Triangulation</a> DT(P) to produce `triangles` connecting 3 points at
+  a time such that no point in P is inside the `circum-circle` of any
+  `triangle` in DT(P). These separate triangles taken together in-turn
+  provide us with the image having a `crystallized` effect.
  
   <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -78,6 +92,7 @@
 	dependencies {
 		...
 	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
+	    ...
 	}
 
  That's it! <br>
@@ -96,42 +111,48 @@
 
 ### Asynchronous call 
 
-The most simple use case is :-
+- The most simple use case is :-
 
-	RxLowpoly.with(context)
-      	.input(bitmap) // Drawables, Files and Uri are also supported as inputs
-      	.generateAsync()
+        RxLowpoly.with(context)
+            .input(bitmap) 
+            .generateAsync()
+    
+  Along with `Bitmaps` we can also use `Drawables` or `Files` or `Uri`
+  as input.
 
-When we need to downscale the image :-
+ - When we need to downscale the image :-
 
-	RxLowpoly.with(context)
-      	.input(bitmap)
-      	.overrideScaling(downScalingFactor)
-      	.generateAsync()
+        RxLowpoly.with(context)
+            .input(bitmap)
+            .overrideScaling(downScalingFactor)
+            .generateAsync()
 	
-When we need to set a maximum width for the image :-
+ - When we need to set a maximum width for the image :-
 	
-	RxLowpoly.with(context)
-      	.input(bitmap)
-      	.overrideScaling(maxWidth)
-      	.generateAsync()
+        RxLowpoly.with(context)
+            .input(bitmap)
+            .overrideScaling(maxWidth)
+            .generateAsync()
 	
-We can also set a quality for the lowpoly image :- 
+ - We can also set a quality for the lowpoly image :- 
 
-	RxLowpoly.with(context)
-      	.input(inputUri)
-      	.overrideScaling(downScalingFactor)
-      	.quality(Quality.HIGH) // VERY_HIGH, MEDIUM, LOW, VERY_LOW are also available as Quality parameters
-      	.generateAsync()
+        RxLowpoly.with(context)
+            .input(inputUri)
+            .overrideScaling(downScalingFactor)
+            .quality(Quality.HIGH)
+            .generateAsync()
 	
-We can also save the lowpoly image to a file :-
+   `VERY_HIGH`, `MEDIUM`, `LOW` and `VERY_LOW` are also available as
+   Quality configurations
+	
+-  To save the lowpoly image to a file :-
 
-	RxLowpoly.with(context)
-      	.input(inputUri)
-      	.overrideScaling(downScalingFactor)
-      	.quality(Quality.HIGH)
-      	.output(outputFile) // An uri of a file is also supported as an output destination
-      	.generateAsync()
+        RxLowpoly.with(context)
+            .input(inputUri)
+            .overrideScaling(downScalingFactor)
+            .quality(Quality.HIGH)
+            .output(outputFile) // An uri of a file is also supported as an output destination
+            .generateAsync()
 	
 All  `asynchronous` operation is done on the `io scheduler`.
 
@@ -150,26 +171,26 @@ The following tests have been performed on a `Xiaomi Redmi Note 5 Pro with 6 gb 
  
 Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type | Quality | Execution Time (ms)
 ----------------------------------- | ------------- | ------------ | ----------- | ------- | ------
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | File | Very High | 15813
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | File | Very High | 16275
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | File | Very High | 15987
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/cajVv2j.png" width=360 height=200> | Uri | File | Very High | 15931
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/OMSV6Ks.png" width=360 height=200> | Bitmap | File | High | 4547
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/9sThhqj.png" width=360 height=200> | Drawable | File | High | 5088
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/mlSfBBD.png" width=360 height=200> | File | File | High | 4734
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/HvBU1en.png" width=360 height=200> | Uri | File | High | 4612
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/KDMzSwy.png" width=360 height=200> | Bitmap | File | Medium | 1113
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/wz1aAhd.png" width=360 height=200> | Drawable | File | Medium | 1672
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/20YfeVF.png" width=360 height=200> | File | File | Medium | 1297
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/7tYMYcZ.png" width=360 height=200> | Uri | File | Medium | 1152
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/TeYASKY.png" width=360 height=200> | Bitmap | File | Low | 918
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/BXUCBJB.png" width=360 height=200> | Drawable | File | Low | 1496
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/FXmsHa5.png" width=360 height=200> | File | File | Low | 1091
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/muLCMQX.png" width=360 height=200> | Uri | File | Low | 996
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/R3p7FOn.png" width=360 height=200> | Bitmap | File | Very Low | 850
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/lei9Yzx.png" width=360 height=200> | Drawable | File | Very Low | 1024
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | File | Very Low | 923
-<img src="https://i.imgur.com/mHZhqia.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | File | Very Low | 876
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | File | Very High | 15813
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | File | Very High | 16275
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | File | Very High | 15987
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cajVv2j.png" width=360 height=200> | Uri | File | Very High | 15931
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/OMSV6Ks.png" width=360 height=200> | Bitmap | File | High | 4547
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/9sThhqj.png" width=360 height=200> | Drawable | File | High | 5088
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/mlSfBBD.png" width=360 height=200> | File | File | High | 4734
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/HvBU1en.png" width=360 height=200> | Uri | File | High | 4612
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/KDMzSwy.png" width=360 height=200> | Bitmap | File | Medium | 1113
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/wz1aAhd.png" width=360 height=200> | Drawable | File | Medium | 1672
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/20YfeVF.png" width=360 height=200> | File | File | Medium | 1297
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/7tYMYcZ.png" width=360 height=200> | Uri | File | Medium | 1152
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/TeYASKY.png" width=360 height=200> | Bitmap | File | Low | 918
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/BXUCBJB.png" width=360 height=200> | Drawable | File | Low | 1496
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/FXmsHa5.png" width=360 height=200> | File | File | Low | 1091
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/muLCMQX.png" width=360 height=200> | Uri | File | Low | 996
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/R3p7FOn.png" width=360 height=200> | Bitmap | File | Very Low | 850
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/lei9Yzx.png" width=360 height=200> | Drawable | File | Very Low | 1024
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | File | Very Low | 923
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | File | Very Low | 876
 
 
 
