@@ -14,7 +14,7 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.io.File
 
-private const val LOWPOLY_RX_SO_FILENAME = "lowpolyrx-lib"
+private const val LOWPOLY_RX_SO_FILENAME = "rxlowpoly-lib"
 private const val READ_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE = "Read permission is not available"
 private const val WRITE_PERMISSION_NOT_AVAILABLE_ERROR_MESSAGE = "Write permission is not available"
 private const val FILE_NOT_READABLE_ERROR_MESSAGE = "File is not readable"
