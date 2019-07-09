@@ -1,1 +1,1 @@
-include ':app', ':lowpolyrx'
+include ':app', ':rxlowpoly'

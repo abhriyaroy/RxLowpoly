@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../versions.gradle'
-apply from: '../lowpolyrx/versions.gradle'
+apply from: '../rxlowpoly/versions.gradle'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION
@@ -45,7 +45,7 @@ dependencies {
   // Image picker
   implementation "com.mlsdev.rximagepicker:library:2.2.1"
   // Module dependencies
-  implementation project(":lowpolyrx")
+  implementation project(":rxlowpoly")
   implementation 'androidx.legacy:legacy-support-v4:1.0.0'
   implementation 'com.google.android.material:material:1.0.0'
 }
