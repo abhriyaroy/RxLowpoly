@@ -1,0 +1,128 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.zebrostudio.rxlowpoly.examplefragments.BitmapAsyncFragment">
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbarFragment"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:titleTextColor="@color/colorWhite" />
+
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/fragment_example_imageview_height"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbarFragment"
+    app:layout_constraintVertical_bias="0.0"
+    tools:src="@tools:sample/backgrounds/scenic" />
+
+  <Button
+    android:id="@+id/lowpolyButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:text="@string/fragment_example_lowpoly_button_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+  <RadioGroup
+    android:id="@+id/radioGroup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/lowpolyButton">
+
+    <TextView
+      android:id="@+id/header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/fragment_example_radio_group_spacing"
+      android:text="@string/fragment_example_save_to_file_radio_group_text" />
+
+    <RadioButton
+      android:id="@+id/saveToFile"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="@dimen/fragment_example_radio_group_spacing"
+      android:text="@string/fragment_example_save_to_file_radio_button_text" />
+
+    <RadioButton
+      android:id="@+id/saveToUri"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/fragment_example_save_to_uri_radio_button_text" />
+
+  </RadioGroup>
+
+  <Spinner
+    android:id="@+id/spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+    android:backgroundTint="@color/colorBlack"/>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/downScalingFactorTextLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/downScalingFactorEditText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:hint="@string/fragment_example_downscaling_factor_hint"
+      android:inputType="numberDecimal"
+      android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
+      android:singleLine="true" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/maximumWidthTextLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="@dimen/fragment_example_widget_margin_top"
+    android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/downScalingFactorTextLayout">
+
+    <com.google.android.material.textfield.TextInputEditText
+      android:id="@+id/maximumWidthEditText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:hint="@string/fragment_example_maximum_width_hint"
+      android:inputType="number"
+      android:minWidth="@dimen/fragment_example_text_input_layout_minimum_width"
+      android:singleLine="true" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
