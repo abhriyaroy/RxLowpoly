@@ -23,7 +23,7 @@
  -  fixing `out of memory` crashes by scaling down the image in a
     loss-less manner before processing.
  -  providing better quality results by using `4000` as the point count
-    by default which provides a good trade-off between speed and time.
+    by default which provides a [good trade-off](#critical-analysis) between speed and time.
  -  the higher point count leads to a longer execution period, but it is
     significantly reduced by `scaling down the image` before processing.
  -  provides wider choice of input sources like `bitmap`, `file`, `uri`
