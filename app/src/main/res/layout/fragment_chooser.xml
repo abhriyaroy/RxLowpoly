@@ -25,7 +25,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/toolbar"
-    app:layout_constraintVertical_bias="0.08" />
+    app:layout_constraintVertical_bias="0.0"
+    app:layout_constraintVertical_chainStyle="packed" />
 
   <Button
     android:id="@+id/bitmapSyncButton"
@@ -35,7 +36,8 @@
     android:text="@string/bitmap_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/bitmapAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/bitmapAsyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
   <Button
     android:id="@+id/drawableAsyncButton"
@@ -45,7 +47,8 @@
     android:text="@string/drawable_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/bitmapSyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/bitmapSyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
   <Button
     android:id="@+id/drawableSyncButton"
@@ -55,7 +58,8 @@
     android:text="@string/drawable_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/drawableAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/drawableAsyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
   <Button
     android:id="@+id/fileAsyncButton"
@@ -65,7 +69,8 @@
     android:text="@string/file_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/drawableSyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/drawableSyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
   <Button
     android:id="@+id/fileSyncButton"
@@ -75,7 +80,8 @@
     android:text="@string/file_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/fileAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/fileAsyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
 
   <Button
@@ -86,7 +92,8 @@
     android:text="@string/uri_async_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/fileSyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/fileSyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
   <Button
     android:id="@+id/uriSyncButton"
@@ -96,6 +103,7 @@
     android:text="@string/uri_sync_example_fragment_name"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton"
+    app:layout_constraintVertical_chainStyle="packed"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
