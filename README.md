@@ -53,19 +53,19 @@
  
  ### JNI
  
-  LowpolyRx uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to use native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
+  LowpolyRx uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to run native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  ### Sobel Operator
  
- The <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm">Sobel Edge Detector</a> is a gradient based edge detection algorithm which provides us with seperate planes on which the [Delaunay Triangulation](#delaunay-triangulation) can be applied.
+ The <a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm">Sobel Edge Detector</a> is a gradient based edge detection algorithm which provides us with separate planes on which the [Delaunay Triangulation](#delaunay-triangulation) can be applied.
  
  ### Delaunay Triangulation
 
-  We take a set P of `discrete points` on an image plane P and apply <a
+  We take a set `P` of `discrete points` on an image plane P and apply <a
   href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay
-  Triangulation</a> DT(P) to produce `triangles` connecting 3 points at
-  a time such that no point in P is inside the `circum-circle` of any
-  `triangle` in DT(P). These separate triangles taken together in-turn
+  Triangulation</a> `DT(P)` to produce `triangles` connecting 3 points at
+  a time such that no point in `P` is inside the `circum-circle` of any
+  `triangle` in `DT(P)`. These separate triangles taken together in-turn
   provide us with the image having a `crystallized` effect.
  
   <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
@@ -76,7 +76,7 @@
  
 ## Installation
 
- Step 1. Add the JitPack repository to your project :
+ Step 1. Add JitPack to your project :
 
  Add it in your root build.gradle at the end of repositories:
 
@@ -153,7 +153,7 @@
             .output(outputFile) // An uri of a file is also supported as an output destination
             .generateAsync()
 	
-All  `asynchronous` operation is done on the `io scheduler`.
+All  `asynchronous` operation is done on the `IO scheduler`.
 
 ### Synchronous call 
 
