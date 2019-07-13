@@ -61,7 +61,7 @@
  
  ### Delaunay Triangulation
 
-  We take a set `P` of `discrete points` on an image plane P and apply <a
+  We take a set `P` of `discrete points` on an image plane and apply <a
   href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay
   Triangulation</a> `DT(P)` to produce `triangles` connecting 3 points at
   a time such that no point in `P` is inside the `circum-circle` of any
@@ -193,8 +193,8 @@ Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type
 
 
 
-Thus it is evident that when quality is set to `High`, it provides a good trade-off between speed and texture hence the default value of `Quality` is set to `HIGH`.<br>
-Also, we notice that `bitmap` is the fastest input format followed by `Uri`, `File` and `Drawable` respectively.
+Thus it is evident that when quality is set to `High`, a good trade-off between speed and texture is obtained, hence the default value of `Quality` is set to `HIGH`.<br>
+Also, we can see that `bitmap` is the input format of choice as it is processed the fastest, followed by `Uri`, `File` and `Drawable` respectively.
 
 ## Sample App
 
