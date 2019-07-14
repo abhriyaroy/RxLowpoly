@@ -19,7 +19,7 @@
 
 ## Introduction
 
- LowpolyRxJava serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
+ RxLowpoly serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
  -  fixing `out of memory` crashes by scaling down the image in a
     loss-less manner before processing.
  -  providing better quality results by using `4000` as the point count
@@ -42,7 +42,7 @@
 							  
 ## Library Details
 
- - LowpolyRxJava uses [JNI](#jni) with 64 bit support to meet google
+ - RxLowpoly uses [JNI](#jni) with 64 bit support to meet google
    specified requirement for all apps to be 64 bit enabled by August
    2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
@@ -53,7 +53,7 @@
  
  ### JNI
  
-  LowpolyRx uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to run native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
+  RxLowpoly uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to run native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  ### Sobel Operator
  
@@ -91,7 +91,7 @@
 
 	dependencies {
 		...
-	        implementation 'com.github.abhriyaroy:LowpolyRxJava:1.0.1'
+	        implementation 'com.github.abhriyaroy:RxLowpoly:1.0.1'
 	}
 
  That's it! <br>
@@ -161,7 +161,7 @@ Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call]
 	
 A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
-  Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/LowpolyRx/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
+  Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/RxLowpoly/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
   
 ## Critical Analysis
 
