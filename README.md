@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/mtMoSDX.jpg"></p>
+<p align="center"><img src="https://i.imgur.com/fnVc9NJ.jpg"></p>
 
 # RxLowpoly
 
