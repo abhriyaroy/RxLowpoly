@@ -2,6 +2,21 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply from: './versions.gradle'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+  def groupProjectID = 'com.zebrostudio.rxlowpoly'
+  def artifactProjectID = 'rxlowpoly'
+  def publishVersionID = '1.0.0'
+
+  userOrg = 'abhriyaroy'
+  repoName = 'RxLowpoly'
+  groupId = groupProjectID
+  artifactId = artifactProjectID
+  publishVersion = publishVersionID
+  desc = 'An Android library to bring your ordinary photos to life with an awesome crystallized effect.'
+  website = 'https://github.com/abhriyaroy/RxLowpoly'
+}
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION
