@@ -19,12 +19,12 @@
 ## Introduction
 
  RxLowpoly serves as an improvement over [XLowPoly](https://github.com/xyzxqs/XLowPoly) by 
- -  fixing `out of memory` crashes by scaling down the image in a
+ -  fixing **out of memory** crashes by scaling down the image in a
     loss-less manner before processing.
  -  providing better quality results by using `4000` as the point count
     by default which provides a [good trade-off](#critical-analysis) between speed and time.
  -  the higher point count leads to a longer execution period, but it is
-    significantly reduced by `scaling down the image` before processing.
+    significantly reduced by **scaling down the image** before processing.
  -  provides wider choice of input sources like `bitmap`, `file`, `uri`
     or `drawable resource`.
  -  natively using `RxJava` for background processing thereby reducing
@@ -85,7 +85,7 @@
  
  ### JNI
  
-  RxLowpoly uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to run native code written in `C` which provides much faster processing for `edge detection` using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
+  RxLowpoly uses the <a href="https://developer.android.com/training/articles/perf-jni">Java Native Interface</a> to run native code written in `C` which provides much faster processing for **edge detection** using the [Sobel Operator](#sobel-operator) and then implementing the [Delaunay Triangulation](#delaunay-triangulation) algorithm.
  
  ### Sobel Operator
  
@@ -93,12 +93,12 @@
  
  ### Delaunay Triangulation
 
-  We take a set `P` of `discrete points` on an image plane and apply <a
+  We take a set **P** of **discrete points** on an **image plane** and apply <a
   href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay
-  Triangulation</a> `DT(P)` to produce `triangles` connecting 3 points at
-  a time such that no point in `P` is inside the `circum-circle` of any
-  `triangle` in `DT(P)`. These separate triangles taken together in-turn
-  provide us with the image having a `crystallized` effect.
+  Triangulation</a> **DT(P)** to produce **triangles** connecting 3 points at
+  a time such that no point in **P **is inside the **circum-circle** of any
+  **triangle** in **DT(P)**. These separate triangles taken together in-turn
+  provide us with the image having a **crystallized** effect.
  
   <p align="center"><img src="https://i.imgur.com/MpOuHuw.png" width=330 height=300></p>
  
@@ -153,19 +153,19 @@
             .output(outputFile) // An uri of a file is also supported as an output destination
             .generateAsync()
 	
-All  `asynchronous` operation is done on the `IO scheduler`.
+All  **asynchronous** operation is done on the `IO scheduler`.
 
 ### Synchronous call 
 
-Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a `synchronous call` with a lowpoly `bitmap` as a result.
+Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a **synchronous call** with a lowpoly `bitmap` as a result.
 	
-A `bitmap` of the generated lowpoly image is always returned irrespective of `synchronous` or `asynchronous` calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
+A `bitmap` of the generated lowpoly image is always returned irrespective of **synchronous** or **asynchronous** calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
 
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/RxLowpoly/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
   
 ## Critical Analysis
 
-The following tests have been performed on a `Xiaomi Redmi Note 5 Pro with 6 gb Ram`. <br>
+The following tests have been performed on a *Xiaomi Redmi Note 5 Pro with 6 gb Ram*. <br>
 
  
 Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type | Quality | Execution Time (ms)
