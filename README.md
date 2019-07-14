@@ -25,8 +25,8 @@
     by default which provides a [good trade-off](#critical-analysis) between speed and time.
  -  the higher point count leads to a longer execution period, but it is
     significantly reduced by **scaling down the image** before processing.
- -  provides wider choice of input sources like `bitmap`, `file`, `uri`
-    or `drawable resource`.
+ -  provides wider choice of input sources like `Bitmap`, `File`, `Uri`
+    or `Drawable resource`.
  -  natively using `RxJava` for background processing thereby reducing
     boilerplate code on the developer's end.
 
@@ -139,16 +139,16 @@
             .input(inputUri)
             .overrideScaling(downScalingFactor)
             .quality(Quality.HIGH)
-            .output(outputFile) // An uri of a file is also supported as an output destination
+            .output(outputFile) // An Uri of a File is also supported as an output destination
             .generateAsync()
 	
 All  **asynchronous** operation is done on the `IO scheduler`.
 
 ### Synchronous call 
 
-Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a **synchronous call** with a lowpoly `bitmap` as a result.
+Replacing `generateAsync()` with `generate()` in each of the [Asynchronous call](#asynchronous-call) examples leads to a **synchronous call** with a lowpoly `Bitmap` as a result.
 	
-A `bitmap` of the generated lowpoly image is always returned irrespective of **synchronous** or **asynchronous** calls and whether an output `file` or `uri` is supplied using the `output` method.<br>
+A `Bitmap` of the generated lowpoly image is always returned irrespective of **synchronous** or **asynchronous** calls and whether an output `File` or `Uri` is supplied using the `output` method.<br>
 
   Note : A full implementation can be found in the <a href="https://github.com/abhriyaroy/RxLowpoly/tree/master/app">app module</a> of this repository or in the open sourced <a href="https://github.com/abhriyaroy/WallR2.0">WallR</a> app.
   
@@ -183,7 +183,7 @@ Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Quality | E
 
 
 Thus it is evident that when quality is set to `High`, a good trade-off between speed and texture is obtained, hence the default value of `Quality` is set to `HIGH`.<br>
-Also, we can see that `bitmap` is the input format of choice as it is processed the fastest, followed by `Uri`, `File` and `Drawable` respectively.
+Also, we can see that `Bitmap` is the input format of choice as it is processed the fastest, followed by `Uri`, `File` and `Drawable` respectively.
 
 ## Sample App
 
