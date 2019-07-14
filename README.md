@@ -198,8 +198,9 @@ Also, we can see that `bitmap` is the input format of choice as it is processed 
 
 ## Sample App
 
-The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpolyrx">sample app</a> provides an implementation of various configurations of `RxLowpoly` which one can experience and assess first hand before using the library.
--  Screenshots :-
+The <a href="https://play.google.com/store/apps/details?id=com.zebrostudio.lowpolyrx">sample app</a> provides an implementation of various configurations of RxLowpoly which one can experience and assess first hand before using the library.
+
+### Screenshots
 
 <p>
 <img src="https://i.imgur.com/iAfVx56.png" width=230 height=450> &nbsp;
