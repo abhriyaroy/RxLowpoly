@@ -2,14 +2,13 @@
 
 # RxLowpoly
 
- An android library to convert your dull ordinary images into awesome
- ones with a crystallized lowpoly effect. <br>
+ An Android library to bring your ordinary photos to life with an awesome crystallized effect. <br>
 
 ## Table of Contents
  - [Introduction](#introduction)
  - [Lowpoly Samples](#lowpoly-samples)
- - [Library Details](#library-details)
  - [Installation](#installation)
+ - [Library Details](#library-details)
  - [Usage Examples](#usage-examples)
  - [Critical Analysis](#critical-analysis)
  - [Sample App](#sample-app)
@@ -39,6 +38,39 @@
  <img src="https://i.imgur.com/C5wzAqx.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/mLjjrax.jpg"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/Ho86fyo.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/pm8MV8m.png"  alt="Lowpoly" width=400 height=250>
  <img src="https://i.imgur.com/D4DP8fu.jpg" alt="Original" width=400 height=250> | <img src="https://i.imgur.com/1zgjCyE.jpg"  alt="Lowpoly" width=400 height=250>
+ 
+## Installation
+
+ Step 1. Add JitPack to your project :
+
+ Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  
+  Step 2. Add the dependency in your app module's build.gradle file
+
+	dependencies {
+		...
+	        implementation 'com.github.abhriyaroy:RxLowpoly:1.0.1'
+	}
+
+ That's it! <br>
+
+  Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but in-case you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
+	
+	dependencies{
+		...
+		// Rx java
+  		implementation "io.reactivex.rxjava2:rxjava:$LATEST_RX_JAVA_VERSION"
+  		// Rx android
+  		implementation "io.reactivex.rxjava2:rxandroid:$LATEST_RX_ANDROID_VERSION"
+	}
+
 							  
 ## Library Details
 
@@ -74,38 +106,6 @@
  
   <p align="center"><img src="https://i.imgur.com/V1OPCPJ.png" width=250 height=250></p>
  
-## Installation
-
- Step 1. Add JitPack to your project :
-
- Add it in your root build.gradle at the end of repositories:
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-  
-  Step 2. Add the dependency in your app module's build.gradle file
-
-	dependencies {
-		...
-	        implementation 'com.github.abhriyaroy:RxLowpoly:1.0.1'
-	}
-
- That's it! <br>
-
-  Please note that using this library, it is assumed that RxJava and RxAndroid are already added as dependencies in your project but in-case you don't have these dependencies, please add the following dependencies to your app module's build.gradle file :-
-	
-	dependencies{
-		...
-		// Rx java
-  		implementation "io.reactivex.rxjava2:rxjava:$LATEST_RX_JAVA_VERSION"
-  		// Rx android
-  		implementation "io.reactivex.rxjava2:rxandroid:$LATEST_RX_ANDROID_VERSION"
-	}
-
 ## Usage Examples
 
 ### Asynchronous call 
