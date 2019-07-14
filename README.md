@@ -157,28 +157,28 @@ A `bitmap` of the generated lowpoly image is always returned irrespective of **s
 The following tests have been performed on a *Xiaomi Redmi Note 5 Pro with 6 gb Ram*. <br>
 
  
-Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Output Type | Quality | Execution Time (ms)
------------------------------------ | ------------- | ------------ | ----------- | ------- | ------
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | File | Very High | 15813
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | File | Very High | 16275
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | File | Very High | 15987
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cajVv2j.png" width=360 height=200> | Uri | File | Very High | 15931
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/OMSV6Ks.png" width=360 height=200> | Bitmap | File | High | 4547
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/9sThhqj.png" width=360 height=200> | Drawable | File | High | 5088
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/mlSfBBD.png" width=360 height=200> | File | File | High | 4734
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/HvBU1en.png" width=360 height=200> | Uri | File | High | 4612
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/KDMzSwy.png" width=360 height=200> | Bitmap | File | Medium | 1113
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/wz1aAhd.png" width=360 height=200> | Drawable | File | Medium | 1672
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/20YfeVF.png" width=360 height=200> | File | File | Medium | 1297
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/7tYMYcZ.png" width=360 height=200> | Uri | File | Medium | 1152
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/TeYASKY.png" width=360 height=200> | Bitmap | File | Low | 918
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/BXUCBJB.png" width=360 height=200> | Drawable | File | Low | 1496
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/FXmsHa5.png" width=360 height=200> | File | File | Low | 1091
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/muLCMQX.png" width=360 height=200> | Uri | File | Low | 996
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/R3p7FOn.png" width=360 height=200> | Bitmap | File | Very Low | 850
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/lei9Yzx.png" width=360 height=200> | Drawable | File | Very Low | 1024
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | File | Very Low | 923
-<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | File | Very Low | 876
+Original Image &nbsp; &nbsp; &nbsp; | Lowpoly Image | Input Source | Quality | Execution Time (ms)
+----------------------------------- | ------------- | ------------ | ------- | ------
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/AR10HF3.png" width=360 height=200> | Bitmap | Very High | 15813
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/XDd5nti.png" width=360 height=200> | Drawable | Very High | 16275
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/MVHzIbs.png" width=360 height=200> | File | Very High | 15987
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cajVv2j.png" width=360 height=200> | Uri | Very High | 15931
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/OMSV6Ks.png" width=360 height=200> | Bitmap | High | 4547
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/9sThhqj.png" width=360 height=200> | Drawable | High | 5088
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/mlSfBBD.png" width=360 height=200> | File | High | 4734
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/HvBU1en.png" width=360 height=200> | Uri | High | 4612
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/KDMzSwy.png" width=360 height=200> | Bitmap | Medium | 1113
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/wz1aAhd.png" width=360 height=200> | Drawable | Medium | 1672
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/20YfeVF.png" width=360 height=200> | File | Medium | 1297
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/7tYMYcZ.png" width=360 height=200> | Uri | Medium | 1152
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/TeYASKY.png" width=360 height=200> | Bitmap | Low | 918
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/BXUCBJB.png" width=360 height=200> | Drawable | Low | 1496
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/FXmsHa5.png" width=360 height=200> | File | Low | 1091
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/muLCMQX.png" width=360 height=200> | Uri | Low | 996
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/R3p7FOn.png" width=360 height=200> | Bitmap | Very Low | 850
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/lei9Yzx.png" width=360 height=200> | Drawable | Very Low | 1024
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/RyvOjuF.png" width=360 height=200> | File | Very Low | 923
+<img src="https://i.imgur.com/iCddK29.jpg" width=360 height=200> | <img src="https://i.imgur.com/cKZgHvM.png" width=360 height=200> | Uri | Very Low | 876
 
 
 
