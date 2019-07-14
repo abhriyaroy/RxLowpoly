@@ -2,6 +2,8 @@
 
 # RxLowpoly
 
+[ ![Download](https://api.bintray.com/packages/abhriyaroy/RxLowpoly/rxlowpoly/images/download.svg) ](https://bintray.com/abhriyaroy/RxLowpoly/rxlowpoly/_latestVersion)
+
  An Android library to bring your ordinary photos to life with an awesome crystallized effect. <br>
 
 ## Table of Contents
