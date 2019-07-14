@@ -38,7 +38,9 @@ dependencies {
   // Android support
   implementation "androidx.appcompat:appcompat:$SUPPORT_LIBRARY_VERSION"
   // Rx java
-  implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+  api "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
+  // Rx android
+  api "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
 }
 
 repositories {

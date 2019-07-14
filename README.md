@@ -41,7 +41,7 @@
  
 ## Installation
 
- Step 1. Add JitPack to your project :
+ Step 1 - Add JitPack to your project :
 
  Add it in your root build.gradle at the end of repositories:
 
@@ -52,11 +52,11 @@
 		}
 	}
   
-  Step 2. Add the dependency in your app module's build.gradle file
+  Step 2 - Add the dependency in your app module's build.gradle file
 
 	dependencies {
 		...
-	        implementation 'com.github.abhriyaroy:RxLowpoly:1.0.1'
+	        implementation "com.github.abhriyaroy:RxLowpoly:{latest_version_here}"
 	}
 
  That's it! <br>
@@ -74,7 +74,7 @@
 							  
 ## Library Details
 
- - RxLowpoly uses [JNI](#jni) with 64 bit support to meet google
+ - RxLowpoly uses [JNI](#jni) with [64 bit support](https://developer.android.com/distribute/best-practices/develop/64-bit) to meet google
    specified requirement for all apps to be 64 bit enabled by August
    2019.
  - Use of [JNI](#jni) enables much faster execution than other similar libraries.
