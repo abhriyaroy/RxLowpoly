@@ -10,92 +10,115 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:titleTextColor="@color/colorWhite"/>
+    app:titleTextColor="@color/colorWhite"
+    tools:layout_editor_absoluteX="0dp" />
 
   <Button
     android:id="@+id/bitmapAsyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
     android:text="@string/bitmap_async_example_fragment_name"
-    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/bitmapSyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/toolbar"
-    app:layout_constraintVertical_bias="0.08" />
+    app:layout_constraintTop_toTopOf="@+id/toolbar"
+    app:layout_constraintVertical_chainStyle="packed" />
 
   <Button
     android:id="@+id/bitmapSyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/bitmap_sync_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/drawableAsyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/bitmapAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/bitmapAsyncButton" />
 
   <Button
     android:id="@+id/drawableAsyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/drawable_async_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/drawableSyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/bitmapSyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/bitmapSyncButton" />
 
   <Button
     android:id="@+id/drawableSyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/drawable_sync_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/fileAsyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/drawableAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/drawableAsyncButton" />
 
   <Button
     android:id="@+id/fileAsyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/file_async_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/fileSyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/drawableSyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/drawableSyncButton" />
 
   <Button
     android:id="@+id/fileSyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/file_sync_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/uriAsyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/fileAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/fileAsyncButton" />
 
 
   <Button
     android:id="@+id/uriAsyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/uri_async_example_fragment_name"
+    app:layout_constraintBottom_toTopOf="@+id/uriSyncButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/fileSyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/fileSyncButton" />
 
   <Button
     android:id="@+id/uriSyncButton"
     android:layout_width="@dimen/fragment_chooser_button_width"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/fragment_chooser_button_margin_top"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
     android:text="@string/uri_sync_example_fragment_name"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/uriAsyncButton" />
+    app:layout_constraintTop_toBottomOf="@+id/uriAsyncButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,7 +73,8 @@ class BitmapSyncFragment : BaseFragment() {
     return Single.create {
       val lowpolyBitmap = RxLowpoly.with(activity!!.applicationContext)
         .input(bitmap)
-        .overrideScaling(downScalingFactor, maximumWidth)
+        .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
         .quality(quality)
         .output(file)
         .generate()
@@ -85,7 +86,8 @@ class BitmapSyncFragment : BaseFragment() {
     return Single.create {
       val lowpolyBitmap = RxLowpoly.with(activity!!.applicationContext)
         .input(bitmap)
-        .overrideScaling(downScalingFactor, maximumWidth)
+        .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
         .quality(quality)
         .output(uri)
         .generate()

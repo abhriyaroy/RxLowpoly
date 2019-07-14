@@ -1,6 +1,7 @@
 package com.zebrostudio.rxlowpoly.examplefragments
 
 import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,6 +57,16 @@ abstract class BaseFragment : Fragment() {
       disposable?.dispose()
     }
     super.onDestroy()
+  }
+
+  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    if (requestCode == REQUEST_CODE){
+      if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        with(context!!){
+            showToast(stringRes(R.string.base_fragment_permission_obtained_message))
+        }
+      }
+    }
   }
 
   abstract fun configureView(view: View)

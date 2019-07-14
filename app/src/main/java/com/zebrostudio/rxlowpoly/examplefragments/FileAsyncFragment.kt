@@ -98,7 +98,8 @@ class FileAsyncFragment : BaseFragment() {
   ): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(inputFile)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(outputFile)
       .generateAsync()
@@ -110,7 +111,8 @@ class FileAsyncFragment : BaseFragment() {
   ): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(inputFile)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(outputUri)
       .generateAsync()

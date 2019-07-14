@@ -20,5 +20,6 @@
   <string name="fragment_example_save_to_uri_radio_button_text">Uri</string>
   <string name="fragment_example_downscaling_factor_hint">Downscale Factor</string>
   <string name="fragment_example_maximum_width_hint">Maximum Width</string>
+    <string name="base_fragment_permission_obtained_message">Permission granted successfully!</string>
 
 </resources>

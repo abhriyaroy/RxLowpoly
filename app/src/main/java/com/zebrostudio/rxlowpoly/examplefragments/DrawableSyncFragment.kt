@@ -74,7 +74,8 @@ class DrawableSyncFragment : BaseFragment() {
     return Single.create {
       val lowpolyBitmap = RxLowpoly.with(activity!!.applicationContext)
         .input(drawableId)
-        .overrideScaling(downScalingFactor, maximumWidth)
+        .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
         .quality(quality)
         .output(file)
         .generate()
@@ -86,7 +87,8 @@ class DrawableSyncFragment : BaseFragment() {
     return Single.create {
       val lowpolyBitmap = RxLowpoly.with(activity!!.applicationContext)
         .input(drawableId)
-        .overrideScaling(downScalingFactor, maximumWidth)
+        .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
         .quality(quality)
         .output(uri)
         .generate()

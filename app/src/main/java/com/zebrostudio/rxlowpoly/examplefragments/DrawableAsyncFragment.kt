@@ -66,7 +66,8 @@ class DrawableAsyncFragment : BaseFragment() {
   ): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(drawable)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(file)
       .generateAsync()
@@ -75,7 +76,8 @@ class DrawableAsyncFragment : BaseFragment() {
   private fun convertDrawableToLowpolyAsyncWithUriOutput(drawable: Int, uri: Uri): Single<Bitmap> {
     return RxLowpoly.with(activity!!.applicationContext)
       .input(drawable)
-      .overrideScaling(downScalingFactor, maximumWidth)
+      .overrideScaling(downScalingFactor)
+      .overrideScaling(maximumWidth)
       .quality(quality)
       .output(uri)
       .generateAsync()
