@@ -2,8 +2,6 @@
 
 # RxLowpoly
 
-[ ![Download](https://api.bintray.com/packages/abhriyaroy/RxLowpoly/rxlowpoly/images/download.svg) ](https://bintray.com/abhriyaroy/RxLowpoly/rxlowpoly/_latestVersion)
-
  An Android library to bring your ordinary photos to life with an awesome crystallized effect. <br>
 
 ## Table of Contents
@@ -43,22 +41,13 @@
  
 ## Installation
 
- Step 1 - Add JitPack to your project :
-
- Add it in your root build.gradle at the end of repositories:
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+[![Download](https://api.bintray.com/packages/abhriyaroy/RxLowpoly/rxlowpoly/images/download.svg)](https://bintray.com/abhriyaroy/RxLowpoly/rxlowpoly/_latestVersion)
   
-  Step 2 - Add the dependency in your app module's build.gradle file
+  Add the dependency in your app module's build.gradle file
 
 	dependencies {
 		...
-	        implementation "com.github.abhriyaroy:RxLowpoly:{latest_version_here}"
+	        implementation "com.zebrostudio.rxlowpoly:rxlowpoly:{latest_version}"
 	}
 
  That's it! <br>
